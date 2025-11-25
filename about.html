@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About Atlas Resort - Our Story & Legacy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+                :root {
+            --header-height: 76px;
+            --primary: #001F3F;             --secondary: #007BFF;             --accent: #D4AF37;             --bg-light: #F0F4F8;             --text-dark: #001F3F;
+            --text-light: #FFFFFF;
+        }
+                body {
+            padding-top: var(--header-height);
+        }
+                .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        @media (max-width: 768px) {
+            .parallax { background-attachment: scroll; }
+        }
+                .carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-bottom: 3rem;
+            background-color: #000;         }
+                .carousel-slides {
+            display: flex;
+            transition: transform 0.7s ease-in-out;
+            will-change: transform;
+        }
+                .carousel-slide {
+            min-width: 100%;
+            height: 60vh;             max-height: 650px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            border-radius: inherit;
+        }
+.carousel-slide {
+        height: 75vh !important;             max-height: 700px;
+    }
+        @media (max-width: 1024px) {
+        .carousel-slide {
+            height: 65vh !important;
+        }
+    }
+        @media (max-width: 768px) {
+        .carousel-slide {
+            height: 60vh !important;
+        }
+    }
+        @media (max-width: 640px) {
+        .carousel-slide {
+            height: 65dvh !important;               min-height: 450px;                  }
+    }
+    @media (max-width: 480px) {
+        .carousel-slide {
+            height: 60dvh !important;
+            min-height: 420px;
+        }
+    }
+        .carousel {
+        margin-bottom: 0 !important;
+    }
+    .mb-12 {
+        margin-bottom: 3rem !important;      }
+    body {
+        margin: 0;
+        padding: 0;
+    }
+        * {
+        box-sizing: border-box;
+    }
+                .carousel-slide::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.12),
+                rgba(0,0,0,0.55)
+            );
+            border-radius: inherit;
+            z-index: 1;
+        }
+                .carousel-caption {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.55);
+            padding: 0.6rem 1rem;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            z-index: 2;
+            max-width: 90%;
+            text-align: center;
+        }
+                .carousel-dots {
+            position: absolute;
+            bottom: 12px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 20;
+            pointer-events: auto;
+        }
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .carousel-dot.active {
+            background: var(--accent);
+            width: 14px;
+            height: 14px;
+        }
+                .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--accent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid var(--accent);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -13px; }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+        }
+        @media (max-width: 768px) {
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; margin-bottom: 1.25rem; }
+            .right { left: 0; }
+            .right::after { left: 15px; }
+            .timeline-item::after { right: auto; left: 15px; }
+        }
+                @keyframes fade-in-down { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fade-in-up   { from { opacity: 0; transform: translateY(30px); }  to { opacity: 1; transform: translateY(0); } }
+        @keyframes fade-in-left { from { opacity: 0; transform: translateX(-30px);}  to { opacity: 1; transform: translateX(0);} }
+        @keyframes fade-in-right{ from { opacity: 0; transform: translateX(30px);}   to { opacity: 1; transform: translateX(0);} }
+        .animate-fade-in-down { animation: fade-in-down 1.0s ease-out both; }
+        .animate-fade-in-up   { animation: fade-in-up   1.0s ease-out both; }
+        .animate-fade-in-left { animation: fade-in-left 1.0s ease-out both; }
+        .animate-fade-in-right{ animation: fade-in-right 1.0s ease-out both; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-800 { animation-delay: 0.8s; }
+        .delay-1000{ animation-delay: 1s; }
+                header nav a { text-decoration: none; }
+    </style>
+</head>
+<body class="font-sans antialiased" style="color:var(--text-dark); background-color:var(--bg-light);">
+<header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50" style="height:var(--header-height);">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center h-full">
+            <a href="index.html" class="text-2xl sm:text-3xl font-extrabold text-[var(--primary)] tracking-wide">Atlas Resort</a>
+            <div class="flex items-center gap-4">
+                <button id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" class="sm:hidden text-[var(--primary)] focus:outline-none" title="Toggle menu">
+                    <svg data-lucide="menu" class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none"></svg>
+                </button>
+              <ul id="nav-menu" class="hidden sm:flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 md:space-x-8 text-base sm:text-lg font-medium absolute sm:relative top-full left-0 w-full sm:w-auto bg-[var(--text-light)] sm:bg-transparent px-4 sm:px-0 py-4 sm:py-0 shadow-md sm:shadow-none">
+    <li class="flex items-center gap-2">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <a href="index.html" class="hover:text-[var(--secondary)] transition">Home</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="info" class="w-5 h-5"></i>
+        <a href="about.html" class="hover:text-[var(--secondary)] transition">About</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="key" class="w-5 h-5"></i>
+        <a href="rooms.html" class="hover:text-[var(--secondary)] transition">Rooms</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="calendar" class="w-5 h-5"></i>
+        <a href="event.html" class="hover:text-[var(--secondary)] transition">Events</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="book-open" class="w-5 h-5"></i>
+        <a href="blog.html" class="hover:text-[var(--secondary)] transition">Blog</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="mail" class="w-5 h-5"></i>
+        <a href="contact.html" class="hover:text-[var(--secondary)] transition">Contact</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="corner-right-up" class="w-5 h-5"></i>
+        <a href="book" class="bg-[var(--secondary)] text-[var(--text-light)] px-4 sm:px-6 py-2 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-105">Book Now</a>
+    </li>
+</ul>
+            </div>
+        </nav>
+    </header>
+    <section id="about-hero" class="relative h-screen flex items-center justify-center parallax" style="background-image: url('https://images.unsplash.com/photo-1563253814-b3055eafce93?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW90ZWx8ZW58MHx8MHx8fDA%3D');">
+        <div class="absolute inset-0 bg-[var(--primary)] opacity-50"></div>
+        <div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in-down flex justify-center items-center gap-4">
+                <i data-lucide="landmark" class="w-12 h-12 text-[var(--accent)]"></i>
+                <span>Our Timeless Legacy</span>
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl mb-8 animate-fade-in-up delay-200 max-w-3xl mx-auto">Discover the story behind Atlas Resort – where history meets unparalleled luxury in the heart of Ado.</p>
+            <a href="#story" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 py-3 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-105 inline-block">Explore Our Journey</a>
+        </div>
+    </section>
+    <section id="story" class="py-16 sm:py-20 bg-[var(--text-light)]">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[var(--primary)] mb-8 animate-fade-in flex justify-center items-center gap-3">
+                <i data-lucide="book-open-text" class="w-10 h-10 text-[var(--accent)]"></i>
+                Our Story
+            </h2>
+            <div class="max-w-4xl mx-auto text-center space-y-6">
+                <p class="text-lg sm:text-xl leading-relaxed animate-fade-in-up delay-200">Founded in 19XX, Atlas Resort began as a humble retreat nestled in the vibrant landscapes of Ado. Over the decades, we've evolved into a premier destination, preserving our rich heritage while embracing modern elegance.</p>
+                <p class="text-lg sm:text-xl leading-relaxed animate-fade-in-up delay-400">Our commitment to exceptional hospitality has welcomed generations of guests, creating lasting memories amid nature's splendor. From our historic architecture to our sustainable practices, every aspect tells a story of passion and dedication.</p>
+            </div>
+            <div class="timeline mt-12">
+                <div class="timeline-item left">
+                    <div class="timeline-content animate-fade-in-left">
+                        <h3 class="text-xl font-bold text-[var(--primary)]">19XX - Founding</h3>
+                        <p>Atlas Resort is established as a small retreat in Ado, offering basic accommodations amid natural beauty.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content animate-fade-in-right delay-200">
+                        <h3 class="text-xl font-bold text-[var(--primary)]">19XX+10 - Expansion</h3>
+                        <p>First major expansion adds luxury rooms and basic amenities, attracting more visitors.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content animate-fade-in-left delay-400">
+                        <h3 class="text-xl font-bold text-[var(--primary)]">19XX+20 - Recognition</h3>
+                        <p>Receives first awards for hospitality excellence and begins hosting events.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content animate-fade-in-right delay-600">
+                        <h3 class="text-xl font-bold text-[var(--primary)]">19XX+30 - Modernization</h3>
+                        <p>Introduces sustainable practices and modern facilities while preserving heritage.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content animate-fade-in-left delay-800">
+                        <h3 class="text-xl font-bold text-[var(--primary)]">Present Day</h3>
+                        <p>A premier resort blending history with luxury, committed to guest satisfaction and environmental care.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 sm:py-20 bg-gradient-to-r from-[var(--secondary)]/10 to-[var(--primary)]/10 parallax" style="background-image: url('https://via.placeholder.com/1920x1080?text=Elegant+Background');">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[var(--primary)] mb-8 animate-fade-in flex justify-center items-center gap-3">
+                <i data-lucide="target" class="w-10 h-10 text-[var(--accent)]"></i>
+                Our Guiding Principles
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[var(--text-light)]/95 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 flex flex-col items-center text-center animate-fade-in-up">
+                    <i data-lucide="flag" class="w-16 h-16 text-[var(--accent)] mb-4"></i>
+                    <h3 class="text-2xl font-bold text-[var(--primary)] mb-3">Our Mission</h3>
+                    <p class="text-base leading-relaxed">To provide an oasis of tranquility and luxury, where every guest experiences personalized service, sustainable practices, and unforgettable moments that inspire return visits.</p>
+                </div>
+                <div class="bg-[var(--text-light)]/95 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 flex flex-col items-center text-center animate-fade-in-up delay-200">
+                    <i data-lucide="eye" class="w-16 h-16 text-[var(--accent)] mb-4"></i>
+                    <h3 class="text-2xl font-bold text-[var(--primary)] mb-3">Our Vision</h3>
+                    <p class="text-base leading-relaxed">To be the leading heritage resort in Ado, setting global standards for eco-friendly luxury and cultural immersion, fostering a community of lifelong advocates.</p>
+                </div>
+                <div class="bg-[var(--text-light)]/95 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 flex flex-col items-center text-center animate-fade-in-up delay-400">
+                    <i data-lucide="heart" class="w-16 h-16 text-[var(--accent)] mb-4"></i>
+                    <h3 class="text-2xl font-bold text-[var(--primary)] mb-3">Our Values</h3>
+                    <p class="text-base leading-relaxed">Integrity, Sustainability, Excellence, and Community – these core values drive every decision, ensuring we honor our past while innovating for the future.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 sm:py-20 bg-[var(--bg-light)]">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--primary)] mb-8 animate-fade-in flex justify-center items-center gap-3">
+                <i data-lucide="leaf" class="w-10 h-10 text-[var(--accent)]"></i>
+                Commitment to Sustainability
+            </h2>
+            <p class="text-base sm:text-lg max-w-4xl mx-auto mb-8 leading-relaxed animate-fade-in-up delay-200">At Atlas Resort, we are dedicated to preserving Ado's natural beauty. Our eco-friendly initiatives include solar energy, water conservation, organic farming, and community partnerships to ensure a greener tomorrow.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+                <div class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition animate-fade-in-up delay-400">
+                    <i data-lucide="sun" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
+                    <p class="text-lg font-semibold">Solar Powered Facilities</p>
+                </div>
+                <div class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition animate-fade-in-up delay-600">
+                    <i data-lucide="droplet" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
+                    <p class="text-lg font-semibold">Water Conservation Programs</p>
+                </div>
+                <div class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition animate-fade-in-up delay-800">
+                    <i data-lucide="recycle" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
+                    <p class="text-lg font-semibold">Zero Waste Initiatives</p>
+                </div>
+                <div class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition animate-fade-in-up delay-1000">
+                    <i data-lucide="users" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
+                    <p class="text-lg font-semibold">Community Support Projects</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="gallery" class="py-16 sm:py-20 bg-gradient-to-r from-[var(--primary)]/5 to-[var(--secondary)]/5">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[var(--primary)] mb-8 animate-fade-in flex justify-center items-center gap-3">
+                <i data-lucide="image" class="w-10 h-10 text-[var(--accent)]"></i>
+                Explore Our Gallery
+            </h2>
+            <p class="text-base sm:text-lg text-center max-w-4xl mx-auto mb-8 animate-fade-in-up delay-200">Browse through our categorized collections showcasing the beauty and amenities of Atlas Resort. Swipe or click to view more images in each carousel.</p>
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-3 animate-fade-in">
+                    <i data-lucide="flower" class="w-8 h-8 text-[var(--accent)]"></i>
+                    Lush Gardens
+                </h3>
+                <div class="carousel" id="gardens-carousel" aria-roledescription="carousel">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1600&auto=format&fit=crop&q=60');">
+                            <div class="carousel-caption">Serene Garden Path</div>
+                        </div>
+                        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1563714193017-5a5fb60bc02b?w=1600&auto=format&fit=crop&q=60');">
+                            <div class="carousel-caption">Tropical Foliage</div>
+                        </div>
+                        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1601654253194-260e0b6984f9?w=1600&auto=format&fit=crop&q=60');">
+                            <div class="carousel-caption">Blooming Paradise</div>
+                        </div>
+                    </div>
+                    <div class="carousel-dots" role="tablist">
+                        <div class="carousel-dot active" data-index="0" role="tab" aria-selected="true" tabindex="0"></div>
+                        <div class="carousel-dot" data-index="1" role="tab" aria-selected="false" tabindex="-1"></div>
+                        <div class="carousel-dot" data-index="2" role="tab" aria-selected="false" tabindex="-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-3 animate-fade-in delay-200">
+                    <i data-lucide="bed" class="w-8 h-8 text-[var(--accent)]"></i>
+                    Luxurious Rooms
+                </h3>
+                <div class="carousel" id="rooms-carousel" aria-roledescription="carousel">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide" style="background-image: url('https://hoteldesigns.net/wp-content/uploads/2025/01/WHO_MLEWH_Beach_Villa_Bedroom_Bedroom_01.jpg');">
+                            <div class="carousel-caption">Elegant Suite</div>
+                        </div>
+                        <div class="carousel-slide" style="background-image: url('https://www.insidehook.com/wp-content/uploads/2023/01/luxuryhotel_1500x1000_opt2a.jpg?fit=1200%2C800');">
+                            <div class="carousel-caption">Spacious Bedroom</div>
+                        </div>
+                        <div class="carousel-slide" style="background-image: url('https://cdn.galeriemagazine.com/wp-content/uploads/2025/04/Galerie_20210721_RW_Palace_One_Pool_Wide_v1_WB-1174x718.jpg');">
+                            <div class="carousel-caption">Modern Interior</div>
+                        </div>
+                    </div>
+                    <div class="carousel-dots" role="tablist">
+                        <div class="carousel-dot active" data-index="0" role="tab" aria-selected="true" tabindex="0"></div>
+                        <div class="carousel-dot" data-index="1" role="tab" aria-selected="false" tabindex="-1"></div>
+                        <div class="carousel-dot" data-index="2" role="tab" aria-selected="false" tabindex="-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-3 animate-fade-in delay-400">
+                    <i data-lucide="door-open" class="w-8 h-8 text-[var(--accent)]"></i>
+                    Grand Halls
+                </h3>
+                <div class="carousel" id="halls-carousel">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide" style="background-image: url('https://media.eventective.com/4247187_lg.jpg');">
+                            <div class="carousel-caption">Elegant Ballroom</div>
+                        </div>
+                        <div class="carousel-slide" style="background-image: url('https://static-new.lhw.com/HotelImages/Final/LW0804/lw0804_166962253_960x540.jpg');">
+                            <div class="carousel-caption">Spacious Venue</div>
+                        </div>
+                        <div class="carousel-slide" style="background-image: url('https://www.arizonagrandresort.com/wp-content/uploads/2022/03/Grand-Ballroom.png');">
+                            <div class="carousel-caption">Grand Event Space</div>
+                        </div>
+                    </div>
+                    <div class="carousel-dots" role="tablist">
+                        <div class="carousel-dot active" data-index="0" role="tab" aria-selected="true" tabindex="0"></div>
+                        <div class="carousel-dot" data-index="1" role="tab" aria-selected="false" tabindex="-1"></div>
+                        <div class="carousel-dot" data-index="2" role="tab" aria-selected="false" tabindex="-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-12">
+                <h3 class="text-2xl sm:text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-3 animate-fade-in delay-600">
+                    <i data-lucide="glass-water" class="w-8 h-8 text-[var(--accent)]"></i>
+                    Elegant Bar
+                </h3>
+                <div class="carousel" id="bar-carousel">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide" style="background-image: url('https://www.la.ginabelle.ch/fileadmin/_processed_/8/5/csm_Bar_01-25_661c2d7830.webp');">
+                            <div class="carousel-caption">Cozy Lounge</div>
+                        </div>
+                        <div class="carousel-slide" style="background-image: url('https://wwd.com/wp-content/uploads/2022/07/Hotel-Chelsea_Lobby-Bar_-credit-Annie-Schlechter.jpg?w=1000&h=563&crop=1');">
+                            <div class="carousel-caption">Stylish Bar Area</div>
+                        </div>
+                        <div class="carousel-slide" style="background-image: url('https://all-inclusive.marriott.com/resourcefiles/dining-detail-page-image/bars-and-restaurants-view-of-the-house-by-elegant-hotels-st-james.jpg');">
+                            <div class="carousel-caption">Relaxing Atmosphere</div>
+                        </div>
+                    </div>
+                    <div class="carousel-dots" role="tablist">
+                        <div class="carousel-dot active" data-index="0" role="tab" aria-selected="true" tabindex="0"></div>
+                        <div class="carousel-dot" data-index="1" role="tab" aria-selected="false" tabindex="-1"></div>
+                        <div class="carousel-dot" data-index="2" role="tab" aria-selected="false" tabindex="-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <h3 class="text-2xl sm:text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-3 animate-fade-in delay-800">
+                    <i data-lucide="utensils" class="w-8 h-8 text-[var(--accent)]"></i>
+                    Gourmet Restaurant
+                </h3>
+                <div class="carousel" id="restaurant-carousel">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide" style="background-image: url('https://www.riversideresort.com/wp-content/uploads/2017/09/the-gourmet-room-riverside-hotel-casino-slogan-image.png');">
+                            <div class="carousel-caption">Fine Dining Experience</div>
+                        </div>
+                        <div class="carousel-slide" style="background-image: url('https://cdn.kiwicollection.com/media/property/PR241037/xl/241037-22-25%20Arrel%20Restaurant-at%20InterContinental%20Barcelona.jpg');">
+                            <div class="carousel-caption">Exquisite Cuisine</div>
+                        </div>
+                        <div class="carousel-slide" style="background-image: url('https://all-inclusive.marriott.com/resourcefiles/dining-detail-page-image/blue-marlin.jpg');">
+                            <div class="carousel-caption">Outdoor Seating</div>
+                        </div>
+                    </div>
+                    <div class="carousel-dots" role="tablist">
+                        <div class="carousel-dot active" data-index="0" role="tab" aria-selected="true" tabindex="0"></div>
+                        <div class="carousel-dot" data-index="1" role="tab" aria-selected="false" tabindex="-1"></div>
+                        <div class="carousel-dot" data-index="2" role="tab" aria-selected="false" tabindex="-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="contact" class="bg-[var(--primary)] text-[var(--text-light)] py-12 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('https://via.placeholder.com/1920x300?text=Wave+Pattern'); background-size: cover;"></div>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3"><i data-lucide="hotel" class="w-8 h-8 text-[var(--accent)]"></i> Atlas Resort</h3>
+                <p class="mb-4 text-lg">Timeless luxury in the heart of Ado. Experience elegance redefined.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="link" class="w-6 h-6 text-[var(--accent)]"></i> Quick Links</h3>
+                <ul class="space-y-2 text-lg">
+                    <li><a href="index.html#home" class="hover:text-[var(--accent)] transition">Home</a></li>
+                    <li><a href="#story" class="hover:text-[var(--accent)] transition">About</a></li>
+                    <li><a href="index.html#rooms" class="hover:text-[var(--accent)] transition">Rooms</a></li>
+                    <li><a href="index.html#events" class="hover:text-[var(--accent)] transition">Events</a></li>
+                    <li><a href="index.html#blog" class="hover:text-[var(--accent)] transition">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="mail" class="w-6 h-6 text-[var(--accent)]"></i> Contact Us</h3>
+                <p class="mb-2 text-lg">Email: info@atlasresort.com</p>
+                <p class="mb-2 text-lg">Phone: +123-456-7890</p>
+                <p class="text-lg">Address: 123 Resort Lane, Ado, Nigeria</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="share-2" class="w-6 h-6 text-[var(--accent)]"></i> Follow Us</h3>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="facebook" class="w-8 h-8"></i></a>
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="instagram" class="w-8 h-8"></i></a>
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="twitter" class="w-8 h-8"></i></a>
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="linkedin" class="w-8 h-8"></i></a>
+                </div>
+            </div>
+        </div>
+       <div
+  class="container mx-auto px-4 sm:px-6 relative z-10 mt-8 text-center border-t border-[var(--secondary)]/30 pt-4"
+>
+  <p class="text-sm">
+    &copy; 2025 Atlas Resort. All rights reserved. |
+    <a href="#" class="hover:text-[var(--accent)]">Privacy Policy</a> |
+    <a href="#" class="hover:text-[var(--accent)]">Terms of Service</a>
+  </p>
+  <p class="text-xs mt-2">
+    Designed & Developed by 
+<a href="https://folio-two-blush.vercel.app/" target="_blank" class="hover:text-\[var\(--accent\)\] font-semibold">Alonge Korede</a>
+  </p>
+</div>
+
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+   lucide.createIcons();
+            // Hamburger Menu Toggle (defensive)
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    const isHidden = navMenu.classList.toggle('hidden');
+                    // aria-expanded reflect current state
+                    menuToggle.setAttribute('aria-expanded', (!isHidden).toString());
+                });
+            }
+            // Carousel Function (defensive)
+            function initCarousel(carouselId, autoMs = 5000) {
+                const carousel = document.getElementById(carouselId);
+                if (!carousel) return;
+                const slidesWrapper = carousel.querySelector('.carousel-slides');
+                const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+                if (!slidesWrapper || dots.length === 0) return;
+                let index = 0;
+                const total = dots.length;
+                let intervalId = null;
+                function updateDots(newIndex) {
+                    dots.forEach((d, i) => {
+                        d.classList.toggle('active', i === newIndex);
+                        d.setAttribute('aria-selected', (i === newIndex).toString());
+                        d.tabIndex = i === newIndex ? 0 : -1;
+                    });
+                }
+                function showSlide(n) {
+                    index = ((n % total) + total) % total;
+                    slidesWrapper.style.transform = `translateX(-${index * 100}%)`;
+                    updateDots(index);
+                }
+                // click + keyboard for dots
+                dots.forEach((dot, i) => {
+                    dot.addEventListener('click', () => showSlide(i));
+                    dot.addEventListener('keydown', (ev) => {
+                        if (ev.key === 'Enter' || ev.key === ' ') {
+                            ev.preventDefault();
+                            showSlide(i);
+                        }
+                    });
+                });
+                // auto slide with pause on hover/focus
+                function startAuto() {
+                    stopAuto();
+                    intervalId = setInterval(() => showSlide(index + 1), autoMs);
+                }
+                function stopAuto() {
+                    if (intervalId) { clearInterval(intervalId); intervalId = null; }
+                }
+                carousel.addEventListener('mouseenter', stopAuto);
+                carousel.addEventListener('mouseleave', startAuto);
+                carousel.addEventListener('focusin', stopAuto);
+                carousel.addEventListener('focusout', startAuto);
+                // initial show
+                showSlide(0);
+                startAuto();
+            }
+            // Initialize all carousels that exist on page
+            const carouselIds = ['gardens-carousel', 'rooms-carousel', 'halls-carousel', 'bar-carousel', 'restaurant-carousel'];
+            carouselIds.forEach(id => initCarousel(id, 5000));
+        });
+    </script>
+</body>
+</html>

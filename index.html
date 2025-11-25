@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Resort - Timeless Luxury in Ado</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+                :root {
+            --primary: #001F3F;             --secondary: #007BFF;             --accent: #D4AF37;             --bg-light: #F0F4F8;             --text-dark: #001F3F;
+            --text-light: #FFFFFF;
+        }
+                .slider {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,31,63,0.3), rgba(0,31,63,0.6));
+        }
+                .dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background: var(--text-light);
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+        .dot.active {
+            opacity: 1;
+            background: var(--accent);
+        }
+                .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+  .gallery-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.gallery-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.gallery-slide {
+    min-width: 100%;               height: 70vh;                  background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;       }
+    .slider, 
+    .slide {
+        height: 100vh;            }
+        @media (max-width: 1024px) {
+        .slider, .slide {
+            height: 80vh;
+        }
+    }
+        @media (max-width: 768px) {
+        .slider, .slide {
+            height: 70vh;
+        }
+    }
+        @media (max-width: 640px) {
+        .slider, .slide {
+            height: 65dvh !important;               min-height: 500px;                  }
+    }
+    @media (max-width: 480px) {
+        .slider, .slide {
+            height: 60dvh !important;
+            min-height: 480px;
+        }
+    }
+        #about {
+        margin-top: 0 !important;
+        padding-top: 4rem !important;      }
+        body {
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+<body class="font-sans antialiased text-[var(--text-dark)] bg-[var(--bg-light)]">
+    <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50" style="height:var(--header-height);">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl sm:text-3xl font-extrabold text-[var(--primary)] tracking-wide">Atlas Resort</a>
+            <button id="menu-toggle" class="sm:hidden text-[var(--primary)] focus:outline-none">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+         <ul id="nav-menu" class="hidden sm:flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 md:space-x-8 text-base sm:text-lg font-medium absolute sm:relative top-full left-0 w-full sm:w-auto bg-[var(--text-light)] sm:bg-transparent px-4 sm:px-0 py-4 sm:py-0 shadow-md sm:shadow-none">
+    <li class="flex items-center gap-2">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <a href="index.html" class="hover:text-[var(--secondary)] transition">Home</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="info" class="w-5 h-5"></i>
+        <a href="about.html" class="hover:text-[var(--secondary)] transition">About</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="key" class="w-5 h-5"></i>
+        <a href="rooms.html" class="hover:text-[var(--secondary)] transition">Rooms</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="calendar" class="w-5 h-5"></i>
+        <a href="event.html" class="hover:text-[var(--secondary)] transition">Events</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="book-open" class="w-5 h-5"></i>
+        <a href="blog.html" class="hover:text-[var(--secondary)] transition">Blog</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="mail" class="w-5 h-5"></i>
+        <a href="contact.html" class="hover:text-[var(--secondary)] transition">Contact</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="corner-right-up" class="w-5 h-5"></i>
+        <a href="book" class="bg-[var(--secondary)] text-[var(--text-light)] px-4 sm:px-6 py-2 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-105">Book Now</a>
+    </li>
+</ul>
+        </nav>
+    </header>
+    <section id="home" class="slider">
+        <div class="slides" id="slides">
+            <div class="slide" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/519772367.jpg?k=a90ea47a4ebff9fa9100542ffd3755b62b857fa4e7f96e2cdf7e03c614c471f9&o=');">
+                <div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
+                    <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 animate-fade-in-down">Unwind in Paradise</h1>
+                    <p class="text-lg sm:text-2xl md:text-3xl mb-8 animate-fade-in-up delay-200">Immerse yourself in our stunning infinity pools overlooking pristine landscapes.</p>
+                    <a href="#book" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-110 animate-bounce">Book Now</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://www.shutterstock.com/image-illustration/elegance-every-detail-3d-visualization-260nw-2622610593.jpg');">
+                <div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
+                    <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 animate-fade-in-down">Elegant Comfort</h1>
+                    <p class="text-lg sm:text-2xl md:text-3xl mb-8 animate-fade-in-up delay-200">Experience luxury rooms designed for ultimate relaxation and sophistication.</p>
+                    <a href="#book" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-110 animate-bounce">Book Now</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://img.freepik.com/free-photo/beautiful-landscape_8327-100.jpg?semt=ais_hybrid&w=740&q=80');">
+                <div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
+                    <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 animate-fade-in-down">Embrace Nature</h1>
+                    <p class="text-lg sm:text-2xl md:text-3xl mb-8 animate-fade-in-up delay-200">Surrounded by lush greenery and serene natural beauty for a rejuvenating escape.</p>
+                    <a href="#book" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-110 animate-bounce">Book Now</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://cdn3.parksmedia.wdprapps.disney.com/media/dftwh/california/venues/rose-court-garden/Heather-and-Mike-Sneak-Peeks-edits-0019-gallery.jpg');">
+                <div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
+                    <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 animate-fade-in-down">Memorable Events</h1>
+                    <p class="text-lg sm:text-2xl md:text-3xl mb-8 animate-fade-in-up delay-200">Host unforgettable events in our elegant venues with personalized service.</p>
+                    <a href="#book" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-110 animate-bounce">Book Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="dots">
+            <div class="dot active" onclick="currentSlide(0)"></div>
+            <div class="dot" onclick="currentSlide(1)"></div>
+            <div class="dot" onclick="currentSlide(2)"></div>
+            <div class="dot" onclick="currentSlide(3)"></div>
+        </div>
+    </section>
+    <section id="about" class="py-16 sm:py-20 bg-gradient-to-r from-[var(--secondary)]/10 to-[var(--primary)]/10">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-4xl sm:text-5xl font-bold text-[var(--primary)] mb-6 sm:mb-8 animate-fade-in flex justify-center items-center gap-2">
+                <i data-lucide="hotel" class="w-10 h-10 text-[var(--accent)]"></i>
+                About Atlas Resort
+            </h2>
+            <p class="text-lg sm:text-xl max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed">Nestled in the heart of Ado, Atlas Resort is a timeless haven blending rich heritage with modern luxury. Established in 19XX, we offer unparalleled serenity and world-class hospitality amidst breathtaking natural beauty. Our commitment to excellence ensures every guest leaves with cherished memories.</p>
+            <a href="#" class="text-[var(--secondary)] font-semibold hover:underline text-base sm:text-lg">Discover Our Story →</a>
+        </div>
+    </section>
+    <section class="py-16 sm:py-20 bg-[var(--text-light)]">
+        <div class="container mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
+            <div class="p-6 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2 bg-gradient-to-br from-[var(--secondary)]/5 to-[var(--accent)]/5 flex flex-col items-center">
+                <i data-lucide="map-pin" class="w-12 h-12 text-[var(--accent)] mb-2"></i>
+                <h3 class="text-3xl sm:text-4xl font-bold text-[var(--primary)]">50+</h3>
+                <p class="text-base sm:text-lg">Acres of Serene Landscape for Exploration and Relaxation</p>
+            </div>
+            <div class="p-6 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2 bg-gradient-to-br from-[var(--secondary)]/5 to-[var(--accent)]/5 flex flex-col items-center">
+                <i data-lucide="bed-double" class="w-12 h-12 text-[var(--accent)] mb-2"></i>
+                <h3 class="text-3xl sm:text-4xl font-bold text-[var(--primary)]">100+</h3>
+                <p class="text-base sm:text-lg">Luxury Rooms & Suites Tailored for Comfort</p>
+            </div>
+            <div class="p-6 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2 bg-gradient-to-br from-[var(--secondary)]/5 to-[var(--accent)]/5 flex flex-col items-center">
+                <i data-lucide="star" class="w-12 h-12 text-[var(--accent)] mb-2"></i>
+                <h3 class="text-3xl sm:text-4xl font-bold text-[var(--primary)]">5★</h3>
+                <p class="text-base sm:text-lg">Guest Satisfaction with Personalized Service</p>
+            </div>
+            <div class="p-6 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2 bg-gradient-to-br from-[var(--secondary)]/5 to-[var(--accent)]/5 flex flex-col items-center">
+                <i data-lucide="calendar" class="w-12 h-12 text-[var(--accent)] mb-2"></i>
+                <h3 class="text-3xl sm:text-4xl font-bold text-[var(--primary)]">20+</h3>
+                <p class="text-base sm:text-lg">Years of Excellence in Hospitality</p>
+            </div>
+        </div>
+    </section>
+    <section id="rooms" class="py-16 sm:py-20 bg-gradient-to-r from-[var(--primary)]/5 to-[var(--secondary)]/5">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl sm:text-5xl font-bold text-center text-[var(--primary)] mb-10 sm:mb-12 animate-fade-in flex justify-center items-center gap-2">
+                <i data-lucide="key" class="w-10 h-10 text-[var(--accent)]"></i>
+                Rooms & Facilities
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="relative overflow-hidden rounded-2xl shadow-2xl transform hover:scale-105 transition duration-500">
+                    <img src="https://cdn.wynnresorts.com/image/upload/w_auto,f_auto,q_auto/w_auto,f_auto,q_auto/v1672173300/Encore%20Boston%20Harbor/Amenities/The%20Spa/Updated%20Heros/EncoreBH-The-Spa-Wet-Area-Gallery?width=3840&quality=100" alt="Spa" class="w-full h-48 sm:h-64 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--primary)] to-transparent p-4 sm:p-6">
+                        <h3 class="text-xl sm:text-2xl font-bold text-[var(--text-light)] flex items-center gap-2"><i data-lucide="spa" class="w-6 h-6 text-[var(--accent)]"></i> Luxury Spa</h3>
+                        <p class="text-sm sm:text-base text-[var(--text-light)] opacity-90">Rejuvenate with world-class treatments, including massages, facials, and holistic therapies designed to restore balance and vitality.</p>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-2xl shadow-2xl transform hover:scale-105 transition duration-500">
+                    <img src="https://www.hotelscombined.com/rimg/himg/b7/71/25/expedia_group-3526615-128916206-268232.jpg?width=968&height=607&crop=true" alt="Pool" class="w-full h-48 sm:h-64 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--primary)] to-transparent p-4 sm:p-6">
+                        <h3 class="text-xl sm:text-2xl font-bold text-[var(--text-light)] flex items-center gap-2"><i data-lucide="waves" class="w-6 h-6 text-[var(--accent)]"></i> Infinity Pool</h3>
+                        <p class="text-sm sm:text-base text-[var(--text-light)] opacity-90">Swim in our stunning infinity pool with panoramic views, complete with cabanas, poolside service, and evening lighting for a magical experience.</p>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-2xl shadow-2xl transform hover:scale-105 transition duration-500">
+                    <img src="https://www.travelandleisure.com/thmb/PnmJ_pum0NBgpo4nK9tSknCFwoQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/wynn-spa-wet-area_HERO_VEGASSPA1022-ce78e2d06d454c1daa87b183254780f2.jpg" alt="Gym" class="w-full h-48 sm:h-64 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--primary)] to-transparent p-4 sm:p-6">
+                        <h3 class="text-xl sm:text-2xl font-bold text-[var(--text-light)] flex items-center gap-2"><i data-lucide="dumbbell" class="w-6 h-6 text-[var(--accent)]"></i> Fitness Center</h3>
+                        <p class="text-sm sm:text-base text-[var(--text-light)] opacity-90">Stay fit with state-of-the-art equipment, personal trainers, yoga classes, and wellness programs tailored to your needs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10 sm:mt-12">
+                <a href="#" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition">Explore More</a>
+            </div>
+        </div>
+    </section>
+    <section id="events" class="py-16 sm:py-20 bg-[var(--text-light)]">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl sm:text-5xl font-bold text-center text-[var(--primary)] mb-10 sm:mb-12 animate-fade-in flex justify-center items-center gap-2">
+                <i data-lucide="calendar-days" class="w-10 h-10 text-[var(--accent)]"></i>
+                Upcoming Events
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-gradient-to-br from-[var(--bg-light)] to-[var(--text-light)] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
+                    <img src="https://i.ytimg.com/vi/5pPcupPlV00/hq720.jpg?sqp=-oaymwEXCK4FEIIDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAjD8mopuBr5pjSFsAyH8SWUV0j2A" alt="Event 1" class="w-full h-40 sm:h-48 object-cover">
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-2xl font-semibold mb-2 text-[var(--primary)] flex items-center gap-2"><i data-lucide="activity" class="w-6 h-6 text-[var(--accent)]"></i> Yoga Retreat</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-4">January 10, 2026 - Join our expert-led yoga sessions for mind-body harmony amid nature's tranquility.</p>
+                        <a href="#" class="text-[var(--secondary)] hover:underline text-sm sm:text-base">Learn More →</a>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-[var(--bg-light)] to-[var(--text-light)] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
+                    <img src="https://www.papercitymag.com/wp-content/uploads/2023/04/EXT02_Teaser-Amenity_Final-1024x683.jpg" alt="Event 2" class="w-full h-40 sm:h-48 object-cover">
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-2xl font-semibold mb-2 text-[var(--primary)] flex items-center gap-2"><i data-lucide="music" class="w-6 h-6 text-[var(--accent)]"></i> Cultural Festival</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-4">February 5, 2026 - Celebrate local traditions with music, dance, and cuisine in a vibrant atmosphere.</p>
+                        <a href="#" class="text-[var(--secondary)] hover:underline text-sm sm:text-base">Learn More →</a>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-[var(--bg-light)] to-[var(--text-light)] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fEJMT0d8ZW58MHx8MHx8fDA%3D" alt="Event 3" class="w-full h-40 sm:h-48 object-cover">
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-2xl font-semibold mb-2 text-[var(--primary)] flex items-center gap-2"><i data-lucide="heart" class="w-6 h-6 text-[var(--accent)]"></i> Wedding Expo</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-4">March 15, 2026 - Explore wedding venues, planners, and ideas for your perfect day at our resort.</p>
+                        <a href="#" class="text-[var(--secondary)] hover:underline text-sm sm:text-base">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10 sm:mt-12">
+                <a href="#" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition">View All Events</a>
+            </div>
+        </div>
+    </section>
+    <section id="blog" class="py-16 sm:py-20 bg-gradient-to-r from-[var(--secondary)]/10 to-[var(--primary)]/10">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl sm:text-5xl font-bold text-center text-[var(--primary)] mb-10 sm:mb-12 animate-fade-in flex justify-center items-center gap-2">
+                <i data-lucide="book-open" class="w-10 h-10 text-[var(--accent)]"></i>
+                From Our Blog
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-[var(--text-light)] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fEJMT0d8ZW58MHx8MHx8fDA%3D" alt="Blog 1" class="w-full h-40 sm:h-48 object-cover">
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-2xl font-semibold mb-2 text-[var(--primary)] flex items-center gap-2"><i data-lucide="compass" class="w-6 h-6 text-[var(--accent)]"></i> Exploring Ado's Hidden Gems</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-4">November 20, 2025 - Uncover secret spots around Ado that offer adventure and tranquility for every traveler.</p>
+                        <a href="#" class="text-[var(--secondary)] hover:underline text-sm sm:text-base">Read More →</a>
+                    </div>
+                </div>
+                <div class="bg-[var(--text-light)] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fEJMT0d8ZW58MHx8MHx8fDA%3D" alt="Blog 2" class="w-full h-40 sm:h-48 object-cover">
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-2xl font-semibold mb-2 text-[var(--primary)] flex items-center gap-2"><i data-lucide="leaf" class="w-6 h-6 text-[var(--accent)]"></i> Sustainability at Atlas</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-4">November 15, 2025 - Learn about our eco-friendly initiatives and how we're preserving Ado's natural beauty for future generations.</p>
+                        <a href="#" class="text-[var(--secondary)] hover:underline text-sm sm:text-base">Read More →</a>
+                    </div>
+                </div>
+                <div class="bg-[var(--text-light)] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fEJMT0d8ZW58MHx8MHx8fDA%3D" alt="Blog 3" class="w-full h-40 sm:h-48 object-cover">
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-2xl font-semibold mb-2 text-[var(--primary)] flex items-center gap-2"><i data-lucide="lightbulb" class="w-6 h-6 text-[var(--accent)]"></i> Top Tips for Your Stay</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-4">November 10, 2025 - Insider advice on making the most of your visit, from packing essentials to must-try activities.</p>
+                        <a href="#" class="text-[var(--secondary)] hover:underline text-sm sm:text-base">Read More →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10 sm:mt-12">
+                <a href="#" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition">Browse All Posts</a>
+            </div>
+        </div>
+    </section>
+    <section id="gallery" class="py-16 sm:py-20 parallax" style="background-image: url('https://images.unsplash.com/photo-1606402179428-a57976d71fa4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHJlc29ydHxlbnwwfHwwfHx8MA%3D%3D');">
+        <div class="container mx-auto px-4 sm:px-6 text-center text-[var(--text-light)] relative z-10">
+            <div class="bg-[var(--primary)]/50 p-6 sm:p-8 rounded-2xl">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-6 sm:mb-8 animate-fade-in flex justify-center items-center gap-2">
+                    <i data-lucide="image" class="w-10 h-10 text-[var(--accent)]"></i>
+                    Our Gallery
+                </h2>
+                <p class="text-lg sm:text-xl max-w-3xl mx-auto mb-8 sm:mb-12">Immerse yourself in the beauty of Atlas Resort through our curated photo collection showcasing rooms, events, and scenic views.</p>
+                <div class="gallery-slider">
+                    <div class="gallery-slides flex" id="gallery-slides">
+                        <div class="gallery-slide" style="background-image: url('https://plus.unsplash.com/premium_photo-1687960116497-0dc41e1808a2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cmVzb3J0fGVufDB8fDB8fHww');"></div>
+                        <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzb3J0fGVufDB8fDB8fHww');"></div>
+                        <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzb3J0fGVufDB8fDB8fHww');"></div>
+                        <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmVzb3J0fGVufDB8fDB8fHww');"></div>
+                        <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1623718649591-311775a30c43?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHJlc29ydHxlbnwwfHwwfHx8MA%3D%3D');"></div>
+                        <div class="gallery-slide" style="background-image: url('https://plus.unsplash.com/premium_photo-1675745329954-9639d3b74bbf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cmVzb3J0fGVufDB8fDB8fHww');"></div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-center gap-4">
+                    <button onclick="galleryPrev()" class="bg-[var(--secondary)] text-[var(--text-light)] p-2 rounded-full hover:bg-[var(--primary)]">
+                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                    </button>
+                    <button onclick="galleryNext()" class="bg-[var(--secondary)] text-[var(--text-light)] p-2 rounded-full hover:bg-[var(--primary)]">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <a href="#" class="mt-8 sm:mt-12 inline-block bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 sm:py-20 bg-gradient-to-r from-[var(--primary)]/5 to-[var(--secondary)]/5">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl sm:text-5xl font-bold text-center text-[var(--primary)] mb-10 sm:mb-12 animate-fade-in flex justify-center items-center gap-2">
+                <i data-lucide="quote" class="w-10 h-10 text-[var(--accent)]"></i>
+                What Our Guests Say
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-[var(--bg-light)] p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col items-center text-center">
+                    <i data-lucide="user" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
+                    <p class="text-base sm:text-lg italic mb-4">"An unforgettable experience! The staff made us feel like royalty with their attentive service and warm hospitality."</p>
+                    <p class="font-semibold">- Jane Doe</p>
+                </div>
+                <div class="bg-[var(--bg-light)] p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col items-center text-center">
+                    <i data-lucide="user" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
+                    <p class="text-base sm:text-lg italic mb-4">"Beautiful surroundings and top-notch facilities. Highly recommend for anyone seeking luxury and peace."</p>
+                    <p class="font-semibold">- John Smith</p>
+                </div>
+                <div class="bg-[var(--bg-light)] p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col items-center text-center">
+                    <i data-lucide="user" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
+                    <p class="text-base sm:text-lg italic mb-4">"Perfect for our family vacation. The activities and amenities kept everyone entertained and relaxed."</p>
+                    <p class="font-semibold">- Emily Johnson</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 sm:py-20 bg-[var(--secondary)] text-[var(--text-light)] text-center">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-6 sm:mb-8 flex justify-center items-center gap-2">
+                <i data-lucide="plane" class="w-10 h-10 text-[var(--accent)]"></i>
+                Ready for Your Adventure?
+            </h2>
+            <p class="text-lg sm:text-xl mb-8 sm:mb-12 max-w-2xl mx-auto">Book your stay at Atlas Resort today and create memories that last a lifetime in our elegant paradise.</p>
+            <a href="#book" class="bg-[var(--text-light)] text-[var(--primary)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--bg-light)] transition transform hover:scale-105">Book Now</a>
+        </div>
+    </section>
+    <footer id="contact" class="bg-[var(--primary)] text-[var(--text-light)] py-12 sm:py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20" style="background-image: url('https://via.placeholder.com/1920x300?text=Wave+Pattern'); background-size: cover;"></div>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-2"><i data-lucide="hotel" class="w-8 h-8 text-[var(--accent)]"></i> Atlas Resort</h3>
+                <p class="mb-4">Timeless luxury in the heart of Ado. Experience elegance redefined.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="link" class="w-6 h-6 text-[var(--accent)]"></i> Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="hover:text-[var(--accent)] transition">Home</a></li>
+                    <li><a href="#about" class="hover:text-[var(--accent)] transition">About</a></li>
+                    <li><a href="#rooms" class="hover:text-[var(--accent)] transition">Rooms</a></li>
+                    <li><a href="#events" class="hover:text-[var(--accent)] transition">Events</a></li>
+                    <li><a href="#blog" class="hover:text-[var(--accent)] transition">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="mail" class="w-6 h-6 text-[var(--accent)]"></i> Contact Us</h3>
+                <p class="mb-2">Email: info@atlasresort.com</p>
+                <p class="mb-2">Phone: +123-456-7890</p>
+                <p>Address: 123 Resort Lane, Ado, Nigeria</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="share-2" class="w-6 h-6 text-[var(--accent)]"></i> Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="facebook" class="w-8 h-8"></i></a>
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="instagram" class="w-8 h-8"></i></a>
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="twitter" class="w-8 h-8"></i></a>
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="linkedin" class="w-8 h-8"></i></a>
+                </div>
+            </div>
+        </div>
+       <div
+  class="container mx-auto px-4 sm:px-6 relative z-10 mt-8 text-center border-t border-[var(--secondary)]/30 pt-4"
+>
+  <p class="text-sm">
+    &copy; 2025 Atlas Resort. All rights reserved. |
+    <a href="#" class="hover:text-[var(--accent)]">Privacy Policy</a> |
+    <a href="#" class="hover:text-[var(--accent)]">Terms of Service</a>
+  </p>
+  <p class="text-xs mt-2">
+    Designed & Developed by 
+<a href="https://folio-two-blush.vercel.app/" target="_blank" class="hover:text-\[var\(--accent\)\] font-semibold">Alonge Korede</a>
+  </p>
+</div>
+
+    </footer>
+    <script>
+        lucide.createIcons();
+        // Hamburger Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+        // Hero Slider
+        let slideIndex = 0;
+        const slides = document.getElementById('slides');
+        const dots = document.querySelectorAll('.dot');
+        function showSlide(n) {
+            slideIndex = (n + 4) % 4;
+            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[slideIndex].classList.add('active');
+        }
+        function currentSlide(n) {
+            showSlide(n);
+        }
+        function autoSlide() {
+            showSlide(slideIndex + 1);
+        }
+        setInterval(autoSlide, 5000);
+        showSlide(0);
+   // Gallery Carousel (Improved Full Landscape Slider)
+let galleryIndex = 0;
+const gallerySlides = document.getElementById('gallery-slides');
+const gallerySlideCount = gallerySlides.children.length;
+function updateGallery() {
+    gallerySlides.style.transform = `translateX(-${galleryIndex * 100}%)`;
+}
+function galleryNext() {
+    galleryIndex = (galleryIndex + 1) % gallerySlideCount;
+    updateGallery();
+}
+function galleryPrev() {
+    galleryIndex = (galleryIndex - 1 + gallerySlideCount) % gallerySlideCount;
+    updateGallery();
+}
+updateGallery();
+    </script>
+    <style>
+        @keyframes fade-in-down {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-down { animation: fade-in-down 1.5s ease-out; }
+        .animate-fade-in-up { animation: fade-in-up 1.5s ease-out; }
+        .delay-200 { animation-delay: 0.2s; }
+        .animate-fade-in { animation: fade-in-up 1s ease-out; }
+    </style>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events at Atlas Resort - Memorable Experiences</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+    :root {
+        --primary: #001F3F;
+        --secondary: #007BFF;
+        --accent: #D4AF37;
+        --bg-light: #F0F4F8;
+        --text-dark: #001F3F;
+        --text-light: #FFFFFF;
+    }
+        .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+    }
+    @media (max-width: 768px) {
+        .parallax { background-attachment: scroll !important; }
+    }
+    .event-card { overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .event-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.18); }
+    .event-image { height: 350px; background-size: cover; background-position: center; }
+    @media (max-width: 768px) { .event-image { height: 250px; } }
+    @keyframes fade-in-down { from { opacity:0; transform:translateY(-30px);} to{opacity:1; transform:translateY(0);} }
+    @keyframes fade-in-up { from { opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
+    .animate-fade-in-down { animation: fade-in-down 1.2s ease-out; }
+    .animate-fade-in-up { animation: fade-in-up 1.2s ease-out; }
+    .delay-200 { animation-delay: .2s; }
+</style>
+</head>
+<body class="font-sans antialiased bg-[var(--bg-light)] text-[var(--text-dark)]">
+<header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50" style="height:var(--header-height);">
+<nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+<a class="text-2xl sm:text-3xl font-extrabold text-[var(--primary)]" href="index.html">Atlas Resort</a>
+<button id="menu-toggle" class="sm:hidden text-[var(--primary)]"><i data-lucide="menu" class="w-8 h-8"></i></button>
+<ul id="nav-menu" class="hidden sm:flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 md:space-x-8 text-base sm:text-lg font-medium absolute sm:relative top-full left-0 w-full sm:w-auto bg-[var(--text-light)] sm:bg-transparent px-4 sm:px-0 py-4 sm:py-0 shadow-md sm:shadow-none">
+    <li class="flex items-center gap-2">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <a href="index.html" class="hover:text-[var(--secondary)] transition">Home</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="info" class="w-5 h-5"></i>
+        <a href="about.html" class="hover:text-[var(--secondary)] transition">About</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="key" class="w-5 h-5"></i>
+        <a href="rooms.html" class="hover:text-[var(--secondary)] transition">Rooms</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="calendar" class="w-5 h-5"></i>
+        <a href="event.html" class="hover:text-[var(--secondary)] transition">Events</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="book-open" class="w-5 h-5"></i>
+        <a href="blog.html" class="hover:text-[var(--secondary)] transition">Blog</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="mail" class="w-5 h-5"></i>
+        <a href="contact.html" class="hover:text-[var(--secondary)] transition">Contact</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="corner-right-up" class="w-5 h-5"></i>
+        <a href="book" class="bg-[var(--secondary)] text-[var(--text-light)] px-4 sm:px-6 py-2 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-105">Book Now</a>
+    </li>
+</ul>
+</nav>
+</header>
+<section id="events-hero" class="relative min-h-[90vh] flex items-center justify-center parallax pt-20" style="background-image: url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&q=80&w=1920');">
+<div class="absolute inset-0 bg-[var(--primary)] opacity-50"></div>
+<div class="relative z-10 text-center text-white px-4">
+<h1 class="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 animate-fade-in-down flex justify-center gap-4">
+<i data-lucide="calendar-days" class="w-14 h-14 text-[var(--accent)]"></i> Memorable Events
+</h1>
+<p class="text-lg sm:text-2xl md:text-3xl max-w-3xl mx-auto mb-10 animate-fade-in-up delay-200">
+Join us for extraordinary events that blend culture, fun, and luxury in the heart of Ado.
+</p>
+<a href="#events-section" class="bg-[var(--secondary)] text-white px-8 py-4 rounded-full hover:bg-[var(--primary)] transition">
+Explore Events
+</a>
+</div>
+</section>
+<section id="events-section" class="py-16 sm:py-24">
+<div class="container mx-auto px-4 sm:px-6">
+<h2 class="text-4xl sm:text-6xl font-bold text-center mb-14 text-[var(--primary)] animate-fade-in">
+<i data-lucide="party-popper" class="w-10 h-10 text-[var(--accent)] inline-block mr-2"></i> Upcoming Events
+</h2>
+<p class="text-lg sm:text-xl text-center max-w-3xl mx-auto mb-16 animate-fade-in-up delay-200">
+Discover our curated events, from wellness retreats to cultural festivals. Secure your spot today!
+</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="event-card bg-white rounded-3xl shadow-2xl">
+<div class="event-image rounded-t-3xl" style="background-image: url('https://images.unsplash.com/photo-1455849318743-b2233052fcff?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fEJMT0d8ZW58MHx8MHx8fDA%3D');"></div>
+<div class="p-6 sm:p-8">
+<h3 class="text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-2"><i data-lucide="activity" class="w-8 h-8 text-[var(--accent)]"></i>Yoga Retreat</h3>
+<p class="text-lg mb-4 flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-[var(--secondary)]"></i> January 10, 2026 | 9:00 AM - 5:00 PM</p>
+<p class="text-lg mb-4 flex items-center gap-2"><i data-lucide="map-pin" class="w-5 h-5 text-[var(--secondary)]"></i> Garden Pavilion, Atlas Resort</p>
+<p class="text-lg mb-4 flex items-center gap-2"><i data-lucide="users" class="w-5 h-5 text-[var(--secondary)]"></i> Capacity: 50 Participants</p>
+<p class="text-lg mb-6 leading-relaxed">Rejuvenate your mind and body with expert-led yoga sessions, meditation, and wellness workshops in our serene gardens. This full-day retreat includes guided practices, mindfulness exercises, and relaxation techniques designed for all levels.</p>
+<h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">Highlights:</h4>
+<ul class="space-y-2 mb-6">
+<li class="flex items-center gap-2"><i data-lucide="leaf" class="w-5 h-5 text-[var(--accent)]"></i> Outdoor Yoga Amid Nature</li>
+<li class="flex items-center gap-2"><i data-lucide="apple" class="w-5 h-5 text-[var(--accent)]"></i> Healthy Organic Meals & Snacks</li>
+<li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-5 h-5 text-[var(--accent)]"></i> Guided Meditation & Breathing Sessions</li>
+<li class="flex items-center gap-2"><i data-lucide="users" class="w-5 h-5 text-[var(--accent)]"></i> Group Activities & Wellness Talks</li>
+<li class="flex items-center gap-2"><i data-lucide="gift" class="w-5 h-5 text-[var(--accent)]"></i> Take-Home Wellness Kit</li>
+</ul>
+<h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">Who Should Attend:</h4>
+<p class="text-lg mb-4">Wellness enthusiasts, beginners to advanced yogis, stress-relief seekers, and anyone looking to recharge physically and mentally.</p>
+<h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">Age Limit & Requirements:</h4>
+<p class="text-lg mb-6">18+ years old. No prior experience required. Bring your own yoga mat; comfortable attire recommended. Limited spots – register early!</p>
+<h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">What Makes It Unique:</h4>
+<p class="text-lg mb-6">Blend of traditional yoga with modern wellness techniques, set in our historic resort for a transformative experience, including personalized coaching from certified instructors.</p>
+<div class="flex justify-between items-center flex-wrap gap-3">
+<span class="text-2xl font-bold text-[var(--accent)]">₦15,000 / Person</span>
+<a href="index.html#contact" class="bg-[var(--secondary)] text-white px-6 py-3 rounded-full hover:bg-[var(--primary)] transition">Buy Ticket</a>
+</div>
+</div>
+</div>
+<div class="event-card bg-white rounded-3xl shadow-2xl">
+<div class="event-image rounded-t-3xl" style="background-image: url('https://images.unsplash.com/photo-1546074177-ffdda98d214f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fEJMT0d8ZW58MHx8MHx8fDA%3D');"></div>
+<div class="p-6 sm:p-8">
+<h3 class="text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-2"><i data-lucide="music" class="w-8 h-8 text-[var(--accent)]"></i>Cultural Festival</h3>
+<p class="text-lg mb-4 flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-[var(--secondary)]"></i> February 5, 2026 | 10:00 AM - 10:00 PM</p>
+<p class="text-lg mb-4 flex items-center gap-2"><i data-lucide="map-pin" class="w-5 h-5 text-[var(--secondary)]"></i> Grand Hall & Gardens, Atlas Resort</p>
+<p class="text-lg mb-4 flex items-center gap-2"><i data-lucide="users" class="w-5 h-5 text-[var(--secondary)]"></i> Capacity: 200 Attendees</p>
+<p class="text-lg mb-6 leading-relaxed">Celebrate Ado's rich heritage with music, dance, art exhibitions, and traditional cuisine from local artisans. This all-day festival features performances, workshops, and interactive experiences for all ages.</p>
+<h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">Highlights:</h4>
+<ul class="space-y-2 mb-6">
+<li class="flex items-center gap-2"><i data-lucide="music" class="w-5 h-5 text-[var(--accent)]"></i> Live Traditional Music & Dance</li>
+<li class="flex items-center gap-2"><i data-lucide="palette" class="w-5 h-5 text-[var(--accent)]"></i> Art & Craft Workshops</li>
+<li class="flex items-center gap-2"><i data-lucide="utensils" class="w-5 h-5 text-[var(--accent)]"></i> Authentic Local Food Stalls & Tastings</li>
+<li class="flex items-center gap-2"><i data-lucide="fire" class="w-5 h-5 text-[var(--accent)]"></i> Evening Bonfire & Cultural Storytelling</li>
+<li class="flex items-center gap-2"><i data-lucide="shopping-cart" class="w-5 h-5 text-[var(--accent)]"></i> Artisan Market & Souvenirs</li>
+</ul>
+<h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">Who Should Attend:</h4>
+<p class="text-lg mb-4">Culture lovers, families, history buffs, foodies, and tourists interested in immersive local experiences.</p>
+<h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">Age Limit & Requirements:</h4>
+<p class="text-lg mb-6">All ages welcome. Children under 12 must be accompanied by an adult. Casual attire; cultural dress encouraged.</p>
+<h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">What Makes It Unique:</h4>
+<p class="text-lg mb-6">Immersive cultural experience with interactive sessions, showcasing Ado's traditions in a luxurious resort setting, complete with exclusive resort perks.</p>
+<div class="flex justify-between items-center flex-wrap gap-3">
+<span class="text-2xl font-bold text-[var(--accent)]">₦20,000 / Person</span>
+<a href="index.html#contact" class="bg-[var(--secondary)] text-white px-6 py-3 rounded-full hover:bg-[var(--primary)] transition">Buy Ticket</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <footer id="contact" class="bg-[var(--primary)] text-[var(--text-light)] py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20" style="background-image: url('https://via.placeholder.com/1920x300?text=Wave+Pattern'); background-size: cover;"></div>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-3xl font-bold mb-4 flex items-center gap-3"><i data-lucide="hotel" class="w-10 h-10 text-[var(--accent)]"></i> Atlas Resort</h3>
+                <p class="mb-4 text-lg">Timeless luxury in the heart of Ado. Experience elegance redefined.</p>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="link" class="w-8 h-8 text-[var(--accent)]"></i> Quick Links</h3>
+                <ul class="space-y-2 text-lg">
+                    <li><a href="index.html#home" class="hover:text-[var(--accent)] transition">Home</a></li>
+                    <li><a href="about.html" class="hover:text-[var(--accent)] transition">About</a></li>
+                    <li><a href="#rooms-section" class="hover:text-[var(--accent)] transition">Rooms</a></li>
+                    <li><a href="index.html#events" class="hover:text-[var(--accent)] transition">Events</a></li>
+                    <li><a href="index.html#blog" class="hover:text-[var(--accent)] transition">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="mail" class="w-8 h-8 text-[var(--accent)]"></i> Contact Us</h3>
+                <p class="mb-2 text-lg">Email: info@atlasresort.com</p>
+                <p class="mb-2 text-lg">Phone: +123-456-7890</p>
+                <p class="text-lg">Address: 123 Resort Lane, Ado, Nigeria</p>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="share-2" class="w-8 h-8 text-[var(--accent)]"></i> Follow Us</h3>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="facebook" class="w-10 h-10"></i></a>
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="instagram" class="w-10 h-10"></i></a>
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="twitter" class="w-10 h-10"></i></a>
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="linkedin" class="w-10 h-10"></i></a>
+                </div>
+            </div>
+        </div>
+      <div
+  class="container mx-auto px-4 sm:px-6 relative z-10 mt-8 text-center border-t border-[var(--secondary)]/30 pt-4"
+>
+  <p class="text-sm">
+    &copy; 2025 Atlas Resort. All rights reserved. |
+    <a href="#" class="hover:text-[var(--accent)]">Privacy Policy</a> |
+    <a href="#" class="hover:text-[var(--accent)]">Terms of Service</a>
+  </p>
+  <p class="text-xs mt-2">
+    Designed & Developed by 
+<a href="https://folio-two-blush.vercel.app/" target="_blank" class="hover:text-\[var\(--accent\)\] font-semibold">Alonge Korede</a>
+  </p>
+</div>
+
+    </footer>
+<script>
+lucide.createIcons();
+document.getElementById('menu-toggle').addEventListener('click', ()=> {
+    document.getElementById('nav-menu').classList.toggle('hidden');
+});
+</script>
+</body>
+</html>

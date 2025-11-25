@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms at Atlas Resort - Luxurious Accommodations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+                :root {
+            --primary: #001F3F;             --secondary: #007BFF;             --accent: #D4AF37;             --bg-light: #F0F4F8;             --text-dark: #001F3F;
+            --text-light: #FFFFFF;
+        }
+                .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+                .room-card {
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+                .card-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+        }
+        .card-carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .card-carousel-slide {
+            min-width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+        @media (max-width: 768px) {
+            .card-carousel-slide {
+                height: 250px;
+            }
+        }
+                .card-carousel-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        .card-carousel-dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .card-carousel-dot.active {
+            background: var(--accent);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-[var(--text-dark)] bg-[var(--bg-light)]">
+<header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50" style="height:var(--header-height);">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl sm:text-3xl font-extrabold text-[var(--primary)] tracking-wide">Atlas Resort</a>
+            <button id="menu-toggle" class="sm:hidden text-[var(--primary)] focus:outline-none">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+           <ul id="nav-menu" class="hidden sm:flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 md:space-x-8 text-base sm:text-lg font-medium absolute sm:relative top-full left-0 w-full sm:w-auto bg-[var(--text-light)] sm:bg-transparent px-4 sm:px-0 py-4 sm:py-0 shadow-md sm:shadow-none">
+    <li class="flex items-center gap-2">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <a href="index.html" class="hover:text-[var(--secondary)] transition">Home</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="info" class="w-5 h-5"></i>
+        <a href="about.html" class="hover:text-[var(--secondary)] transition">About</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="key" class="w-5 h-5"></i>
+        <a href="rooms.html" class="hover:text-[var(--secondary)] transition">Rooms</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="calendar" class="w-5 h-5"></i>
+        <a href="event.html" class="hover:text-[var(--secondary)] transition">Events</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="book-open" class="w-5 h-5"></i>
+        <a href="blog.html" class="hover:text-[var(--secondary)] transition">Blog</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="mail" class="w-5 h-5"></i>
+        <a href="contact.html" class="hover:text-[var(--secondary)] transition">Contact</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="corner-right-up" class="w-5 h-5"></i>
+        <a href="book" class="bg-[var(--secondary)] text-[var(--text-light)] px-4 sm:px-6 py-2 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-105">Book Now</a>
+    </li>
+</ul>
+        </nav>
+    </header>
+    <section id="rooms-hero" class="relative h-screen flex items-center justify-center parallax" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80&w=1920');">
+        <div class="absolute inset-0 bg-[var(--primary)] opacity-50"></div>
+        <div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
+            <h1 class="text-5xl sm:text-7xl md:text-8xl font-bold mb-6 animate-fade-in-down flex justify-center items-center gap-4">
+                <i data-lucide="bed-double" class="w-16 h-16 text-[var(--accent)]"></i>
+                Luxurious Rooms
+            </h1>
+            <p class="text-xl sm:text-3xl md:text-4xl mb-10 animate-fade-in-up delay-200">Indulge in comfort and elegance with our meticulously designed accommodations, tailored for every traveler.</p>
+            <a href="#rooms-section" class="bg-[var(--secondary)] text-[var(--text-light)] px-8 py-4 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-110">Discover Rooms</a>
+        </div>
+    </section>
+    <section id="rooms-section" class="py-20 sm:py-24 bg-[var(--bg-light)]">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-5xl sm:text-6xl font-bold text-center text-[var(--primary)] mb-16 animate-fade-in flex justify-center items-center gap-3">
+                <i data-lucide="key" class="w-12 h-12 text-[var(--accent)]"></i>
+                Our Accommodations
+            </h2>
+            <p class="text-xl sm:text-2xl text-center max-w-4xl mx-auto mb-20 leading-relaxed animate-fade-in-up delay-200">Choose from our range of rooms and suites, each offering unique features, premium facilities, and breathtaking views. Prices start from ₦25,000 per night.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="room-card bg-white rounded-3xl shadow-2xl">
+                    <div class="card-carousel">
+                        <div class="card-carousel-slides flex" id="standard-slides">
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80');"></div>
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&q=80');"></div>
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1631049552059-7c37c143d1b3?auto=format&fit=crop&q=80');"></div>
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80');"></div>
+                        </div>
+                        <div class="card-carousel-dots">
+                            <div class="card-carousel-dot active" data-index="0" onclick="showStandardSlide(0)"></div>
+                            <div class="card-carousel-dot" data-index="1" onclick="showStandardSlide(1)"></div>
+                            <div class="card-carousel-dot" data-index="2" onclick="showStandardSlide(2)"></div>
+                            <div class="card-carousel-dot" data-index="3" onclick="showStandardSlide(3)"></div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-2">
+                            <i data-lucide="bed" class="w-8 h-8 text-[var(--accent)]"></i>
+                            Standard Room
+                        </h3>
+                        <p class="text-lg mb-6 leading-relaxed">A cozy and comfortable space perfect for solo travelers or couples, featuring modern amenities and serene views of the gardens.</p>
+                        <h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">Facilities:</h4>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i data-lucide="wifi" class="w-5 h-5 text-[var(--accent)]"></i> High-Speed Wi-Fi</li>
+                            <li class="flex items-center gap-2"><i data-lucide="tv" class="w-5 h-5 text-[var(--accent)]"></i> Flat-Screen TV</li>
+                            <li class="flex items-center gap-2"><i data-lucide="coffee" class="w-5 h-5 text-[var(--accent)]"></i> Mini-Bar & Coffee Maker</li>
+                            <li class="flex items-center gap-2"><i data-lucide="bath" class="w-5 h-5 text-[var(--accent)]"></i> En-Suite Bathroom</li>
+                        </ul>
+                        <h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">What Makes It Unique:</h4>
+                        <p class="text-lg mb-6">Eco-friendly design with natural light and balcony access to fresh air, ideal for relaxation after a day of exploration.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[var(--accent)]">₦25,000 / Night</span>
+                            <a href="#book" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 py-3 rounded-full hover:bg-[var(--primary)] transition">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-card bg-white rounded-3xl shadow-2xl">
+                    <div class="card-carousel">
+                        <div class="card-carousel-slides flex" id="deluxe-slides">
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&q=80');"></div>
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80');"></div>
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1631049552059-7c37c143d1b3?auto=format&fit=crop&q=80');"></div>
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80');"></div>
+                        </div>
+                        <div class="card-carousel-dots">
+                            <div class="card-carousel-dot active" data-index="0" onclick="showDeluxeSlide(0)"></div>
+                            <div class="card-carousel-dot" data-index="1" onclick="showDeluxeSlide(1)"></div>
+                            <div class="card-carousel-dot" data-index="2" onclick="showDeluxeSlide(2)"></div>
+                            <div class="card-carousel-dot" data-index="3" onclick="showDeluxeSlide(3)"></div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-2">
+                            <i data-lucide="bed-double" class="w-8 h-8 text-[var(--accent)]"></i>
+                            Deluxe Suite
+                        </h3>
+                        <p class="text-lg mb-6 leading-relaxed">Spacious and stylish, this suite offers premium comfort with separate living areas and stunning resort views.</p>
+                        <h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">Facilities:</h4>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i data-lucide="wifi" class="w-5 h-5 text-[var(--accent)]"></i> High-Speed Wi-Fi</li>
+                            <li class="flex items-center gap-2"><i data-lucide="tv" class="w-5 h-5 text-[var(--accent)]"></i> Smart TV with Streaming</li>
+                            <li class="flex items-center gap-2"><i data-lucide="coffee" class="w-5 h-5 text-[var(--accent)]"></i> Fully Stocked Mini-Bar</li>
+                            <li class="flex items-center gap-2"><i data-lucide="shower-head" class="w-5 h-5 text-[var(--accent)]"></i> Rainfall Shower</li>
+                            <li class="flex items-center gap-2"><i data-lucide="sofa" class="w-5 h-5 text-[var(--accent)]"></i> Living Area</li>
+                        </ul>
+                        <h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">What Makes It Unique:</h4>
+                        <p class="text-lg mb-6">Private balcony with garden access and personalized butler service for an elevated stay.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[var(--accent)]">₦45,000 / Night</span>
+                            <a href="#book" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 py-3 rounded-full hover:bg-[var(--primary)] transition">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-card bg-white rounded-3xl shadow-2xl">
+                    <div class="card-carousel">
+                        <div class="card-carousel-slides flex" id="family-slides">
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1631049552059-7c37c143d1b3?auto=format&fit=crop&q=80');"></div>
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80');"></div>
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&q=80');"></div>
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80');"></div>
+                        </div>
+                        <div class="card-carousel-dots">
+                            <div class="card-carousel-dot active" data-index="0" onclick="showFamilySlide(0)"></div>
+                            <div class="card-carousel-dot" data-index="1" onclick="showFamilySlide(1)"></div>
+                            <div class="card-carousel-dot" data-index="2" onclick="showFamilySlide(2)"></div>
+                            <div class="card-carousel-dot" data-index="3" onclick="showFamilySlide(3)"></div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-2">
+                            <i data-lucide="users" class="w-8 h-8 text-[var(--accent)]"></i>
+                            Family Room
+                        </h3>
+                        <p class="text-lg mb-6 leading-relaxed">Ideal for families, with multiple beds, play areas, and convenient access to resort amenities.</p>
+                        <h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">Facilities:</h4>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i data-lucide="wifi" class="w-5 h-5 text-[var(--accent)]"></i> High-Speed Wi-Fi</li>
+                            <li class="flex items-center gap-2"><i data-lucide="tv" class="w-5 h-5 text-[var(--accent)]"></i> Family Entertainment System</li>
+                            <li class="flex items-center gap-2"><i data-lucide="baby" class="w-5 h-5 text-[var(--accent)]"></i> Crib & Childproofing</li>
+                            <li class="flex items-center gap-2"><i data-lucide="bath" class="w-5 h-5 text-[var(--accent)]"></i> Family Bathroom</li>
+                            <li class="flex items-center gap-2"><i data-lucide="toy-brick" class="w-5 h-5 text-[var(--accent)]"></i> Kids' Play Area</li>
+                        </ul>
+                        <h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">What Makes It Unique:</h4>
+                        <p class="text-lg mb-6">Adjoining rooms option and family-friendly activities nearby for a hassle-free vacation.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[var(--accent)]">₦60,000 / Night</span>
+                            <a href="#book" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 py-3 rounded-full hover:bg-[var(--primary)] transition">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-card bg-white rounded-3xl shadow-2xl">
+                    <div class="card-carousel">
+                        <div class="card-carousel-slides flex" id="presidential-slides">
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80');"></div>
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80');"></div>
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&q=80');"></div>
+                            <div class="card-carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1631049552059-7c37c143d1b3?auto=format&fit=crop&q=80');"></div>
+                        </div>
+                        <div class="card-carousel-dots">
+                            <div class="card-carousel-dot active" data-index="0" onclick="showPresidentialSlide(0)"></div>
+                            <div class="card-carousel-dot" data-index="1" onclick="showPresidentialSlide(1)"></div>
+                            <div class="card-carousel-dot" data-index="2" onclick="showPresidentialSlide(2)"></div>
+                            <div class="card-carousel-dot" data-index="3" onclick="showPresidentialSlide(3)"></div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-2">
+                            <i data-lucide="crown" class="w-8 h-8 text-[var(--accent)]"></i>
+                            Presidential Suite
+                        </h3>
+                        <p class="text-lg mb-6 leading-relaxed">The pinnacle of luxury, with expansive spaces, private pools, and VIP services.</p>
+                        <h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">Facilities:</h4>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i data-lucide="wifi" class="w-5 h-5 text-[var(--accent)]"></i> Ultra-High-Speed Wi-Fi</li>
+                            <li class="flex items-center gap-2"><i data-lucide="tv" class="w-5 h-5 text-[var(--accent)]"></i> Home Theater System</li>
+                            <li class="flex items-center gap-2"><i data-lucide="waves" class="w-5 h-5 text-[var(--accent)]"></i> Private Pool & Jacuzzi</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chef-hat" class="w-5 h-5 text-[var(--accent)]"></i> In-Room Dining & Butler</li>
+                            <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-5 h-5 text-[var(--accent)]"></i> Spa Services</li>
+                        </ul>
+                        <h4 class="text-xl font-semibold text-[var(--secondary)] mb-3">What Makes It Unique:</h4>
+                        <p class="text-lg mb-6">Exclusive access to resort VIP areas and customized experiences for discerning guests.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[var(--accent)]">₦150,000 / Night</span>
+                            <a href="#book" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 py-3 rounded-full hover:bg-[var(--primary)] transition">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="contact" class="bg-[var(--primary)] text-[var(--text-light)] py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20" style="background-image: url('https://via.placeholder.com/1920x300?text=Wave+Pattern'); background-size: cover;"></div>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-3xl font-bold mb-4 flex items-center gap-3"><i data-lucide="hotel" class="w-10 h-10 text-[var(--accent)]"></i> Atlas Resort</h3>
+                <p class="mb-4 text-lg">Timeless luxury in the heart of Ado. Experience elegance redefined.</p>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="link" class="w-8 h-8 text-[var(--accent)]"></i> Quick Links</h3>
+                <ul class="space-y-2 text-lg">
+                    <li><a href="index.html#home" class="hover:text-[var(--accent)] transition">Home</a></li>
+                    <li><a href="about.html" class="hover:text-[var(--accent)] transition">About</a></li>
+                    <li><a href="#rooms-section" class="hover:text-[var(--accent)] transition">Rooms</a></li>
+                    <li><a href="index.html#events" class="hover:text-[var(--accent)] transition">Events</a></li>
+                    <li><a href="index.html#blog" class="hover:text-[var(--accent)] transition">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="mail" class="w-8 h-8 text-[var(--accent)]"></i> Contact Us</h3>
+                <p class="mb-2 text-lg">Email: info@atlasresort.com</p>
+                <p class="mb-2 text-lg">Phone: +123-456-7890</p>
+                <p class="text-lg">Address: 123 Resort Lane, Ado, Nigeria</p>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="share-2" class="w-8 h-8 text-[var(--accent)]"></i> Follow Us</h3>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="facebook" class="w-10 h-10"></i></a>
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="instagram" class="w-10 h-10"></i></a>
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="twitter" class="w-10 h-10"></i></a>
+                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="linkedin" class="w-10 h-10"></i></a>
+                </div>
+            </div>
+        </div>
+       <div
+  class="container mx-auto px-4 sm:px-6 relative z-10 mt-8 text-center border-t border-[var(--secondary)]/30 pt-4"
+>
+  <p class="text-sm">
+    &copy; 2025 Atlas Resort. All rights reserved. |
+    <a href="#" class="hover:text-[var(--accent)]">Privacy Policy</a> |
+    <a href="#" class="hover:text-[var(--accent)]">Terms of Service</a>
+  </p>
+  <p class="text-xs mt-2">
+    Designed & Developed by 
+<a href="https://folio-two-blush.vercel.app/" target="_blank" class="hover:text-\[var\(--accent\)\] font-semibold">Alonge Korede</a>
+  </p>
+</div>
+
+    </footer>
+    <script>
+        lucide.createIcons();
+        // Hamburger Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+        // Carousel Functions for Each Room
+        function initCardCarousel(slidesId, dotsClass) {
+            const slides = document.getElementById(slidesId);
+            const dots = document.querySelectorAll(`.${dotsClass} .card-carousel-dot`);
+            let index = 0;
+            const total = dots.length;
+            function showSlide(n) {
+                index = (n + total) % total;
+                slides.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+            }
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => showSlide(i));
+            });
+            // Auto slide (optional)
+            // setInterval(() => showSlide(index + 1), 5000);
+        }
+        // Initialize carousels
+        initCardCarousel('standard-slides', 'card-carousel-dots');
+        initCardCarousel('deluxe-slides', 'card-carousel-dots');
+        initCardCarousel('family-slides', 'card-carousel-dots');
+        initCardCarousel('presidential-slides', 'card-carousel-dots');
+    </script>
+    <style>
+        @keyframes fade-in-down {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-down { animation: fade-in-down 1.2s ease-out; }
+        .animate-fade-in-up { animation: fade-in-up 1.2s ease-out; }
+        .delay-200 { animation-delay: 0.2s; }
+    </style>
+</body>
+</html>

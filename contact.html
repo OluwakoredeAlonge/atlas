@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact & Enquiries - Atlas Resort</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root {
+    --primary: #001F3F;
+    --secondary: #007BFF;
+    --accent: #D4AF37;
+    --bg-light: #F0F4F8;
+    --text-dark: #001F3F;
+    --text-light: #FFFFFF;
+}
+@keyframes fade-in-down { from {opacity:0; transform:translateY(-30px);} to {opacity:1; transform:translateY(0);} }
+@keyframes fade-in-up { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+.animate-fade-in-down { animation: fade-in-down 1.2s ease-out; }
+.animate-fade-in-up { animation: fade-in-up 1.2s ease-out; }
+.delay-200 { animation-delay: 0.2s; }
+.parallax { background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; }
+@media (max-width:768px){ .parallax { background-attachment: scroll !important; } }
+</style>
+</head>
+<body class="font-sans antialiased bg-[var(--bg-light)] text-[var(--text-dark)]">
+<!-- Navbar -->
+<header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50">
+<nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <a class="text-2xl sm:text-3xl font-extrabold text-[var(--primary)]" href="index.html">Atlas Resort</a>
+    <button id="menu-toggle" class="sm:hidden text-[var(--primary)] focus:outline-none">
+        <i data-lucide="menu" class="w-8 h-8"></i>
+    </button>
+    <ul id="nav-menu" class="hidden sm:flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 md:space-x-8 text-base sm:text-lg font-medium absolute sm:relative top-full left-0 w-full sm:w-auto bg-[var(--text-light)] sm:bg-transparent px-4 sm:px-0 py-4 sm:py-0 shadow-md sm:shadow-none">
+    <li class="flex items-center gap-2">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <a href="index.html" class="hover:text-[var(--secondary)] transition">Home</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="info" class="w-5 h-5"></i>
+        <a href="about.html" class="hover:text-[var(--secondary)] transition">About</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="key" class="w-5 h-5"></i>
+        <a href="rooms.html" class="hover:text-[var(--secondary)] transition">Rooms</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="calendar" class="w-5 h-5"></i>
+        <a href="event.html" class="hover:text-[var(--secondary)] transition">Events</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="book-open" class="w-5 h-5"></i>
+        <a href="blog.html" class="hover:text-[var(--secondary)] transition">Blog</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="mail" class="w-5 h-5"></i>
+        <a href="contact.html" class="hover:text-[var(--secondary)] transition">Contact</a>
+    </li>
+    <li class="flex items-center gap-2">
+        <i data-lucide="corner-right-up" class="w-5 h-5"></i>
+        <a href="book" class="bg-[var(--secondary)] text-[var(--text-light)] px-4 sm:px-6 py-2 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-105">Book Now</a>
+    </li>
+</ul>
+</nav>
+</header>
+<!-- Hero -->
+<section class="relative h-[60vh] flex items-center justify-center parallax pt-20" style="background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&q=80&w=1920');">
+<div class="absolute inset-0 bg-[var(--primary)] opacity-50"></div>
+<div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
+    <h1 class="text-5xl sm:text-6xl font-bold mb-4 animate-fade-in-down flex justify-center items-center gap-4">
+        <i data-lucide="mail" class="w-14 h-14 text-[var(--accent)]"></i> Contact Us
+    </h1>
+    <p class="text-xl sm:text-2xl md:text-3xl animate-fade-in-up delay-200 max-w-3xl mx-auto">
+        Have questions about tickets, rooms, or packages? Fill out the form or reach us directly.
+    </p>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact-section" class="py-20 sm:py-24">
+<div class="container mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <!-- Left: Contact Info + Map -->
+    <div class="space-y-8">
+        <div class="bg-white rounded-3xl shadow-2xl p-8 animate-fade-in">
+            <h2 class="text-4xl font-bold text-[var(--primary)] mb-6 flex items-center gap-3"><i data-lucide="info" class="w-10 h-10 text-[var(--accent)]"></i> Contact Information</h2>
+            <ul class="space-y-4 text-lg">
+                <li class="flex items-center gap-3">
+                    <i data-lucide="map-pin" class="w-6 h-6 text-[var(--accent)]"></i>
+                    123 Resort Lane, Ado, Nigeria
+                </li>
+                <li class="flex items-center gap-3">
+                    <i data-lucide="mail" class="w-6 h-6 text-[var(--accent)]"></i>
+                    <a href="mailto:info@atlasresort.com" class="hover:text-[var(--secondary)]">info@atlasresort.com</a>
+                </li>
+                <li class="flex items-center gap-3">
+                    <i data-lucide="phone" class="w-6 h-6 text-[var(--accent)]"></i>
+                    <a href="tel:+1234567890" class="hover:text-[var(--secondary)]">+123-456-7890</a>
+                </li>
+            </ul>
+        </div>
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden animate-fade-in-up delay-200">
+            <iframe class="w-full h-96" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.458823344576!2d5.242!3d7.153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMDknMDguMCJOIDXCsDE0JzMyLjAiRQ!5e0!3m2!1sen!2sng!4v1600000000000!5m2!1sen!2sng" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+    <!-- Right: Form -->
+    <div class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 animate-fade-in-up">
+        <h3 class="text-3xl font-bold text-[var(--primary)] mb-6 flex items-center gap-3"><i data-lucide="edit" class="w-8 h-8 text-[var(--accent)]"></i> Send an Enquiry</h3>
+        <form class="space-y-6">
+            <input type="text" placeholder="Full Name" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)]"/>
+            <input type="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)]"/>
+            <input type="text" placeholder="Subject" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)]"/>
+            <textarea rows="6" placeholder="Your Message" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)]"></textarea>
+            <button type="submit" class="bg-[var(--secondary)] text-white px-8 py-3 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-105 w-full">Send Message</button>
+        </form>
+    </div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[var(--primary)] text-[var(--text-light)] py-16 relative overflow-hidden">
+<div class="absolute inset-0 opacity-20" style="background-image: url('https://via.placeholder.com/1920x300?text=Wave+Pattern'); background-size: cover;"></div>
+<div class="container mx-auto px-4 sm:px-6 relative z-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div>
+        <h3 class="text-3xl font-bold mb-4 flex items-center gap-3"><i data-lucide="hotel" class="w-10 h-10 text-[var(--accent)]"></i> Atlas Resort</h3>
+        <p class="mb-4 text-lg">Timeless luxury in the heart of Ado. Experience elegance redefined.</p>
+    </div>
+    <div>
+        <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="link" class="w-8 h-8 text-[var(--accent)]"></i> Quick Links</h3>
+        <ul class="space-y-2 text-lg">
+            <li><a href="index.html#home" class="hover:text-[var(--accent)] transition">Home</a></li>
+            <li><a href="about.html" class="hover:text-[var(--accent)] transition">About</a></li>
+            <li><a href="rooms.html" class="hover:text-[var(--accent)] transition">Rooms</a></li>
+            <li><a href="events.html" class="hover:text-[var(--accent)] transition">Events</a></li>
+            <li><a href="blog.html" class="hover:text-[var(--accent)] transition">Blog</a></li>
+        </ul>
+    </div>
+    <div>
+        <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="mail" class="w-8 h-8 text-[var(--accent)]"></i> Contact Us</h3>
+        <p class="mb-2 text-lg"><a href="mailto:info@atlasresort.com" class="hover:text-[var(--accent)]">info@atlasresort.com</a></p>
+        <p class="mb-2 text-lg"><a href="tel:+1234567890" class="hover:text-[var(--accent)]">+123-456-7890</a></p>
+        <p class="text-lg">123 Resort Lane, Ado, Nigeria</p>
+    </div>
+    <div>
+        <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="share-2" class="w-8 h-8 text-[var(--accent)]"></i> Follow Us</h3>
+        <div class="flex space-x-6">
+            <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="facebook" class="w-10 h-10"></i></a>
+            <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="instagram" class="w-10 h-10"></i></a>
+            <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="twitter" class="w-10 h-10"></i></a>
+            <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="linkedin" class="w-10 h-10"></i></a>
+        </div>
+    </div>
+</div>
+<div
+  class="container mx-auto px-4 sm:px-6 relative z-10 mt-8 text-center border-t border-[var(--secondary)]/30 pt-4"
+>
+  <p class="text-sm">
+    &copy; 2025 Atlas Resort. All rights reserved. |
+    <a href="#" class="hover:text-[var(--accent)]">Privacy Policy</a> |
+    <a href="#" class="hover:text-[var(--accent)]">Terms of Service</a>
+  </p>
+  <p class="text-xs mt-2">
+    Designed & Developed by 
+<a href="https://folio-two-blush.vercel.app/" target="_blank" class="hover:text-\[var\(--accent\)\] font-semibold">Alonge Korede</a>
+  </p>
+</div>
+</footer>
+<script>
+lucide.createIcons();
+document.getElementById('menu-toggle').addEventListener('click', ()=> {
+    document.getElementById('nav-menu').classList.toggle('hidden');
+});
+</script>
+</body>
+</html>
