@@ -1,202 +1,321 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Atlas Resort Insights & Stories</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-                :root {
-            --primary: #001F3F;             --secondary: #007BFF;             --accent: #D4AF37;             --bg-light: #F0F4F8;             --text-dark: #001F3F;
-            --text-light: #FFFFFF;
-        }
-                .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-                .blog-card {
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .blog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        .blog-image {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-        }
-        @media (max-width: 768px) {
-            .blog-image {
-                height: 200px;
-            }
-        }
-    </style>
-</head>
-<body class="font-sans antialiased text-[var(--text-dark)] bg-[var(--bg-light)]">
-<header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50" style="height:var(--header-height);">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl sm:text-3xl font-extrabold text-[var(--primary)] tracking-wide">Atlas Resort</a>
-            <button id="menu-toggle" class="sm:hidden text-[var(--primary)] focus:outline-none">
-                <i data-lucide="menu" class="w-8 h-8"></i>
-            </button>
-            <ul id="nav-menu" class="hidden sm:flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 md:space-x-8 text-base sm:text-lg font-medium absolute sm:relative top-full left-0 w-full sm:w-auto bg-[var(--text-light)] sm:bg-transparent px-4 sm:px-0 py-4 sm:py-0 shadow-md sm:shadow-none">
-    <li class="flex items-center gap-2">
-        <i data-lucide="home" class="w-5 h-5"></i>
-        <a href="index.html" class="hover:text-[var(--secondary)] transition">Home</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="info" class="w-5 h-5"></i>
-        <a href="about.html" class="hover:text-[var(--secondary)] transition">About</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="key" class="w-5 h-5"></i>
-        <a href="rooms.html" class="hover:text-[var(--secondary)] transition">Rooms</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="calendar" class="w-5 h-5"></i>
-        <a href="event.html" class="hover:text-[var(--secondary)] transition">Events</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="book-open" class="w-5 h-5"></i>
-        <a href="blog.html" class="hover:text-[var(--secondary)] transition">Blog</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="mail" class="w-5 h-5"></i>
-        <a href="contact.html" class="hover:text-[var(--secondary)] transition">Contact</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="corner-right-up" class="w-5 h-5"></i>
-        <a href="book" class="bg-[var(--secondary)] text-[var(--text-light)] px-4 sm:px-6 py-2 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-105">Book Now</a>
-    </li>
-</ul>
-        </nav>
-    </header>
-    <section id="blog-hero" class="relative h-[80vh] flex items-center justify-center parallax" style="background-image: url('https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&q=80&w=1920');">
-        <div class="absolute inset-0 bg-[var(--primary)] opacity-50"></div>
-        <div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
-            <h1 class="text-5xl sm:text-7xl md:text-8xl font-bold mb-6 animate-fade-in-down flex justify-center items-center gap-4">
-                <i data-lucide="book-open" class="w-16 h-16 text-[var(--accent)]"></i>
-                Resort Insights
-            </h1>
-            <p class="text-xl sm:text-3xl md:text-4xl mb-10 animate-fade-in-up delay-200">Explore stories, tips, and updates from Atlas Resort – your guide to luxury and adventure in Ado.</p>
-            <a href="#blog-section" class="bg-[var(--secondary)] text-[var(--text-light)] px-8 py-4 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-110">Read Latest Posts</a>
-        </div>
-    </section>
-    <section id="blog-section" class="py-20 sm:py-24 bg-[var(--bg-light)]">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-5xl sm:text-6xl font-bold text-center text-[var(--primary)] mb-16 animate-fade-in flex justify-center items-center gap-3">
-                <i data-lucide="pen-tool" class="w-12 h-12 text-[var(--accent)]"></i>
-                Latest Stories
-            </h2>
-            <p class="text-xl sm:text-2xl text-center max-w-4xl mx-auto mb-20 leading-relaxed animate-fade-in-up delay-200">Dive into our blog for travel tips, resort updates, local attractions, and inspiring tales from our guests and staff.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                <div class="blog-card bg-white rounded-3xl shadow-2xl">
-                    <div class="blog-image rounded-t-3xl" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80');"></div>
-                    <div class="p-8">
-                        <h3 class="text-3xl font-bold text-[var(--primary)] mb-4">Exploring Ado's Hidden Gems</h3>
-                        <p class="text-lg mb-4 flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-[var(--secondary)]"></i> November 20, 2025</p>
-                        <p class="text-lg mb-6 leading-relaxed">Uncover secret spots around Ado that offer adventure and tranquility. From lush hiking trails to quaint local markets, discover why our resort is the perfect base for exploration.</p>
-                        <a href="#" class="text-[var(--secondary)] font-semibold hover:underline flex items-center gap-2">Read More <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
-                    </div>
-                </div>
-                <div class="blog-card bg-white rounded-3xl shadow-2xl">
-                    <div class="blog-image rounded-t-3xl" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80');"></div>
-                    <div class="p-8">
-                        <h3 class="text-3xl font-bold text-[var(--primary)] mb-4">Sustainability at Atlas Resort</h3>
-                        <p class="text-lg mb-4 flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-[var(--secondary)]"></i> November 15, 2025</p>
-                        <p class="text-lg mb-6 leading-relaxed">Learn about our eco-friendly initiatives, from solar power to organic farming, and how we're committed to preserving Ado's natural beauty for future generations.</p>
-                        <a href="#" class="text-[var(--secondary)] font-semibold hover:underline flex items-center gap-2">Read More <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
-                    </div>
-                </div>
-                <div class="blog-card bg-white rounded-3xl shadow-2xl">
-                    <div class="blog-image rounded-t-3xl" style="background-image: url('https://images.unsplash.com/photo-1504805572947-34fad45aed93?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fEJMT0d8ZW58MHx8MHx8fDA%3D');"></div>
-                    <div class="p-8">
-                        <h3 class="text-3xl font-bold text-[var(--primary)] mb-4">Top Tips for Your Stay</h3>
-                        <p class="text-lg mb-4 flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-[var(--secondary)]"></i> November 10, 2025</p>
-                        <p class="text-lg mb-6 leading-relaxed">Insider advice on making the most of your visit, including must-try activities, packing essentials, and hidden resort features.</p>
-                        <a href="#" class="text-[var(--secondary)] font-semibold hover:underline flex items-center gap-2">Read More <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-16">
-                <a href="#" class="bg-[var(--secondary)] text-[var(--text-light)] px-8 py-4 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-105">Load More Posts</a>
-            </div>
-        </div>
-    </section>
-    <footer id="contact" class="bg-[var(--primary)] text-[var(--text-light)] py-16 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20" style="background-image: url('https://via.placeholder.com/1920x300?text=Wave+Pattern'); background-size: cover;"></div>
-        <div class="container mx-auto px-4 sm:px-6 relative z-10 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <h3 class="text-3xl font-bold mb-4 flex items-center gap-3"><i data-lucide="hotel" class="w-10 h-10 text-[var(--accent)]"></i> Atlas Resort</h3>
-                <p class="mb-4 text-lg">Timeless luxury in the heart of Ado. Experience elegance redefined.</p>
-            </div>
-            <div>
-                <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="link" class="w-8 h-8 text-[var(--accent)]"></i> Quick Links</h3>
-                <ul class="space-y-2 text-lg">
-                    <li><a href="index.html#home" class="hover:text-[var(--accent)] transition">Home</a></li>
-                    <li><a href="about.html" class="hover:text-[var(--accent)] transition">About</a></li>
-                    <li><a href="rooms.html" class="hover:text-[var(--accent)] transition">Rooms</a></li>
-                    <li><a href="events.html" class="hover:text-[var(--accent)] transition">Events</a></li>
-                    <li><a href="#blog-section" class="hover:text-[var(--accent)] transition">Blog</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="mail" class="w-8 h-8 text-[var(--accent)]"></i> Contact Us</h3>
-                <p class="mb-2 text-lg">Email: info@atlasresort.com</p>
-                <p class="mb-2 text-lg">Phone: +123-456-7890</p>
-                <p class="text-lg">Address: 123 Resort Lane, Ado, Nigeria</p>
-            </div>
-            <div>
-                <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="share-2" class="w-8 h-8 text-[var(--accent)]"></i> Follow Us</h3>
-                <div class="flex space-x-6">
-                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="facebook" class="w-10 h-10"></i></a>
-                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="instagram" class="w-10 h-10"></i></a>
-                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="twitter" class="w-10 h-10"></i></a>
-                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="linkedin" class="w-10 h-10"></i></a>
-                </div>
-            </div>
-        </div>
-       <div
-  class="container mx-auto px-4 sm:px-6 relative z-10 mt-8 text-center border-t border-[var(--secondary)]/30 pt-4"
->
-  <p class="text-sm">
-    &copy; 2025 Atlas Resort. All rights reserved. |
-    <a href="#" class="hover:text-[var(--accent)]">Privacy Policy</a> |
-    <a href="#" class="hover:text-[var(--accent)]">Terms of Service</a>
-  </p>
-  <p class="text-xs mt-2">
-    Designed & Developed by 
-<a href="https://folio-two-blush.vercel.app/" target="_blank" class="hover:text-\[var\(--accent\)\] font-semibold">Alonge Korede</a>
-  </p>
-</div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog & Media Center • Atlas Motels & Legacy Gardens</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    </footer>
-    <script>
-        lucide.createIcons();
-        // Hamburger Menu Toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const navMenu = document.getElementById('nav-menu');
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('hidden');
-        });
-    </script>
-    <style>
-        @keyframes fade-in-down {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fade-in-up {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-down { animation: fade-in-down 1.2s ease-out; }
-        .animate-fade-in-up { animation: fade-in-up 1.2s ease-out; }
-        .delay-200 { animation-delay: 0.2s; }
-    </style>
+  <style>
+    :root {
+      --amber-gold: #F59E0B;
+      --amber-dark: #D97706;
+      --emerald: #10B981;
+      --emerald-dark: #059669;
+    }
+    
+    .font-serif { font-family: 'Playfair Display', serif; }
+    .font-sans  { font-family: 'Inter', sans-serif; }
+    
+    .gradient-gold {
+      background: linear-gradient(135deg, var(--amber-gold), var(--amber-dark));
+    }
+
+    .read-progress {
+      height: 4px;
+      background: var(--emerald);
+      transition: width 0.3s ease;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased bg-gray-50">
+
+  <!-- Read Progress Bar (only on article page) -->
+  <div x-data="{ progress: 0 }" x-show="$el.offsetParent !== null" 
+       x-init="
+         window.addEventListener('scroll', () => {
+           const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+           const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+           progress = (winScroll / height) * 100;
+         })
+       "
+       :style="{width: progress + '%'}"
+       class="read-progress" id="read-progress"></div>
+
+  <!-- Navigation (same style as previous pages) -->
+  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-slate-900/95 backdrop-blur-md shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="font-serif text-3xl font-bold text-white">Atlas Motels</a>
+        
+        <div class="hidden lg:flex items-center space-x-10">
+          <a href="/" class="text-white hover:text-amber-400 transition-colors">Home</a>
+          <a href="#venues" class="text-white hover:text-amber-400 transition-colors">Venues</a>
+          <a href="#events" class="text-white hover:text-amber-400 transition-colors">Events</a>
+          <a href="/blog" class="text-amber-400 font-semibold">Blog</a>
+        </div>
+
+        <div class="hidden lg:flex items-center space-x-6">
+          <a href="tel:+234XXXXXXXX" class="text-white hover:text-amber-400 flex items-center">
+            <i data-lucide="phone" class="w-5 h-5 mr-2"></i> +234 XXX XXXX
+          </a>
+          <button class="gradient-gold text-white px-7 py-3 rounded-full font-semibold hover:scale-105 transition-all shadow-lg">
+            Book Now
+          </button>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button class="lg:hidden text-white">
+          <i data-lucide="menu" class="w-7 h-7"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Blog Hero / Featured Article -->
+  <section class="pt-32 pb-20 bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Featured Image -->
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+          <img src="https://images.unsplash.com/photo-1519167758481-83f29da8fd21?w=1200" 
+               alt="Featured Wedding at Legacy Gardens" 
+               class="w-full h-96 lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          
+          <div class="absolute bottom-0 left-0 right-0 p-8">
+            <span class="inline-block px-4 py-1 bg-emerald-600 text-white text-sm font-medium rounded-full mb-4">
+              Success Story
+            </span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold leading-tight mb-4">
+              A Magical Wedding Under the Stars at Legacy Gardens
+            </h1>
+            <div class="flex items-center gap-6 text-sm opacity-90">
+              <div class="flex items-center gap-2">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                <span>12.4K views</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-4 h-4"></i>
+                <span>8 min read</span>
+              </div>
+              <span>Jan 5, 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick intro + CTA -->
+        <div class="space-y-8">
+          <h2 class="font-serif text-4xl md:text-5xl font-bold">Stories, Tips & Inspiration</h2>
+          <p class="text-xl text-gray-300 leading-relaxed">
+            Discover real weddings, corporate events, cultural celebrations, behind-the-scenes looks, and expert tips to plan your perfect day at Atlas Motels & Legacy Gardens.
+          </p>
+          
+          <div class="flex flex-wrap gap-4">
+            <button class="gradient-gold px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all shadow-lg">
+              Read Featured Story
+            </button>
+            <button class="border-2 border-white/40 px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-all backdrop-blur-sm">
+              Browse All Articles →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Blog Content -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12">
+        <!-- Main Articles + Filters -->
+        <div class="lg:col-span-8">
+          <!-- Category Filters -->
+          <div x-data="{ activeCategory: 'all' }" class="flex flex-wrap gap-3 mb-12">
+            <button @click="activeCategory = 'all'" 
+                    :class="activeCategory === 'all' ? 'bg-amber-600 text-white' : 'bg-gray-100 hover:bg-gray-200'"
+                    class="px-6 py-2.5 rounded-full font-medium transition-colors">
+              All
+            </button>
+            <button @click="activeCategory = 'tips'" 
+                    :class="activeCategory === 'tips' ? 'bg-amber-600 text-white' : 'bg-gray-100 hover:bg-gray-200'"
+                    class="px-6 py-2.5 rounded-full font-medium transition-colors">
+              Event Tips
+            </button>
+            <button @click="activeCategory = 'stories'" 
+                    :class="activeCategory === 'stories' ? 'bg-amber-600 text-white' : 'bg-gray-100 hover:bg-gray-200'"
+                    class="px-6 py-2.5 rounded-full font-medium transition-colors">
+              Success Stories
+            </button>
+            <button @click="activeCategory = 'behind'" 
+                    :class="activeCategory === 'behind' ? 'bg-amber-600 text-white' : 'bg-gray-100 hover:bg-gray-200'"
+                    class="px-6 py-2.5 rounded-full font-medium transition-colors">
+              Behind the Scenes
+            </button>
+          </div>
+
+          <!-- Article Grid -->
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Article Card -->
+            <article class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1519741497674-281450f9b5d2?w=800" 
+                     alt="Traditional Yoruba Wedding" 
+                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <span class="absolute top-4 left-4 px-4 py-1 bg-emerald-600 text-white text-sm font-medium rounded-full">
+                  Success Story
+                </span>
+              </div>
+              
+              <div class="p-6">
+                <h3 class="font-serif text-2xl font-bold mb-3 group-hover:text-amber-600 transition-colors">
+                  A Traditional Yoruba Wedding Celebration to Remember
+                </h3>
+                <p class="text-gray-600 mb-6 line-clamp-3">
+                  See how we transformed Legacy Gardens into a vibrant celebration of Yoruba culture, complete with Aso-Ebi, talking drums, and beautiful decor...
+                </p>
+                
+                <div class="flex items-center justify-between text-sm text-gray-500">
+                  <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-1">
+                      <i data-lucide="eye" class="w-4 h-4"></i>
+                      <span>8.7K</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <i data-lucide="clock" class="w-4 h-4"></i>
+                      <span>7 min</span>
+                    </div>
+                  </div>
+                  <time datetime="2026-01-08">Jan 8, 2026</time>
+                </div>
+              </div>
+            </article>
+
+            <!-- Repeat similar article cards 5–6 times for grid effect -->
+            <!-- You can duplicate the above article block with different images/content -->
+          </div>
+
+          <!-- Pagination -->
+          <div class="mt-16 flex justify-center gap-4">
+            <button class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50" disabled>
+              Previous
+            </button>
+            <button class="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700">
+              Next
+            </button>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-12">
+          <!-- Search -->
+          <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+            <h4 class="font-serif text-xl font-bold mb-4">Search Articles</h4>
+            <div class="relative">
+              <input type="text" placeholder="Search tips, stories, inspiration..." 
+                     class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+              <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+            </div>
+          </div>
+
+          <!-- Popular Posts -->
+          <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+            <h4 class="font-serif text-xl font-bold mb-6">Popular This Month</h4>
+            <div class="space-y-6">
+              <a href="#" class="flex gap-4 group">
+                <img src="https://images.unsplash.com/photo-1519741497674-281450f9b5d2?w=200" alt="" class="w-24 h-24 object-cover rounded-lg">
+                <div>
+                  <h5 class="font-medium group-hover:text-amber-600 transition-colors line-clamp-2">
+                    10 Must-Have Elements for a Perfect Ekiti Wedding
+                  </h5>
+                  <p class="text-sm text-gray-500 mt-1">9.2K views • 6 min read</p>
+                </div>
+              </a>
+              <!-- Add 4 more similar popular post items -->
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+            <h4 class="font-serif text-xl font-bold mb-6">Categories</h4>
+            <ul class="space-y-3">
+              <li><a href="#" class="text-gray-700 hover:text-amber-600 transition-colors flex items-center gap-2"><i data-lucide="tag" class="w-4 h-4"></i> Event Tips</a></li>
+              <li><a href="#" class="text-gray-700 hover:text-amber-600 transition-colors flex items-center gap-2"><i data-lucide="tag" class="w-4 h-4"></i> Success Stories</a></li>
+              <li><a href="#" class="text-gray-700 hover:text-amber-600 transition-colors flex items-center gap-2"><i data-lucide="tag" class="w-4 h-4"></i> Behind the Scenes</a></li>
+              <li><a href="#" class="text-gray-700 hover:text-amber-600 transition-colors flex items-center gap-2"><i data-lucide="tag" class="w-4 h-4"></i> Vendor Recommendations</a></li>
+              <li><a href="#" class="text-gray-700 hover:text-amber-600 transition-colors flex items-center gap-2"><i data-lucide="tag" class="w-4 h-4"></i> Venue Inspiration</a></li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="bg-gradient-to-br from-amber-50 to-amber-100 p-8 rounded-2xl text-center">
+            <h4 class="font-serif text-2xl font-bold mb-4">Stay Inspired</h4>
+            <p class="text-gray-700 mb-6">Get event ideas, real stories & exclusive offers straight to your inbox</p>
+            
+            <form class="space-y-4">
+              <input type="email" placeholder="Your email address" class="w-full px-5 py-3 rounded-lg border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-400">
+              <button type="submit" class="w-full gradient-gold text-white py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (same as landing page) -->
+  <footer class="bg-slate-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10">
+        <div>
+          <h3 class="font-serif text-3xl font-bold text-white mb-6">Atlas Motels</h3>
+          <p class="text-gray-400">Creating timeless memories in Ekiti since 1979.</p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-lg mb-6">Quick Links</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="/" class="hover:text-amber-400 transition-colors">Home</a></li>
+            <li><a href="#venues" class="hover:text-amber-400 transition-colors">Venues</a></li>
+            <li><a href="#events" class="hover:text-amber-400 transition-colors">Events</a></li>
+            <li><a href="/blog" class="hover:text-amber-400 transition-colors">Blog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-lg mb-6">Venues</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Legacy Gardens</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Open Field</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-lg mb-6">Contact</h4>
+          <p class="text-gray-400">Ikere Road, Ado-Ekiti<br>Ekiti State, Nigeria</p>
+          <p class="mt-4 text-gray-400">info@atlasmotels.com</p>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-gray-500">
+        © 2026 Atlas Motels & Legacy Gardens. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 </html>

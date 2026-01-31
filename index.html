@@ -3,503 +3,1268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas Resort - Timeless Luxury in Ado</title>
+    <title>Atlas Motels & Resort - Ekiti's Premier Hospitality Destination Since 1979</title>
+    <meta name="description" content="Experience luxury hospitality in Ado-Ekiti. Atlas Motels & Resort offers premium accommodation, event venues, fine dining, and exceptional service. Book your stay today.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-                :root {
-            --primary: #001F3F;             --secondary: #007BFF;             --accent: #D4AF37;             --bg-light: #F0F4F8;             --text-dark: #001F3F;
-            --text-light: #FFFFFF;
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        
+        /* Custom Color Palette */
+        :root {
+            --teal-primary: #0D9488;
+            --teal-secondary: #14B8A6;
+            --gold-primary: #F59E0B;
+            --gold-secondary: #D97706;
+            --coral-accent: #F97316;
+            --slate-dark: #1E293B;
+            --slate-medium: #334155;
         }
-                .slider {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .slides {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .slide {
-            min-width: 100%;
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
+        
+        .gradient-teal { background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary)); }
+        .gradient-gold { background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary)); }
+        .text-teal { color: var(--teal-primary); }
+        .text-gold { color: var(--gold-primary); }
+        .border-teal { border-color: var(--teal-primary); }
+        
+        /* Hero Slider */
+        .slider { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+        .slides { display: flex; transition: transform 0.5s ease-in-out; }
+        .slide { min-width: 100%; height: 100vh; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; position: relative; }
+        .slide::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(30,41,59,0.5), rgba(30,41,59,0.7)); }
+        
+        .dots { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 20; }
+        .dot { width: 12px; height: 12px; background: white; border-radius: 50%; cursor: pointer; opacity: 0.6; transition: all 0.3s; }
+        .dot.active { opacity: 1; background: var(--gold-primary); width: 32px; border-radius: 6px; }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        .animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+        .animate-fade-in-up-delay { animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0; }
+        .animate-bounce-slow { animation: bounce 2s ease-in-out infinite; }
+        
+        /* Compact card max-width */
+        .card-compact { max-width: 400px; margin: 0 auto; }
+        
+        /* Venue Calendar Styles */
+        .cal-day-venue {
+            aspect-ratio: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-        }
-        .slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,31,63,0.3), rgba(0,31,63,0.6));
-        }
-                .dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-        }
-        .dot {
-            width: 12px;
-            height: 12px;
-            margin: 0 5px;
-            background: var(--text-light);
-            border-radius: 50%;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            transition: all 0.2s;
             cursor: pointer;
-            opacity: 0.7;
         }
-        .dot.active {
-            opacity: 1;
-            background: var(--accent);
+        .cal-day-venue:hover:not(.booked):not(.disabled) {
+            background: #fef3c7;
+            transform: scale(1.1);
         }
-                .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-  .gallery-slider {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-.gallery-slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-.gallery-slide {
-    min-width: 100%;               height: 70vh;                  background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 12px;       }
-    .slider, 
-    .slide {
-        height: 100vh;            }
-        @media (max-width: 1024px) {
-        .slider, .slide {
-            height: 80vh;
-        }
-    }
-        @media (max-width: 768px) {
-        .slider, .slide {
-            height: 70vh;
-        }
-    }
-        @media (max-width: 640px) {
-        .slider, .slide {
-            height: 65dvh !important;               min-height: 500px;                  }
-    }
-    @media (max-width: 480px) {
-        .slider, .slide {
-            height: 60dvh !important;
-            min-height: 480px;
-        }
-    }
-        #about {
-        margin-top: 0 !important;
-        padding-top: 4rem !important;      }
-        body {
-        margin: 0;
-        padding: 0;
-    }
+        .cal-day-venue.booked { background: #fecaca; color: #b91c1c; cursor: not-allowed; }
+        .cal-day-venue.available { background: #d1fae5; color: #047857; }
+        .cal-day-venue.available:hover { background: #a7f3d0; }
+        .cal-day-venue.disabled { color: #d1d5db; cursor: not-allowed; }
+        .cal-day-venue.selected { background: #fbbf24; color: #78350f; border: 2px solid #d97706; }
+        [x-cloak] { display: none !important; }
+        
+        @media (max-width: 1024px) { .slider, .slide { height: 80vh; } }
+        @media (max-width: 768px) { .slider, .slide { height: 70vh; } }
+        @media (max-width: 640px) { .slider, .slide { height: 65vh; min-height: 500px; } }
     </style>
 </head>
-<body class="font-sans antialiased text-[var(--text-dark)] bg-[var(--bg-light)]">
-    <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50" style="height:var(--header-height);">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl sm:text-3xl font-extrabold text-[var(--primary)] tracking-wide">Atlas Resort</a>
-            <button id="menu-toggle" class="sm:hidden text-[var(--primary)] focus:outline-none">
-                <i data-lucide="menu" class="w-8 h-8"></i>
-            </button>
-         <ul id="nav-menu" class="hidden sm:flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 md:space-x-8 text-base sm:text-lg font-medium absolute sm:relative top-full left-0 w-full sm:w-auto bg-[var(--text-light)] sm:bg-transparent px-4 sm:px-0 py-4 sm:py-0 shadow-md sm:shadow-none">
-    <li class="flex items-center gap-2">
-        <i data-lucide="home" class="w-5 h-5"></i>
-        <a href="index.html" class="hover:text-[var(--secondary)] transition">Home</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="info" class="w-5 h-5"></i>
-        <a href="about.html" class="hover:text-[var(--secondary)] transition">About</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="key" class="w-5 h-5"></i>
-        <a href="rooms.html" class="hover:text-[var(--secondary)] transition">Rooms</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="calendar" class="w-5 h-5"></i>
-        <a href="event.html" class="hover:text-[var(--secondary)] transition">Events</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="book-open" class="w-5 h-5"></i>
-        <a href="blog.html" class="hover:text-[var(--secondary)] transition">Blog</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="mail" class="w-5 h-5"></i>
-        <a href="contact.html" class="hover:text-[var(--secondary)] transition">Contact</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="corner-right-up" class="w-5 h-5"></i>
-        <a href="book" class="bg-[var(--secondary)] text-[var(--text-light)] px-4 sm:px-6 py-2 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-105">Book Now</a>
-    </li>
-</ul>
-        </nav>
-    </header>
+<body class="font-sans antialiased bg-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+         x-data="{ scrolled: false, sidebarOpen: false }"
+         x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 50)"
+         :class="scrolled ? 'bg-slate-900 shadow-2xl' : 'bg-transparent'">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="/" class="font-serif text-2xl font-bold text-white">Atlas Motels</a>
+                
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-white hover:text-amber-400 transition-colors font-medium">Home</a>
+                    <a href="about.html" class="text-white hover:text-amber-400 transition-colors font-medium">About</a>
+                    <a href="rooms.html" class="text-white hover:text-amber-400 transition-colors font-medium">Rooms</a>
+                    <a href="#venues" class="text-white hover:text-amber-400 transition-colors font-medium">Event Venues</a>
+                    <a href="#services" class="text-white hover:text-amber-400 transition-colors font-medium">Services</a>
+                    <a href="#gallery" class="text-white hover:text-amber-400 transition-colors font-medium">Gallery</a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="tel:+234" class="flex items-center text-white hover:text-amber-400 transition-colors">
+                        <i data-lucide="phone" class="w-5 h-5 mr-2"></i>
+                        <span>Call Now</span>
+                    </a>
+                    <button class="gradient-gold text-white px-6 py-2.5 rounded-full font-semibold hover:scale-105 transform transition-all shadow-lg">
+                        Book Your Stay
+                    </button>
+                </div>
+                
+                <button @click="sidebarOpen = true" class="lg:hidden text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Sidebar -->
+        <div x-show="sidebarOpen" @click="sidebarOpen = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" class="fixed inset-0 bg-black/60 z-40 lg:hidden"></div>
+        
+        <div x-show="sidebarOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" class="fixed top-0 left-0 bottom-0 w-80 bg-slate-900 z-50 lg:hidden overflow-y-auto">
+            <div class="p-6">
+                <button @click="sidebarOpen = false" class="absolute top-6 right-6 text-white hover:text-amber-400">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                
+                <div class="mb-8">
+                    <span class="font-serif text-2xl font-bold text-white">Atlas Motels</span>
+                </div>
+                
+                <nav class="space-y-4 mb-8">
+                    <a href="#home" @click="sidebarOpen = false" class="flex items-center text-white hover:text-amber-400 transition-colors font-medium text-lg py-2">
+                        <i data-lucide="home" class="w-5 h-5 mr-3"></i>Home
+                    </a>
+                    <a href="about.html" @click="sidebarOpen = false" class="flex items-center text-white hover:text-amber-400 transition-colors font-medium text-lg py-2">
+                        <i data-lucide="info" class="w-5 h-5 mr-3"></i>About
+                    </a>
+                    <a href="rooms.html" @click="sidebarOpen = false" class="flex items-center text-white hover:text-amber-400 transition-colors font-medium text-lg py-2">
+                        <i data-lucide="bed" class="w-5 h-5 mr-3"></i>Rooms
+                    </a>
+                    <a href="#venues" @click="sidebarOpen = false" class="flex items-center text-white hover:text-amber-400 transition-colors font-medium text-lg py-2">
+                        <i data-lucide="map-pin" class="w-5 h-5 mr-3"></i>Event Venues
+                    </a>
+                    <a href="#services" @click="sidebarOpen = false" class="flex items-center text-white hover:text-amber-400 transition-colors font-medium text-lg py-2">
+                        <i data-lucide="sparkles" class="w-5 h-5 mr-3"></i>Services
+                    </a>
+                    <a href="#gallery" @click="sidebarOpen = false" class="flex items-center text-white hover:text-amber-400 transition-colors font-medium text-lg py-2">
+                        <i data-lucide="image" class="w-5 h-5 mr-3"></i>Gallery
+                    </a>
+                </nav>
+                
+                <div class="border-t border-slate-700 pt-6 space-y-4">
+                    <a href="tel:+234" class="flex items-center text-white hover:text-amber-400 transition-colors">
+                        <i data-lucide="phone" class="w-5 h-5 mr-3"></i>Call Now
+                    </a>
+                </div>
+                
+                <button class="w-full mt-6 gradient-gold text-white px-6 py-3 rounded-full font-semibold shadow-lg">Book Your Stay</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Slider -->
     <section id="home" class="slider">
         <div class="slides" id="slides">
-            <div class="slide" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/519772367.jpg?k=a90ea47a4ebff9fa9100542ffd3755b62b857fa4e7f96e2cdf7e03c614c471f9&o=');">
-                <div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
-                    <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 animate-fade-in-down">Unwind in Paradise</h1>
-                    <p class="text-lg sm:text-2xl md:text-3xl mb-8 animate-fade-in-up delay-200">Immerse yourself in our stunning infinity pools overlooking pristine landscapes.</p>
-                    <a href="#book" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-110 animate-bounce">Book Now</a>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920');">
+                <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
+                    <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in-up leading-tight">
+                        Welcome to Atlas Motels & Resort
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-10 animate-fade-in-up-delay">
+                        Ekiti's Premier Hospitality Destination Since 1979
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#rooms" class="gradient-gold text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-all shadow-xl">
+                            Book a Room
+                        </a>
+                        <a href="#venues" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-slate-900 transition-all">
+                            Explore Event Venues
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="slide" style="background-image: url('https://www.shutterstock.com/image-illustration/elegance-every-detail-3d-visualization-260nw-2622610593.jpg');">
-                <div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
-                    <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 animate-fade-in-down">Elegant Comfort</h1>
-                    <p class="text-lg sm:text-2xl md:text-3xl mb-8 animate-fade-in-up delay-200">Experience luxury rooms designed for ultimate relaxation and sophistication.</p>
-                    <a href="#book" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-110 animate-bounce">Book Now</a>
+            
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920');">
+                <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
+                    <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">Luxury Accommodation in Ado-Ekiti</h1>
+                    <p class="text-xl md:text-2xl mb-10">Comfort, Privacy & Exceptional Service</p>
+                    <a href="#rooms" class="gradient-gold text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-all shadow-xl inline-block">View Our Rooms</a>
                 </div>
             </div>
-            <div class="slide" style="background-image: url('https://img.freepik.com/free-photo/beautiful-landscape_8327-100.jpg?semt=ais_hybrid&w=740&q=80');">
-                <div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
-                    <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 animate-fade-in-down">Embrace Nature</h1>
-                    <p class="text-lg sm:text-2xl md:text-3xl mb-8 animate-fade-in-up delay-200">Surrounded by lush greenery and serene natural beauty for a rejuvenating escape.</p>
-                    <a href="#book" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-110 animate-bounce">Book Now</a>
-                </div>
-            </div>
-            <div class="slide" style="background-image: url('https://cdn3.parksmedia.wdprapps.disney.com/media/dftwh/california/venues/rose-court-garden/Heather-and-Mike-Sneak-Peeks-edits-0019-gallery.jpg');">
-                <div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
-                    <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 animate-fade-in-down">Memorable Events</h1>
-                    <p class="text-lg sm:text-2xl md:text-3xl mb-8 animate-fade-in-up delay-200">Host unforgettable events in our elegant venues with personalized service.</p>
-                    <a href="#book" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-110 animate-bounce">Book Now</a>
+            
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f29da8fd21?w=1920');">
+                <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
+                    <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">Unforgettable Events at Legacy Gardens</h1>
+                    <p class="text-xl md:text-2xl mb-10">Weddings, Corporate Events & Celebrations</p>
+                    <a href="#venues" class="gradient-gold text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-all shadow-xl inline-block">Book Your Event</a>
                 </div>
             </div>
         </div>
+        
         <div class="dots">
             <div class="dot active" onclick="currentSlide(0)"></div>
             <div class="dot" onclick="currentSlide(1)"></div>
             <div class="dot" onclick="currentSlide(2)"></div>
-            <div class="dot" onclick="currentSlide(3)"></div>
         </div>
-    </section>
-    <section id="about" class="py-16 sm:py-20 bg-gradient-to-r from-[var(--secondary)]/10 to-[var(--primary)]/10">
-        <div class="container mx-auto px-4 sm:px-6 text-center">
-            <h2 class="text-4xl sm:text-5xl font-bold text-[var(--primary)] mb-6 sm:mb-8 animate-fade-in flex justify-center items-center gap-2">
-                <i data-lucide="hotel" class="w-10 h-10 text-[var(--accent)]"></i>
-                About Atlas Resort
-            </h2>
-            <p class="text-lg sm:text-xl max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed">Nestled in the heart of Ado, Atlas Resort is a timeless haven blending rich heritage with modern luxury. Established in 19XX, we offer unparalleled serenity and world-class hospitality amidst breathtaking natural beauty. Our commitment to excellence ensures every guest leaves with cherished memories.</p>
-            <a href="#" class="text-[var(--secondary)] font-semibold hover:underline text-base sm:text-lg">Discover Our Story →</a>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow cursor-pointer text-center z-20" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-white mx-auto"></i>
+            <div class="text-white text-sm mt-2">Discover More</div>
         </div>
-    </section>
-    <section class="py-16 sm:py-20 bg-[var(--text-light)]">
-        <div class="container mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
-            <div class="p-6 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2 bg-gradient-to-br from-[var(--secondary)]/5 to-[var(--accent)]/5 flex flex-col items-center">
-                <i data-lucide="map-pin" class="w-12 h-12 text-[var(--accent)] mb-2"></i>
-                <h3 class="text-3xl sm:text-4xl font-bold text-[var(--primary)]">50+</h3>
-                <p class="text-base sm:text-lg">Acres of Serene Landscape for Exploration and Relaxation</p>
-            </div>
-            <div class="p-6 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2 bg-gradient-to-br from-[var(--secondary)]/5 to-[var(--accent)]/5 flex flex-col items-center">
-                <i data-lucide="bed-double" class="w-12 h-12 text-[var(--accent)] mb-2"></i>
-                <h3 class="text-3xl sm:text-4xl font-bold text-[var(--primary)]">100+</h3>
-                <p class="text-base sm:text-lg">Luxury Rooms & Suites Tailored for Comfort</p>
-            </div>
-            <div class="p-6 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2 bg-gradient-to-br from-[var(--secondary)]/5 to-[var(--accent)]/5 flex flex-col items-center">
-                <i data-lucide="star" class="w-12 h-12 text-[var(--accent)] mb-2"></i>
-                <h3 class="text-3xl sm:text-4xl font-bold text-[var(--primary)]">5★</h3>
-                <p class="text-base sm:text-lg">Guest Satisfaction with Personalized Service</p>
-            </div>
-            <div class="p-6 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2 bg-gradient-to-br from-[var(--secondary)]/5 to-[var(--accent)]/5 flex flex-col items-center">
-                <i data-lucide="calendar" class="w-12 h-12 text-[var(--accent)] mb-2"></i>
-                <h3 class="text-3xl sm:text-4xl font-bold text-[var(--primary)]">20+</h3>
-                <p class="text-base sm:text-lg">Years of Excellence in Hospitality</p>
-            </div>
-        </div>
-    </section>
-    <section id="rooms" class="py-16 sm:py-20 bg-gradient-to-r from-[var(--primary)]/5 to-[var(--secondary)]/5">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-4xl sm:text-5xl font-bold text-center text-[var(--primary)] mb-10 sm:mb-12 animate-fade-in flex justify-center items-center gap-2">
-                <i data-lucide="key" class="w-10 h-10 text-[var(--accent)]"></i>
-                Rooms & Facilities
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-                <div class="relative overflow-hidden rounded-2xl shadow-2xl transform hover:scale-105 transition duration-500">
-                    <img src="https://cdn.wynnresorts.com/image/upload/w_auto,f_auto,q_auto/w_auto,f_auto,q_auto/v1672173300/Encore%20Boston%20Harbor/Amenities/The%20Spa/Updated%20Heros/EncoreBH-The-Spa-Wet-Area-Gallery?width=3840&quality=100" alt="Spa" class="w-full h-48 sm:h-64 object-cover">
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--primary)] to-transparent p-4 sm:p-6">
-                        <h3 class="text-xl sm:text-2xl font-bold text-[var(--text-light)] flex items-center gap-2"><i data-lucide="spa" class="w-6 h-6 text-[var(--accent)]"></i> Luxury Spa</h3>
-                        <p class="text-sm sm:text-base text-[var(--text-light)] opacity-90">Rejuvenate with world-class treatments, including massages, facials, and holistic therapies designed to restore balance and vitality.</p>
-                    </div>
+        
+        <div class="absolute bottom-24 left-1/2 transform -translate-x-1/2 w-full px-4 z-20">
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                    <i data-lucide="award" class="w-5 h-5 text-amber-400 mr-2"></i>
+                    <span class="text-white font-medium text-sm">45+ Years Legacy</span>
                 </div>
-                <div class="relative overflow-hidden rounded-2xl shadow-2xl transform hover:scale-105 transition duration-500">
-                    <img src="https://www.hotelscombined.com/rimg/himg/b7/71/25/expedia_group-3526615-128916206-268232.jpg?width=968&height=607&crop=true" alt="Pool" class="w-full h-48 sm:h-64 object-cover">
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--primary)] to-transparent p-4 sm:p-6">
-                        <h3 class="text-xl sm:text-2xl font-bold text-[var(--text-light)] flex items-center gap-2"><i data-lucide="waves" class="w-6 h-6 text-[var(--accent)]"></i> Infinity Pool</h3>
-                        <p class="text-sm sm:text-base text-[var(--text-light)] opacity-90">Swim in our stunning infinity pool with panoramic views, complete with cabanas, poolside service, and evening lighting for a magical experience.</p>
-                    </div>
+                <div class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                    <i data-lucide="star" class="w-5 h-5 text-amber-400 mr-2"></i>
+                    <span class="text-white font-medium text-sm">Premier Hospitality</span>
                 </div>
-                <div class="relative overflow-hidden rounded-2xl shadow-2xl transform hover:scale-105 transition duration-500">
-                    <img src="https://www.travelandleisure.com/thmb/PnmJ_pum0NBgpo4nK9tSknCFwoQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/wynn-spa-wet-area_HERO_VEGASSPA1022-ce78e2d06d454c1daa87b183254780f2.jpg" alt="Gym" class="w-full h-48 sm:h-64 object-cover">
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--primary)] to-transparent p-4 sm:p-6">
-                        <h3 class="text-xl sm:text-2xl font-bold text-[var(--text-light)] flex items-center gap-2"><i data-lucide="dumbbell" class="w-6 h-6 text-[var(--accent)]"></i> Fitness Center</h3>
-                        <p class="text-sm sm:text-base text-[var(--text-light)] opacity-90">Stay fit with state-of-the-art equipment, personal trainers, yoga classes, and wellness programs tailored to your needs.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-10 sm:mt-12">
-                <a href="#" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition">Explore More</a>
-            </div>
-        </div>
-    </section>
-    <section id="events" class="py-16 sm:py-20 bg-[var(--text-light)]">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-4xl sm:text-5xl font-bold text-center text-[var(--primary)] mb-10 sm:mb-12 animate-fade-in flex justify-center items-center gap-2">
-                <i data-lucide="calendar-days" class="w-10 h-10 text-[var(--accent)]"></i>
-                Upcoming Events
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-                <div class="bg-gradient-to-br from-[var(--bg-light)] to-[var(--text-light)] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
-                    <img src="https://i.ytimg.com/vi/5pPcupPlV00/hq720.jpg?sqp=-oaymwEXCK4FEIIDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAjD8mopuBr5pjSFsAyH8SWUV0j2A" alt="Event 1" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="p-4 sm:p-6">
-                        <h3 class="text-lg sm:text-2xl font-semibold mb-2 text-[var(--primary)] flex items-center gap-2"><i data-lucide="activity" class="w-6 h-6 text-[var(--accent)]"></i> Yoga Retreat</h3>
-                        <p class="text-sm sm:text-base text-gray-600 mb-4">January 10, 2026 - Join our expert-led yoga sessions for mind-body harmony amid nature's tranquility.</p>
-                        <a href="#" class="text-[var(--secondary)] hover:underline text-sm sm:text-base">Learn More →</a>
-                    </div>
-                </div>
-                <div class="bg-gradient-to-br from-[var(--bg-light)] to-[var(--text-light)] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
-                    <img src="https://www.papercitymag.com/wp-content/uploads/2023/04/EXT02_Teaser-Amenity_Final-1024x683.jpg" alt="Event 2" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="p-4 sm:p-6">
-                        <h3 class="text-lg sm:text-2xl font-semibold mb-2 text-[var(--primary)] flex items-center gap-2"><i data-lucide="music" class="w-6 h-6 text-[var(--accent)]"></i> Cultural Festival</h3>
-                        <p class="text-sm sm:text-base text-gray-600 mb-4">February 5, 2026 - Celebrate local traditions with music, dance, and cuisine in a vibrant atmosphere.</p>
-                        <a href="#" class="text-[var(--secondary)] hover:underline text-sm sm:text-base">Learn More →</a>
-                    </div>
-                </div>
-                <div class="bg-gradient-to-br from-[var(--bg-light)] to-[var(--text-light)] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
-                    <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fEJMT0d8ZW58MHx8MHx8fDA%3D" alt="Event 3" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="p-4 sm:p-6">
-                        <h3 class="text-lg sm:text-2xl font-semibold mb-2 text-[var(--primary)] flex items-center gap-2"><i data-lucide="heart" class="w-6 h-6 text-[var(--accent)]"></i> Wedding Expo</h3>
-                        <p class="text-sm sm:text-base text-gray-600 mb-4">March 15, 2026 - Explore wedding venues, planners, and ideas for your perfect day at our resort.</p>
-                        <a href="#" class="text-[var(--secondary)] hover:underline text-sm sm:text-base">Learn More →</a>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-10 sm:mt-12">
-                <a href="#" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition">View All Events</a>
-            </div>
-        </div>
-    </section>
-    <section id="blog" class="py-16 sm:py-20 bg-gradient-to-r from-[var(--secondary)]/10 to-[var(--primary)]/10">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-4xl sm:text-5xl font-bold text-center text-[var(--primary)] mb-10 sm:mb-12 animate-fade-in flex justify-center items-center gap-2">
-                <i data-lucide="book-open" class="w-10 h-10 text-[var(--accent)]"></i>
-                From Our Blog
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-                <div class="bg-[var(--text-light)] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
-                    <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fEJMT0d8ZW58MHx8MHx8fDA%3D" alt="Blog 1" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="p-4 sm:p-6">
-                        <h3 class="text-lg sm:text-2xl font-semibold mb-2 text-[var(--primary)] flex items-center gap-2"><i data-lucide="compass" class="w-6 h-6 text-[var(--accent)]"></i> Exploring Ado's Hidden Gems</h3>
-                        <p class="text-sm sm:text-base text-gray-600 mb-4">November 20, 2025 - Uncover secret spots around Ado that offer adventure and tranquility for every traveler.</p>
-                        <a href="#" class="text-[var(--secondary)] hover:underline text-sm sm:text-base">Read More →</a>
-                    </div>
-                </div>
-                <div class="bg-[var(--text-light)] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
-                    <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fEJMT0d8ZW58MHx8MHx8fDA%3D" alt="Blog 2" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="p-4 sm:p-6">
-                        <h3 class="text-lg sm:text-2xl font-semibold mb-2 text-[var(--primary)] flex items-center gap-2"><i data-lucide="leaf" class="w-6 h-6 text-[var(--accent)]"></i> Sustainability at Atlas</h3>
-                        <p class="text-sm sm:text-base text-gray-600 mb-4">November 15, 2025 - Learn about our eco-friendly initiatives and how we're preserving Ado's natural beauty for future generations.</p>
-                        <a href="#" class="text-[var(--secondary)] hover:underline text-sm sm:text-base">Read More →</a>
-                    </div>
-                </div>
-                <div class="bg-[var(--text-light)] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
-                    <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fEJMT0d8ZW58MHx8MHx8fDA%3D" alt="Blog 3" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="p-4 sm:p-6">
-                        <h3 class="text-lg sm:text-2xl font-semibold mb-2 text-[var(--primary)] flex items-center gap-2"><i data-lucide="lightbulb" class="w-6 h-6 text-[var(--accent)]"></i> Top Tips for Your Stay</h3>
-                        <p class="text-sm sm:text-base text-gray-600 mb-4">November 10, 2025 - Insider advice on making the most of your visit, from packing essentials to must-try activities.</p>
-                        <a href="#" class="text-[var(--secondary)] hover:underline text-sm sm:text-base">Read More →</a>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-10 sm:mt-12">
-                <a href="#" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition">Browse All Posts</a>
-            </div>
-        </div>
-    </section>
-    <section id="gallery" class="py-16 sm:py-20 parallax" style="background-image: url('https://images.unsplash.com/photo-1606402179428-a57976d71fa4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHJlc29ydHxlbnwwfHwwfHx8MA%3D%3D');">
-        <div class="container mx-auto px-4 sm:px-6 text-center text-[var(--text-light)] relative z-10">
-            <div class="bg-[var(--primary)]/50 p-6 sm:p-8 rounded-2xl">
-                <h2 class="text-4xl sm:text-5xl font-bold mb-6 sm:mb-8 animate-fade-in flex justify-center items-center gap-2">
-                    <i data-lucide="image" class="w-10 h-10 text-[var(--accent)]"></i>
-                    Our Gallery
-                </h2>
-                <p class="text-lg sm:text-xl max-w-3xl mx-auto mb-8 sm:mb-12">Immerse yourself in the beauty of Atlas Resort through our curated photo collection showcasing rooms, events, and scenic views.</p>
-                <div class="gallery-slider">
-                    <div class="gallery-slides flex" id="gallery-slides">
-                        <div class="gallery-slide" style="background-image: url('https://plus.unsplash.com/premium_photo-1687960116497-0dc41e1808a2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cmVzb3J0fGVufDB8fDB8fHww');"></div>
-                        <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzb3J0fGVufDB8fDB8fHww');"></div>
-                        <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzb3J0fGVufDB8fDB8fHww');"></div>
-                        <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmVzb3J0fGVufDB8fDB8fHww');"></div>
-                        <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1623718649591-311775a30c43?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHJlc29ydHxlbnwwfHwwfHx8MA%3D%3D');"></div>
-                        <div class="gallery-slide" style="background-image: url('https://plus.unsplash.com/premium_photo-1675745329954-9639d3b74bbf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cmVzb3J0fGVufDB8fDB8fHww');"></div>
-                    </div>
-                </div>
-                <div class="mt-6 flex justify-center gap-4">
-                    <button onclick="galleryPrev()" class="bg-[var(--secondary)] text-[var(--text-light)] p-2 rounded-full hover:bg-[var(--primary)]">
-                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
-                    </button>
-                    <button onclick="galleryNext()" class="bg-[var(--secondary)] text-[var(--text-light)] p-2 rounded-full hover:bg-[var(--primary)]">
-                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
-                    </button>
-                </div>
-                <a href="#" class="mt-8 sm:mt-12 inline-block bg-[var(--secondary)] text-[var(--text-light)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--primary)] transition">View Full Gallery</a>
-            </div>
-        </div>
-    </section>
-    <section class="py-16 sm:py-20 bg-gradient-to-r from-[var(--primary)]/5 to-[var(--secondary)]/5">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-4xl sm:text-5xl font-bold text-center text-[var(--primary)] mb-10 sm:mb-12 animate-fade-in flex justify-center items-center gap-2">
-                <i data-lucide="quote" class="w-10 h-10 text-[var(--accent)]"></i>
-                What Our Guests Say
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <div class="bg-[var(--bg-light)] p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col items-center text-center">
-                    <i data-lucide="user" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
-                    <p class="text-base sm:text-lg italic mb-4">"An unforgettable experience! The staff made us feel like royalty with their attentive service and warm hospitality."</p>
-                    <p class="font-semibold">- Jane Doe</p>
-                </div>
-                <div class="bg-[var(--bg-light)] p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col items-center text-center">
-                    <i data-lucide="user" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
-                    <p class="text-base sm:text-lg italic mb-4">"Beautiful surroundings and top-notch facilities. Highly recommend for anyone seeking luxury and peace."</p>
-                    <p class="font-semibold">- John Smith</p>
-                </div>
-                <div class="bg-[var(--bg-light)] p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col items-center text-center">
-                    <i data-lucide="user" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
-                    <p class="text-base sm:text-lg italic mb-4">"Perfect for our family vacation. The activities and amenities kept everyone entertained and relaxed."</p>
-                    <p class="font-semibold">- Emily Johnson</p>
+                <div class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-amber-400 mr-2"></i>
+                    <span class="text-white font-medium text-sm">Ikere Road, Ado-Ekiti</span>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-16 sm:py-20 bg-[var(--secondary)] text-[var(--text-light)] text-center">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-4xl sm:text-5xl font-bold mb-6 sm:mb-8 flex justify-center items-center gap-2">
-                <i data-lucide="plane" class="w-10 h-10 text-[var(--accent)]"></i>
-                Ready for Your Adventure?
-            </h2>
-            <p class="text-lg sm:text-xl mb-8 sm:mb-12 max-w-2xl mx-auto">Book your stay at Atlas Resort today and create memories that last a lifetime in our elegant paradise.</p>
-            <a href="#book" class="bg-[var(--text-light)] text-[var(--primary)] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--bg-light)] transition transform hover:scale-105">Book Now</a>
-        </div>
-    </section>
-    <footer id="contact" class="bg-[var(--primary)] text-[var(--text-light)] py-12 sm:py-16 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20" style="background-image: url('https://via.placeholder.com/1920x300?text=Wave+Pattern'); background-size: cover;"></div>
-        <div class="container mx-auto px-4 sm:px-6 relative z-10 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <h3 class="text-2xl font-bold mb-4 flex items-center gap-2"><i data-lucide="hotel" class="w-8 h-8 text-[var(--accent)]"></i> Atlas Resort</h3>
-                <p class="mb-4">Timeless luxury in the heart of Ado. Experience elegance redefined.</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="link" class="w-6 h-6 text-[var(--accent)]"></i> Quick Links</h3>
-                <ul class="space-y-2">
-                    <li><a href="#home" class="hover:text-[var(--accent)] transition">Home</a></li>
-                    <li><a href="#about" class="hover:text-[var(--accent)] transition">About</a></li>
-                    <li><a href="#rooms" class="hover:text-[var(--accent)] transition">Rooms</a></li>
-                    <li><a href="#events" class="hover:text-[var(--accent)] transition">Events</a></li>
-                    <li><a href="#blog" class="hover:text-[var(--accent)] transition">Blog</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="mail" class="w-6 h-6 text-[var(--accent)]"></i> Contact Us</h3>
-                <p class="mb-2">Email: info@atlasresort.com</p>
-                <p class="mb-2">Phone: +123-456-7890</p>
-                <p>Address: 123 Resort Lane, Ado, Nigeria</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="share-2" class="w-6 h-6 text-[var(--accent)]"></i> Follow Us</h3>
-                <div class="flex space-x-4">
-                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="facebook" class="w-8 h-8"></i></a>
-                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="instagram" class="w-8 h-8"></i></a>
-                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="twitter" class="w-8 h-8"></i></a>
-                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="linkedin" class="w-8 h-8"></i></a>
-                </div>
-            </div>
-        </div>
-       <div
-  class="container mx-auto px-4 sm:px-6 relative z-10 mt-8 text-center border-t border-[var(--secondary)]/30 pt-4"
->
-  <p class="text-sm">
-    &copy; 2025 Atlas Resort. All rights reserved. |
-    <a href="#" class="hover:text-[var(--accent)]">Privacy Policy</a> |
-    <a href="#" class="hover:text-[var(--accent)]">Terms of Service</a>
-  </p>
-  <p class="text-xs mt-2">
-    Designed & Developed by 
-<a href="https://folio-two-blush.vercel.app/" target="_blank" class="hover:text-\[var\(--accent\)\] font-semibold">Alonge Korede</a>
-  </p>
-</div>
 
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-br from-slate-50 to-teal-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-5xl font-bold mb-6" style="color: var(--slate-dark);">
+                    About Atlas Motels & Resort
+                </h2>
+                <div class="w-24 h-1 mx-auto mb-6" style="background: var(--gold-primary);"></div>
+                <p class="text-xl max-w-3xl mx-auto text-gray-700 leading-relaxed">
+                    Since 1979, Atlas Motels & Resort has been Ekiti's cornerstone of exceptional hospitality. Founded by the late Otunba Olayiwola Igadan, our establishment has grown into a premier destination offering world-class accommodation, fine dining, and unforgettable event experiences.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style="background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary));">
+                        <i data-lucide="landmark" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-center" style="color: var(--slate-dark);">Our Heritage</h3>
+                    <p class="text-gray-600 text-center">Over four decades of excellence, serving generations with unwavering commitment to quality and service.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style="background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));">
+                        <i data-lucide="heart" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-center" style="color: var(--slate-dark);">Our Mission</h3>
+                    <p class="text-gray-600 text-center">To provide exceptional hospitality experiences that exceed expectations and create lasting memories.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style="background: linear-gradient(135deg, var(--coral-accent), #FB923C);">
+                        <i data-lucide="users" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-center" style="color: var(--slate-dark);">Our Promise</h3>
+                    <p class="text-gray-600 text-center">Privacy, security, luxury, and personalized service that makes every guest feel at home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-8 bg-gradient-to-br from-teal-50 to-white rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2"
+                     x-data="{ count: 0, target: 45, visible: false }"
+                     x-intersect="if (!visible) { visible = true; let start = 0; let increment = target / 125; let timer = setInterval(() => { start += increment; count = Math.floor(start); if (start >= target) { count = target; clearInterval(timer); } }, 16); }">
+                    <i data-lucide="clock" class="w-12 h-12 mx-auto mb-4" style="color: var(--teal-primary);"></i>
+                    <div class="text-5xl font-bold mb-2" style="color: var(--teal-primary);" x-text="count + '+'"></div>
+                    <div class="text-gray-600 font-medium text-lg">Years of Excellence</div>
+                </div>
+                
+                <div class="text-center p-8 bg-gradient-to-br from-amber-50 to-white rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2"
+                     x-data="{ count: 0, target: 10000, visible: false }"
+                     x-intersect="if (!visible) { visible = true; let start = 0; let increment = target / 125; let timer = setInterval(() => { start += increment; count = Math.floor(start); if (start >= target) { count = target; clearInterval(timer); } }, 16); }">
+                    <i data-lucide="users" class="w-12 h-12 mx-auto mb-4" style="color: var(--gold-primary);"></i>
+                    <div class="text-5xl font-bold mb-2" style="color: var(--gold-primary);" x-text="count.toLocaleString() + '+'"></div>
+                    <div class="text-gray-600 font-medium text-lg">Happy Guests</div>
+                </div>
+                
+                <div class="text-center p-8 bg-gradient-to-br from-orange-50 to-white rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2"
+                     x-data="{ count: 0, target: 5000, visible: false }"
+                     x-intersect="if (!visible) { visible = true; let start = 0; let increment = target / 125; let timer = setInterval(() => { start += increment; count = Math.floor(start); if (start >= target) { count = target; clearInterval(timer); } }, 16); }">
+                    <i data-lucide="calendar-check" class="w-12 h-12 mx-auto mb-4" style="color: var(--coral-accent);"></i>
+                    <div class="text-5xl font-bold mb-2" style="color: var(--coral-accent);" x-text="count.toLocaleString() + '+'"></div>
+                    <div class="text-gray-600 font-medium text-lg">Events Hosted</div>
+                </div>
+                
+                <div class="text-center p-8 bg-gradient-to-br from-emerald-50 to-white rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2"
+                     x-data="{ count: 0, target: 98, visible: false }"
+                     x-intersect="if (!visible) { visible = true; let start = 0; let increment = target / 125; let timer = setInterval(() => { start += increment; count = Math.floor(start); if (start >= target) { count = target; clearInterval(timer); } }, 16); }">
+                    <i data-lucide="star" class="w-12 h-12 mx-auto mb-4 text-emerald-600"></i>
+                    <div class="text-5xl font-bold text-emerald-600 mb-2" x-text="count + '%'"></div>
+                    <div class="text-gray-600 font-medium text-lg">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-20 bg-gradient-to-br from-slate-50 to-teal-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-5xl font-bold mb-6" style="color: var(--slate-dark);">
+                    Luxury Accommodation
+                </h2>
+                <div class="w-24 h-1 mx-auto mb-6" style="background: var(--gold-primary);"></div>
+                <p class="text-xl max-w-3xl mx-auto text-gray-700">
+                    Experience comfort and elegance in our well-appointed rooms, designed for both business and leisure travelers.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Standard Room -->
+                <div class="card-compact bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800" alt="Standard Room" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 px-4 py-2 rounded-full font-semibold text-white text-sm" style="background: var(--teal-primary);">
+                            Most Popular
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-2xl font-bold mb-3" style="color: var(--slate-dark);">Standard Room</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Comfortable and well-appointed with modern amenities for a relaxing stay.</p>
+                        
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center text-gray-700 text-sm">
+                                <i data-lucide="wifi" class="w-4 h-4 mr-2" style="color: var(--teal-primary);"></i>
+                                <span>Free WiFi</span>
+                            </div>
+                            <div class="flex items-center text-gray-700 text-sm">
+                                <i data-lucide="tv" class="w-4 h-4 mr-2" style="color: var(--teal-primary);"></i>
+                                <span>Flat Screen TV</span>
+                            </div>
+                            <div class="flex items-center text-gray-700 text-sm">
+                                <i data-lucide="wind" class="w-4 h-4 mr-2" style="color: var(--teal-primary);"></i>
+                                <span>Air Conditioning</span>
+                            </div>
+                            <div class="flex items-center text-gray-700 text-sm">
+                                <i data-lucide="droplet" class="w-4 h-4 mr-2" style="color: var(--teal-primary);"></i>
+                                <span>En-suite Bathroom</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-baseline justify-between mb-4">
+                            <div>
+                                <span class="text-2xl font-bold" style="color: var(--teal-primary);">₦15,000</span>
+                                <span class="text-gray-500 text-sm ml-1">/ night</span>
+                            </div>
+                        </div>
+                                         </div>
+                </div>
+
+                <!-- Deluxe Room -->
+                <div class="card-compact bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800" alt="Deluxe Room" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 px-4 py-2 rounded-full font-semibold text-white text-sm" style="background: var(--gold-primary);">
+                            Premium
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-2xl font-bold mb-3" style="color: var(--slate-dark);">Deluxe Room</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Spacious luxury with premium furnishings and enhanced comfort.</p>
+                        
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center text-gray-700 text-sm">
+                                <i data-lucide="maximize" class="w-4 h-4 mr-2" style="color: var(--gold-primary);"></i>
+                                <span>Larger Space</span>
+                            </div>
+                            <div class="flex items-center text-gray-700 text-sm">
+                                <i data-lucide="coffee" class="w-4 h-4 mr-2" style="color: var(--gold-primary);"></i>
+                                <span>Mini Bar</span>
+                            </div>
+                            <div class="flex items-center text-gray-700 text-sm">
+                                <i data-lucide="sofa" class="w-4 h-4 mr-2" style="color: var(--gold-primary);"></i>
+                                <span>Seating Area</span>
+                            </div>
+                            <div class="flex items-center text-gray-700 text-sm">
+                                <i data-lucide="shield-check" class="w-4 h-4 mr-2" style="color: var(--gold-primary);"></i>
+                                <span>Premium Amenities</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-baseline justify-between mb-4">
+                            <div>
+                                <span class="text-2xl font-bold" style="color: var(--gold-primary);">₦25,000</span>
+                                <span class="text-gray-500 text-sm ml-1">/ night</span>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+
+                <!-- Executive Suite -->
+                <div class="card-compact bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800" alt="Executive Suite" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 px-4 py-2 rounded-full font-semibold text-white text-sm" style="background: var(--coral-accent);">
+                            Luxury
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-2xl font-bold mb-3" style="color: var(--slate-dark);">Executive Suite</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Ultimate luxury with separate living area and premium services.</p>
+                        
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center text-gray-700 text-sm">
+                                <i data-lucide="bed-double" class="w-4 h-4 mr-2" style="color: var(--coral-accent);"></i>
+                                <span>King Size Bed</span>
+                            </div>
+                            <div class="flex items-center text-gray-700 text-sm">
+                                <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2" style="color: var(--coral-accent);"></i>
+                                <span>Separate Living Room</span>
+                            </div>
+                            <div class="flex items-center text-gray-700 text-sm">
+                                <i data-lucide="bath" class="w-4 h-4 mr-2" style="color: var(--coral-accent);"></i>
+                                <span>Luxury Bathroom</span>
+                            </div>
+                            <div class="flex items-center text-gray-700 text-sm">
+                                <i data-lucide="sparkles" class="w-4 h-4 mr-2" style="color: var(--coral-accent);"></i>
+                                <span>VIP Services</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-baseline justify-between mb-4">
+                            <div>
+                                <span class="text-2xl font-bold" style="color: var(--coral-accent);">₦40,000</span>
+                                <span class="text-gray-500 text-sm ml-1">/ night</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="rooms.html" class="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all shadow-lg text-white" style="background: linear-gradient(135deg, var(--slate-dark), var(--slate-medium));">
+                    View All Rooms
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Venues Section -->
+    <section id="venues" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-5xl font-bold mb-6" style="color: var(--slate-dark);">
+                    Event Venues
+                </h2>
+                <div class="w-24 h-1 mx-auto mb-6" style="background: var(--gold-primary);"></div>
+                <p class="text-xl max-w-3xl mx-auto text-gray-700">
+                    Host your special occasions at our premium venues with flexible per-person pricing.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10 max-w-7xl mx-auto" x-data="venuesData()">
+                
+                <!-- Legacy Gardens -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-2"
+                     x-data="venueCard(venues[0])">
+                    <!-- Image Carousel -->
+                    <div class="relative h-96 bg-slate-900 overflow-hidden group">
+                        <img :src="venue.images[imgIdx]" :alt="venue.name" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        
+                        <!-- Navigation Arrows -->
+                        <div class="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button @click="imgIdx = (imgIdx - 1 + venue.images.length) % venue.images.length"
+                                    class="bg-black/60 backdrop-blur-sm p-3 rounded-full hover:bg-black/80 transition-all">
+                                <i data-lucide="chevron-left" class="w-6 h-6 text-white"></i>
+                            </button>
+                            <button @click="imgIdx = (imgIdx + 1) % venue.images.length"
+                                    class="bg-black/60 backdrop-blur-sm p-3 rounded-full hover:bg-black/80 transition-all">
+                                <i data-lucide="chevron-right" class="w-6 h-6 text-white"></i>
+                            </button>
+                        </div>
+
+                        <!-- Dot Indicators -->
+                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                            <template x-for="(_, idx) in venue.images" :key="idx">
+                                <button @click="imgIdx = idx"
+                                        :class="imgIdx === idx ? 'w-8 bg-amber-400' : 'w-2 bg-white/60'"
+                                        class="h-2 rounded-full transition-all"></button>
+                            </template>
+                        </div>
+
+                        <!-- Badge -->
+                        <div class="absolute top-6 right-6 px-5 py-2 rounded-full font-bold text-white text-sm backdrop-blur-sm"
+                             style="background: var(--teal-primary);">
+                            Most Popular
+                        </div>
+
+                        <!-- Image Counter -->
+                        <div class="absolute top-6 left-6 bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <span x-text="imgIdx + 1"></span> / <span x-text="venue.images.length"></span>
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="p-8">
+                        <h3 class="font-serif text-4xl font-bold mb-4" style="color: var(--slate-dark);" x-text="venue.name"></h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed" x-text="venue.description"></p>
+                        
+                        <!-- Features Grid -->
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <template x-for="feature in venue.features" :key="feature.text">
+                                <div class="flex items-center gap-3 text-gray-700">
+                                    <i :data-lucide="feature.icon" class="w-5 h-5" style="color: var(--teal-primary);"></i>
+                                    <span class="text-sm font-medium" x-text="feature.text"></span>
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- Pricing Info -->
+                        <div class="bg-gradient-to-br from-teal-50 to-emerald-50 p-6 rounded-2xl mb-6 border border-teal-100">
+                            <div class="flex items-baseline justify-between mb-2">
+                                <span class="text-4xl font-bold" style="color: var(--teal-primary);" x-text="'₦' + venue.pricePerPerson.toLocaleString()"></span>
+                                <span class="text-gray-600 font-medium">per person</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">
+                                <span class="font-semibold" x-text="venue.minGuests + ' - ' + venue.maxGuests"></span> guests capacity
+                            </p>
+                        </div>
+                        
+                        <button @click="$dispatch('open-venue-booking', venue)"
+                                class="w-full text-white py-4 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-2"
+                                style="background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary));">
+                            <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                            Book Legacy Gardens
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Open Field -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-2"
+                     x-data="venueCard(venues[1])">
+                    <!-- Image Carousel -->
+                    <div class="relative h-96 bg-slate-900 overflow-hidden group">
+                        <img :src="venue.images[imgIdx]" :alt="venue.name" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        
+                        <!-- Navigation Arrows -->
+                        <div class="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button @click="imgIdx = (imgIdx - 1 + venue.images.length) % venue.images.length"
+                                    class="bg-black/60 backdrop-blur-sm p-3 rounded-full hover:bg-black/80 transition-all">
+                                <i data-lucide="chevron-left" class="w-6 h-6 text-white"></i>
+                            </button>
+                            <button @click="imgIdx = (imgIdx + 1) % venue.images.length"
+                                    class="bg-black/60 backdrop-blur-sm p-3 rounded-full hover:bg-black/80 transition-all">
+                                <i data-lucide="chevron-right" class="w-6 h-6 text-white"></i>
+                            </button>
+                        </div>
+
+                        <!-- Dot Indicators -->
+                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                            <template x-for="(_, idx) in venue.images" :key="idx">
+                                <button @click="imgIdx = idx"
+                                        :class="imgIdx === idx ? 'w-8 bg-amber-400' : 'w-2 bg-white/60'"
+                                        class="h-2 rounded-full transition-all"></button>
+                            </template>
+                        </div>
+
+                        <!-- Badge -->
+                        <div class="absolute top-6 right-6 px-5 py-2 rounded-full font-bold text-white text-sm backdrop-blur-sm"
+                             style="background: var(--coral-accent);">
+                            Large Events
+                        </div>
+
+                        <!-- Image Counter -->
+                        <div class="absolute top-6 left-6 bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <span x-text="imgIdx + 1"></span> / <span x-text="venue.images.length"></span>
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="p-8">
+                        <h3 class="font-serif text-4xl font-bold mb-4" style="color: var(--slate-dark);" x-text="venue.name"></h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed" x-text="venue.description"></p>
+                        
+                        <!-- Features Grid -->
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <template x-for="feature in venue.features" :key="feature.text">
+                                <div class="flex items-center gap-3 text-gray-700">
+                                    <i :data-lucide="feature.icon" class="w-5 h-5" style="color: var(--coral-accent);"></i>
+                                    <span class="text-sm font-medium" x-text="feature.text"></span>
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- Pricing Info -->
+                        <div class="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-2xl mb-6 border border-orange-100">
+                            <div class="flex items-baseline justify-between mb-2">
+                                <span class="text-4xl font-bold" style="color: var(--coral-accent);" x-text="'₦' + venue.pricePerPerson.toLocaleString()"></span>
+                                <span class="text-gray-600 font-medium">per person</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">
+                                <span class="font-semibold" x-text="venue.minGuests + ' - ' + venue.maxGuests + '+'"></span> guests capacity
+                            </p>
+                        </div>
+                        
+                        <button @click="$dispatch('open-venue-booking', venue)"
+                                class="w-full text-white py-4 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-2"
+                                style="background: linear-gradient(135deg, var(--coral-accent), #FB923C);">
+                            <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                            Book Open Field
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Booking Modal -->
+    <div x-data="{
+        show: false,
+        venue: null,
+        eventDate: '',
+        guestCount: 50,
+        eventType: '',
+        eventDuration: '4',
+        setupNeeded: false,
+        cateringNeeded: false,
+        total: 0,
+        curMonth: new Date().getMonth(),
+        curYear: new Date().getFullYear(),
+        bookedDates: [
+            new Date(2026,1,14),
+            new Date(2026,1,15),
+            new Date(2026,1,21),
+            new Date(2026,1,28)
+        ],
+        calc() {
+            if (this.venue && this.guestCount) {
+                const basePrice = this.venue.pricePerPerson * this.guestCount;
+                const setupFee = this.setupNeeded ? 50000 : 0;
+                const cateringFee = this.cateringNeeded ? (this.guestCount * 1500) : 0;
+                this.total = basePrice + setupFee + cateringFee;
+            }
+        },
+        prevMonth() {
+            this.curMonth--; if (this.curMonth < 0) { this.curMonth = 11; this.curYear--; }
+        },
+        nextMonth() {
+            this.curMonth++; if (this.curMonth > 11) { this.curMonth = 0; this.curYear++; }
+        },
+        monthLabel() {
+            return new Date(this.curYear, this.curMonth).toLocaleDateString('en-US', { month:'long', year:'numeric' });
+        },
+        calDays() {
+            const year = this.curYear, month = this.curMonth;
+            const firstDow = new Date(year, month, 1).getDay();
+            const daysInM = new Date(year, month + 1, 0).getDate();
+            const cells = [];
+            for (let i = 0; i < firstDow; i++) cells.push({ label:'', cls:'cal-day-venue disabled' });
+            for (let d = 1; d <= daysInM; d++) {
+                const date = new Date(year, month, d);
+                const isBooked = this.bookedDates.some(bd => bd.getTime() === date.getTime());
+                const isPast = date < new Date(new Date().setHours(0,0,0,0));
+                cells.push({
+                    label: d,
+                    date: date.toISOString().split('T')[0],
+                    cls: 'cal-day-venue ' + (isPast ? 'disabled' : isBooked ? 'booked' : 'available')
+                });
+            }
+            return cells;
+        },
+        selectDate(dateStr) {
+            if (dateStr) this.eventDate = dateStr;
+        }
+    }" 
+    @open-venue-booking.window="show=true; venue=$event.detail; guestCount=venue.minGuests; eventDate=''; total=0; calc();"
+    x-show="show" x-cloak
+    style="display: none;">
+
+        <!-- Overlay -->
+        <div x-show="show"
+             x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+             class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+             @click="show = false">
+
+            <!-- Modal Box -->
+            <div x-show="show"
+                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                 @click.stop
+                 class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto">
+
+                <!-- Header -->
+                <div class="sticky top-0 z-10 text-white px-8 py-6 rounded-t-3xl"
+                     style="background: linear-gradient(135deg, var(--teal-primary), var(--gold-primary));">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="font-serif text-3xl font-bold" x-text="'Book ' + (venue ? venue.name : '')"></h2>
+                            <p class="text-white/90 text-sm mt-1">Complete your event booking in a few simple steps</p>
+                        </div>
+                        <button @click="show = false" class="p-2 hover:bg-white/20 rounded-full transition-all">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Body -->
+                <div class="p-8 space-y-8">
+
+                    <!-- Calendar Section -->
+                    <div>
+                        <h3 class="font-bold text-xl mb-4 flex items-center gap-2" style="color: var(--slate-dark);">
+                            <i data-lucide="calendar" class="w-5 h-5" style="color: var(--gold-primary);"></i>
+                            Select Event Date
+                        </h3>
+                        
+                        <div class="bg-gradient-to-br from-slate-50 to-teal-50 p-6 rounded-2xl border border-slate-200">
+                            <!-- Month Navigation -->
+                            <div class="flex items-center justify-between mb-4">
+                                <button @click="prevMonth()" class="p-2 hover:bg-white rounded-lg transition-all">
+                                    <i data-lucide="chevron-left" class="w-5 h-5 text-gray-700"></i>
+                                </button>
+                                <span class="font-bold text-lg text-gray-800" x-text="monthLabel()"></span>
+                                <button @click="nextMonth()" class="p-2 hover:bg-white rounded-lg transition-all">
+                                    <i data-lucide="chevron-right" class="w-5 h-5 text-gray-700"></i>
+                                </button>
+                            </div>
+
+                            <!-- Day Headers -->
+                            <div class="grid grid-cols-7 gap-2 mb-2">
+                                <template x-for="d in ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']">
+                                    <div class="text-center text-xs font-bold text-gray-600" x-text="d"></div>
+                                </template>
+                            </div>
+
+                            <!-- Calendar Days -->
+                            <div class="grid grid-cols-7 gap-2">
+                                <template x-for="(cell, ci) in calDays()" :key="ci">
+                                    <button :class="cell.cls + (eventDate === cell.date ? ' selected' : '')"
+                                            @click="cell.cls.includes('available') ? selectDate(cell.date) : null"
+                                            x-text="cell.label"></button>
+                                </template>
+                            </div>
+
+                            <!-- Legend -->
+                            <div class="flex items-center gap-4 mt-4 pt-4 border-t border-slate-200 text-xs">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-4 h-4 rounded bg-emerald-100 border border-emerald-300"></div>
+                                    <span class="text-gray-600">Available</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-4 h-4 rounded bg-red-100 border border-red-300"></div>
+                                    <span class="text-gray-600">Booked</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-4 h-4 rounded bg-amber-200 border-2 border-amber-500"></div>
+                                    <span class="text-gray-600">Selected</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div x-show="eventDate" class="mt-3 text-sm font-semibold" style="color: var(--teal-primary);">
+                            Selected Date: <span x-text="new Date(eventDate).toLocaleDateString('en-US', {weekday:'long', year:'numeric', month:'long', day:'numeric'})"></span>
+                        </div>
+                    </div>
+
+                    <!-- Event Details -->
+                    <div class="border-t border-gray-100 pt-6">
+                        <h3 class="font-bold text-xl mb-4 flex items-center gap-2" style="color: var(--slate-dark);">
+                            <i data-lucide="clipboard-list" class="w-5 h-5" style="color: var(--gold-primary);"></i>
+                            Event Details
+                        </h3>
+
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <!-- Event Type -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Event Type *</label>
+                                <select x-model="eventType" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-transparent">
+                                    <option value="">Select event type</option>
+                                    <option value="wedding">Wedding</option>
+                                    <option value="birthday">Birthday Party</option>
+                                    <option value="corporate">Corporate Event</option>
+                                    <option value="anniversary">Anniversary</option>
+                                    <option value="graduation">Graduation</option>
+                                    <option value="conference">Conference</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Guest Count -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Number of Guests *</label>
+                                <div class="flex items-center gap-3">
+                                    <button @click="guestCount = Math.max((venue?.minGuests || 50), guestCount - 10); calc();"
+                                            class="w-12 h-12 flex items-center justify-center rounded-xl border-2 border-gray-300 hover:border-teal-400 transition-all">
+                                            <i data-lucide="minus" class="w-5 h-5"></i>
+                                    </button>
+                                    <input type="number" x-model.number="guestCount" @input="calc()" 
+                                           :min="venue?.minGuests || 50" :max="venue?.maxGuests || 1000"
+                                           class="flex-1 text-center px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-transparent font-bold text-lg">
+                                    <button @click="guestCount = Math.min((venue?.maxGuests || 1000), guestCount + 10); calc();"
+                                            class="w-12 h-12 flex items-center justify-center rounded-xl border-2 border-gray-300 hover:border-teal-400 transition-all">
+                                            <i data-lucide="plus" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Event Duration -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Event Duration (hours) *</label>
+                                <select x-model="eventDuration" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-transparent">
+                                    <option value="2">2 hours</option>
+                                    <option value="4">4 hours</option>
+                                    <option value="6">6 hours</option>
+                                    <option value="8">8 hours (Full day)</option>
+                                </select>
+                            </div>
+
+                            <!-- Start Time -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Start Time *</label>
+                                <input type="time" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <!-- Additional Services -->
+                        <div class="mt-6 space-y-3">
+                            <label class="flex items-start gap-3 p-4 border border-gray-200 rounded-xl hover:border-teal-400 cursor-pointer transition-all">
+                                <input type="checkbox" x-model="setupNeeded" @change="calc()" class="mt-1 w-5 h-5 rounded" style="accent-color: var(--teal-primary);">
+                                <div class="flex-1">
+                                    <div class="font-semibold text-gray-800">Professional Setup & Decoration</div>
+                                    <div class="text-sm text-gray-600">Tables, chairs, canopies, and basic decoration - ₦50,000</div>
+                                </div>
+                            </label>
+
+                            <label class="flex items-start gap-3 p-4 border border-gray-200 rounded-xl hover:border-teal-400 cursor-pointer transition-all">
+                                <input type="checkbox" x-model="cateringNeeded" @change="calc()" class="mt-1 w-5 h-5 rounded" style="accent-color: var(--teal-primary);">
+                                <div class="flex-1">
+                                    <div class="font-semibold text-gray-800">Catering Service</div>
+                                    <div class="text-sm text-gray-600">Full meal service - ₦1,500 per person</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="border-t border-gray-100 pt-6">
+                        <h3 class="font-bold text-xl mb-4 flex items-center gap-2" style="color: var(--slate-dark);">
+                            <i data-lucide="user" class="w-5 h-5" style="color: var(--gold-primary);"></i>
+                            Contact Information
+                        </h3>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                                <input type="text" required placeholder="John Doe"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" required placeholder="john@example.com"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
+                                <input type="tel" required placeholder="+234 XXX XXXX XXX"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Company/Organization</label>
+                                <input type="text" placeholder="Optional"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <!-- Special Requests -->
+                        <div class="mt-4">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Special Requests</label>
+                            <textarea rows="3" placeholder="Any special arrangements or requirements..."
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-transparent"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Price Summary -->
+                    <div class="bg-gradient-to-br from-teal-50 to-emerald-50 p-6 rounded-2xl border border-teal-200">
+                        <h3 class="font-bold text-lg mb-4 flex items-center gap-2" style="color: var(--slate-dark);">
+                            <i data-lucide="receipt" class="w-5 h-5" style="color: var(--teal-primary);"></i>
+                            Booking Summary
+                        </h3>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between text-gray-700">
+                                <span>Venue Rate (<span x-text="guestCount"></span> guests × <span x-text="'₦' + (venue?.pricePerPerson || 0).toLocaleString()"></span>)</span>
+                                <span class="font-semibold" x-text="'₦' + ((venue?.pricePerPerson || 0) * guestCount).toLocaleString()"></span>
+                            </div>
+                            <div x-show="setupNeeded" class="flex justify-between text-gray-700">
+                                <span>Setup & Decoration</span>
+                                <span class="font-semibold">₦50,000</span>
+                            </div>
+                            <div x-show="cateringNeeded" class="flex justify-between text-gray-700">
+                                <span>Catering Service (<span x-text="guestCount"></span> × ₦1,500)</span>
+                                <span class="font-semibold" x-text="'₦' + (guestCount * 1500).toLocaleString()"></span>
+                            </div>
+                            <div class="border-t-2 border-teal-300 pt-3 flex justify-between items-center">
+                                <span class="text-lg font-bold" style="color: var(--slate-dark);">Total Amount</span>
+                                <span class="text-3xl font-bold" style="color: var(--teal-primary);" x-text="'₦' + total.toLocaleString()"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms -->
+                    <div class="bg-amber-50 p-4 rounded-xl border border-amber-200">
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" required class="mt-1 w-5 h-5 rounded" style="accent-color: var(--teal-primary);">
+                            <span class="text-sm text-gray-700">
+                                I agree to the <a href="#" class="font-semibold hover:underline" style="color: var(--teal-primary);">Terms & Conditions</a>, <a href="#" class="font-semibold hover:underline" style="color: var(--teal-primary);">Cancellation Policy</a>, and confirm all information provided is accurate. *
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex gap-4 pt-4">
+                        <button type="button" @click="show = false"
+                                class="flex-1 border-2 border-gray-300 text-gray-700 py-4 rounded-full font-bold hover:bg-gray-50 transition-all">
+                            Cancel
+                        </button>
+                        <button type="button"
+                                class="flex-1 text-white py-4 rounded-full font-bold hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-2"
+                                style="background: linear-gradient(135deg, var(--teal-primary), var(--gold-primary));">
+                            <i data-lucide="credit-card" class="w-5 h-5"></i>
+                            Proceed to Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gradient-to-br from-slate-50 to-teal-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-5xl font-bold mb-6" style="color: var(--slate-dark);">
+                    Our Services
+                </h2>
+                <div class="w-24 h-1 mx-auto mb-6" style="background: var(--gold-primary);"></div>
+                <p class="text-xl max-w-3xl mx-auto text-gray-700">
+                    Comprehensive hospitality services to make your stay and events exceptional.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary));">
+                        <i data-lucide="utensils" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--slate-dark);">Fine Dining</h3>
+                    <p class="text-gray-600">Exceptional restaurant with diverse menu featuring local and continental cuisine.</p>
+                </div>
+                
+                <div class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));">
+                        <i data-lucide="glass-water" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--slate-dark);">Premium Bar</h3>
+                    <p class="text-gray-600">Well-stocked bar with premium spirits, wines, and expertly crafted cocktails.</p>
+                </div>
+                
+                <div class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--coral-accent), #FB923C);">
+                        <i data-lucide="briefcase" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--slate-dark);">Business Center</h3>
+                    <p class="text-gray-600">Modern facilities for meetings, conferences, and business travelers.</p>
+                </div>
+                
+                <div class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #8B5CF6, #7C3AED);">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--slate-dark);">24/7 Security</h3>
+                    <p class="text-gray-600">Round-the-clock professional security for your peace of mind.</p>
+                </div>
+                
+                <div class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #EC4899, #DB2777);">
+                        <i data-lucide="party-popper" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--slate-dark);">Event Planning</h3>
+                    <p class="text-gray-600">Professional event coordination and catering services for all occasions.</p>
+                </div>
+                
+                <div class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #10B981, #059669);">
+                        <i data-lucide="car" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--slate-dark);">Ample Parking</h3>
+                    <p class="text-gray-600">Secure parking facilities for guests and event attendees.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 fade-in">
+
+            <!-- Gallery Card -->
+            <div class="max-w-5xl mx-auto bg-slate-900 text-white rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden">
+
+                <!-- Ambient highlights -->
+                <div class="absolute -top-24 -left-24 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+
+                <!-- Header -->
+                <div class="text-center mb-10 relative z-10">
+                    <h2 class="font-serif text-4xl sm:text-5xl font-bold mb-4">
+                        Gallery
+                    </h2>
+                    <div class="w-16 h-1 mx-auto mb-4" style="background: var(--gold-primary);"></div>
+                    <p class="text-base sm:text-lg max-w-2xl mx-auto text-gray-300">
+                        Explore our beautiful facilities and memorable moments captured at Atlas Motels.
+                    </p>
+                </div>
+
+                <!-- Images -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10">
+
+                    <div class="relative h-40 md:h-48 rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center">
+                            <i data-lucide="zoom-in" class="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                    </div>
+
+                    <div class="relative h-40 md:h-48 rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center">
+                            <i data-lucide="zoom-in" class="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                    </div>
+
+                    <div class="relative h-40 md:h-48 rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1519167758481-83f29da8fd21?w=400"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center">
+                            <i data-lucide="zoom-in" class="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                    </div>
+
+                    <div class="relative h-40 md:h-48 rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=400"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center">
+                            <i data-lucide="zoom-in" class="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                    </div>
+
+                    <div class="relative h-40 md:h-48 rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=400"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center">
+                            <i data-lucide="zoom-in" class="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                    </div>
+
+                    <div class="relative h-40 md:h-48 rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center">
+                            <i data-lucide="zoom-in" class="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                    </div>
+
+                    <div class="relative h-40 md:h-48 rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://plus.unsplash.com/premium_photo-1675745329954-9639d3b74bbf?w=400"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center">
+                            <i data-lucide="zoom-in" class="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                    </div>
+
+                    <div class="relative h-40 md:h-48 rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?w=400"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center">
+                            <i data-lucide="zoom-in" class="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="font-serif text-2xl font-bold mb-4">Atlas Motels</h3>
+                    <p class="text-gray-400">Ekiti's premier hospitality destination since 1979. Creating unforgettable memories.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-amber-400 transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-amber-400 transition-colors">About</a></li>
+                        <li><a href="#rooms" class="hover:text-amber-400 transition-colors">Rooms</a></li>
+                        <li><a href="#venues" class="hover:text-amber-400 transition-colors">Event Venues</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="map-pin" class="w-5 h-5 mt-1 flex-shrink-0"></i>
+                            <span>Ikere Road, Ado-Ekiti, Ekiti State</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                            <span>+234 XXX XXXX XXX</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                            <span>info@atlasmotels.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Follow Us</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 text-center">
+                <p class="text-gray-400">© 2026 Atlas Motels & Resort. All rights reserved.</p>
+                <p class="text-gray-500 text-sm mt-2">Founded by Otunba Olayiwola Igadan | Serving Ekiti Since 1979</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/234XXXXXXXXX" 
+       target="_blank"
+       class="fixed bottom-6 right-6 text-white p-4 rounded-full shadow-2xl hover:scale-110 transform transition-all z-40 flex items-center justify-center"
+       style="background: #25D366;">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+    </a>
+
+    <!-- Scripts -->
     <script>
         lucide.createIcons();
-        // Hamburger Menu Toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const navMenu = document.getElementById('nav-menu');
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('hidden');
-        });
+        
         // Hero Slider
         let slideIndex = 0;
         const slides = document.getElementById('slides');
         const dots = document.querySelectorAll('.dot');
+        
         function showSlide(n) {
-            slideIndex = (n + 4) % 4;
+            slideIndex = (n + 3) % 3;
             slides.style.transform = `translateX(-${slideIndex * 100}%)`;
             dots.forEach(dot => dot.classList.remove('active'));
             dots[slideIndex].classList.add('active');
         }
+        
         function currentSlide(n) {
             showSlide(n);
         }
+        
         function autoSlide() {
             showSlide(slideIndex + 1);
         }
+        
         setInterval(autoSlide, 5000);
         showSlide(0);
-   // Gallery Carousel (Improved Full Landscape Slider)
-let galleryIndex = 0;
-const gallerySlides = document.getElementById('gallery-slides');
-const gallerySlideCount = gallerySlides.children.length;
-function updateGallery() {
-    gallerySlides.style.transform = `translateX(-${galleryIndex * 100}%)`;
-}
-function galleryNext() {
-    galleryIndex = (galleryIndex + 1) % gallerySlideCount;
-    updateGallery();
-}
-function galleryPrev() {
-    galleryIndex = (galleryIndex - 1 + gallerySlideCount) % gallerySlideCount;
-    updateGallery();
-}
-updateGallery();
+
+        // Venue Data
+        function venuesData() {
+            return {
+                venues: [
+                    {
+                        name: 'Legacy Gardens',
+                        description: 'Beautiful landscaped gardens with covered pavilion, perfect for weddings, birthdays, and celebrations.',
+                        pricePerPerson: 2000,
+                        minGuests: 50,
+                        maxGuests: 300,
+                        images: [
+                            'https://images.unsplash.com/photo-1519167758481-83f29da8fd21?w=800',
+                            'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800',
+                            'https://images.unsplash.com/photo-1519741497674-611481863552?w=800',
+                            'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800',
+                            'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800'
+                        ],
+                        features: [
+                            { icon: 'users', text: '50-300 Guests' },
+                            { icon: 'umbrella', text: 'Covered Pavilion' },
+                            { icon: 'music', text: 'Sound System' },
+                            { icon: 'car', text: 'Ample Parking' },
+                            { icon: 'lightbulb', text: 'Professional Lighting' },
+                            { icon: 'shield-check', text: '24/7 Security' }
+                        ]
+                    },
+                    {
+                        name: 'Open Field',
+                        description: 'Expansive outdoor space ideal for festivals, large celebrations, sports tournaments, and community events.',
+                        pricePerPerson: 1500,
+                        minGuests: 300,
+                        maxGuests: 1000,
+                        images: [
+                            'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800',
+                            'https://images.unsplash.com/photo-1519741497674-611481863552?w=800',
+                            'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800',
+                            'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800',
+                            'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800',
+                            'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800'
+                        ],
+                        features: [
+                            { icon: 'users', text: '300-1,000+ Guests' },
+                            { icon: 'maximize', text: 'Expansive Space' },
+                            { icon: 'layout', text: 'Flexible Setup' },
+                            { icon: 'zap', text: 'Generator Backup' },
+                            { icon: 'truck', text: 'Easy Load Access' },
+                            { icon: 'shield-check', text: '24/7 Security' }
+                        ]
+                    }
+                ]
+            };
+        }
+
+        function venueCard(venue) {
+            return {
+                venue: venue,
+                imgIdx: 0
+            };
+        }
+
+        // Reinit lucide when Alpine loads
+        document.addEventListener('alpine:initialized', () => {
+            setTimeout(() => lucide.createIcons(), 100);
+        });
     </script>
-    <style>
-        @keyframes fade-in-down {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fade-in-up {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-down { animation: fade-in-down 1.5s ease-out; }
-        .animate-fade-in-up { animation: fade-in-up 1.5s ease-out; }
-        .delay-200 { animation-delay: 0.2s; }
-        .animate-fade-in { animation: fade-in-up 1s ease-out; }
-    </style>
+
 </body>
 </html>

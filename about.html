@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>About Atlas Resort - Our Story & Legacy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Atlas Motel & Resort - Our Story & Legacy</title>
+    <meta name="description" content="Discover the rich history of Atlas Motels & Resort. Serving Ekiti since 1979 with exceptional hospitality, luxury accommodation, and genuine Nigerian warmth.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-                :root {
-            --header-height: 76px;
-            --primary: #001F3F;             --secondary: #007BFF;             --accent: #D4AF37;             --bg-light: #F0F4F8;             --text-dark: #001F3F;
-            --text-light: #FFFFFF;
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        
+        /* Custom Color Palette */
+        :root {
+            --teal-primary: #0D9488;
+            --teal-secondary: #14B8A6;
+            --gold-primary: #F59E0B;
+            --gold-secondary: #D97706;
+            --coral-accent: #F97316;
+            --slate-dark: #1E293B;
+            --slate-medium: #334155;
         }
-                body {
-            padding-top: var(--header-height);
-        }
-                .parallax {
+        
+        .gradient-teal { background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary)); }
+        .gradient-gold { background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary)); }
+        .text-teal { color: var(--teal-primary); }
+        .text-gold { color: var(--gold-primary); }
+        .border-teal { border-color: var(--teal-primary); }
+        
+        .parallax {
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -24,124 +40,8 @@
         @media (max-width: 768px) {
             .parallax { background-attachment: scroll; }
         }
-                .carousel {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            margin-bottom: 3rem;
-            background-color: #000;         }
-                .carousel-slides {
-            display: flex;
-            transition: transform 0.7s ease-in-out;
-            will-change: transform;
-        }
-                .carousel-slide {
-            min-width: 100%;
-            height: 60vh;             max-height: 650px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            border-radius: inherit;
-        }
-.carousel-slide {
-        height: 75vh !important;             max-height: 700px;
-    }
-        @media (max-width: 1024px) {
-        .carousel-slide {
-            height: 65vh !important;
-        }
-    }
-        @media (max-width: 768px) {
-        .carousel-slide {
-            height: 60vh !important;
-        }
-    }
-        @media (max-width: 640px) {
-        .carousel-slide {
-            height: 65dvh !important;               min-height: 450px;                  }
-    }
-    @media (max-width: 480px) {
-        .carousel-slide {
-            height: 60dvh !important;
-            min-height: 420px;
-        }
-    }
-        .carousel {
-        margin-bottom: 0 !important;
-    }
-    .mb-12 {
-        margin-bottom: 3rem !important;      }
-    body {
-        margin: 0;
-        padding: 0;
-    }
-        * {
-        box-sizing: border-box;
-    }
-                .carousel-slide::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(0,0,0,0.12),
-                rgba(0,0,0,0.55)
-            );
-            border-radius: inherit;
-            z-index: 1;
-        }
-                .carousel-caption {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.55);
-            padding: 0.6rem 1rem;
-            border-radius: 12px;
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.4px;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-            z-index: 2;
-            max-width: 90%;
-            text-align: center;
-        }
-                .carousel-dots {
-            position: absolute;
-            bottom: 12px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            z-index: 20;
-            pointer-events: auto;
-        }
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            background: rgba(255,255,255,0.7);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-        }
-        .carousel-dot.active {
-            background: var(--accent);
-            width: 14px;
-            height: 14px;
-        }
-                .timeline {
+        
+        .timeline {
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
@@ -151,7 +51,7 @@
             content: '';
             position: absolute;
             width: 6px;
-            background-color: var(--accent);
+            background-color: var(--gold-primary);
             top: 0;
             bottom: 0;
             left: 50%;
@@ -170,7 +70,7 @@
             height: 22px;
             right: -13px;
             background-color: white;
-            border: 4px solid var(--accent);
+            border: 4px solid var(--gold-primary);
             top: 15px;
             border-radius: 50%;
             z-index: 1;
@@ -192,412 +92,481 @@
             .right::after { left: 15px; }
             .timeline-item::after { right: auto; left: 15px; }
         }
-                @keyframes fade-in-down { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fade-in-up   { from { opacity: 0; transform: translateY(30px); }  to { opacity: 1; transform: translateY(0); } }
-        @keyframes fade-in-left { from { opacity: 0; transform: translateX(-30px);}  to { opacity: 1; transform: translateX(0);} }
-        @keyframes fade-in-right{ from { opacity: 0; transform: translateX(30px);}   to { opacity: 1; transform: translateX(0);} }
-        .animate-fade-in-down { animation: fade-in-down 1.0s ease-out both; }
-        .animate-fade-in-up   { animation: fade-in-up   1.0s ease-out both; }
-        .animate-fade-in-left { animation: fade-in-left 1.0s ease-out both; }
-        .animate-fade-in-right{ animation: fade-in-right 1.0s ease-out both; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-400 { animation-delay: 0.4s; }
-        .delay-600 { animation-delay: 0.6s; }
-        .delay-800 { animation-delay: 0.8s; }
-        .delay-1000{ animation-delay: 1s; }
-                header nav a { text-decoration: none; }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+        
+        .animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+        .animate-fade-in-down { animation: fadeInDown 1s ease-out forwards; }
+        .animate-fade-in-left { animation: fadeInLeft 1s ease-out forwards; }
+        .animate-fade-in-right { animation: fadeInRight 1s ease-out forwards; }
+        .animate-fade-in-up-delay { animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0; }
+        
+        .delay-200 { animation-delay: 0.2s; opacity: 0; }
+        .delay-400 { animation-delay: 0.4s; opacity: 0; }
+        .delay-600 { animation-delay: 0.6s; opacity: 0; }
+        .delay-800 { animation-delay: 0.8s; opacity: 0; }
     </style>
 </head>
-<body class="font-sans antialiased" style="color:var(--text-dark); background-color:var(--bg-light);">
-<header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50" style="height:var(--header-height);">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center h-full">
-            <a href="index.html" class="text-2xl sm:text-3xl font-extrabold text-[var(--primary)] tracking-wide">Atlas Resort</a>
-            <div class="flex items-center gap-4">
-                <button id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" class="sm:hidden text-[var(--primary)] focus:outline-none" title="Toggle menu">
-                    <svg data-lucide="menu" class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none"></svg>
+<body class="font-sans antialiased bg-white">
+
+    <!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+         x-data="{ scrolled: false, sidebarOpen: false }"
+         x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 50)"
+         :class="scrolled ? 'bg-slate-900 shadow-2xl' : 'bg-transparent'">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="/" class="font-serif text-2xl font-bold text-white">Atlas Motels</a>
+                
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="text-white hover:text-amber-400 transition-colors font-medium">Home</a>
+                    <a href="about.html" class="text-white hover:text-amber-400 transition-colors font-medium">About</a>
+                    <a href="rooms.html" class="text-white hover:text-amber-400 transition-colors font-medium">Rooms</a>
+                    <a href="#venues" class="text-white hover:text-amber-400 transition-colors font-medium">Event Venues</a>
+                    <a href="#services" class="text-white hover:text-amber-400 transition-colors font-medium">Services</a>
+                    <a href="#gallery" class="text-white hover:text-amber-400 transition-colors font-medium">Gallery</a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="tel:+234" class="flex items-center text-white hover:text-amber-400 transition-colors">
+                        <i data-lucide="phone" class="w-5 h-5 mr-2"></i>
+                        <span>Call Now</span>
+                    </a>
+                    <button class="gradient-gold text-white px-6 py-2.5 rounded-full font-semibold hover:scale-105 transform transition-all shadow-lg">
+                        Book Your Stay
+                    </button>
+                </div>
+                
+                <button @click="sidebarOpen = true" class="lg:hidden text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
-              <ul id="nav-menu" class="hidden sm:flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 md:space-x-8 text-base sm:text-lg font-medium absolute sm:relative top-full left-0 w-full sm:w-auto bg-[var(--text-light)] sm:bg-transparent px-4 sm:px-0 py-4 sm:py-0 shadow-md sm:shadow-none">
-    <li class="flex items-center gap-2">
-        <i data-lucide="home" class="w-5 h-5"></i>
-        <a href="index.html" class="hover:text-[var(--secondary)] transition">Home</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="info" class="w-5 h-5"></i>
-        <a href="about.html" class="hover:text-[var(--secondary)] transition">About</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="key" class="w-5 h-5"></i>
-        <a href="rooms.html" class="hover:text-[var(--secondary)] transition">Rooms</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="calendar" class="w-5 h-5"></i>
-        <a href="event.html" class="hover:text-[var(--secondary)] transition">Events</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="book-open" class="w-5 h-5"></i>
-        <a href="blog.html" class="hover:text-[var(--secondary)] transition">Blog</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="mail" class="w-5 h-5"></i>
-        <a href="contact.html" class="hover:text-[var(--secondary)] transition">Contact</a>
-    </li>
-    <li class="flex items-center gap-2">
-        <i data-lucide="corner-right-up" class="w-5 h-5"></i>
-        <a href="book" class="bg-[var(--secondary)] text-[var(--text-light)] px-4 sm:px-6 py-2 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-105">Book Now</a>
-    </li>
-</ul>
             </div>
-        </nav>
-    </header>
-    <section id="about-hero" class="relative h-screen flex items-center justify-center parallax" style="background-image: url('https://images.unsplash.com/photo-1563253814-b3055eafce93?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW90ZWx8ZW58MHx8MHx8fDA%3D');">
-        <div class="absolute inset-0 bg-[var(--primary)] opacity-50"></div>
-        <div class="relative z-10 text-center text-[var(--text-light)] px-4 sm:px-6">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in-down flex justify-center items-center gap-4">
-                <i data-lucide="landmark" class="w-12 h-12 text-[var(--accent)]"></i>
-                <span>Our Timeless Legacy</span>
+        </div>
+        
+        <!-- Mobile Sidebar -->
+        <div x-show="sidebarOpen" @click="sidebarOpen = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" class="fixed inset-0 bg-black/60 z-40 lg:hidden"></div>
+        
+        <div x-show="sidebarOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" class="fixed top-0 left-0 bottom-0 w-80 bg-slate-900 z-50 lg:hidden overflow-y-auto">
+            <div class="p-6">
+                <button @click="sidebarOpen = false" class="absolute top-6 right-6 text-white hover:text-amber-400">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                
+                <div class="mb-8">
+                    <span class="font-serif text-2xl font-bold text-white">Atlas Motels</span>
+                </div>
+                
+                <nav class="space-y-4 mb-8">
+                    <a href="index.html" @click="sidebarOpen = false" class="flex items-center text-white hover:text-amber-400 transition-colors font-medium text-lg py-2">
+                        <i data-lucide="home" class="w-5 h-5 mr-3"></i>Home
+                    </a>
+                    <a href="about.html" @click="sidebarOpen = false" class="flex items-center text-white hover:text-amber-400 transition-colors font-medium text-lg py-2">
+                        <i data-lucide="info" class="w-5 h-5 mr-3"></i>About
+                    </a>
+                    <a href="rooms.html" @click="sidebarOpen = false" class="flex items-center text-white hover:text-amber-400 transition-colors font-medium text-lg py-2">
+                        <i data-lucide="bed" class="w-5 h-5 mr-3"></i>Rooms
+                    </a>
+                    <a href="#venues" @click="sidebarOpen = false" class="flex items-center text-white hover:text-amber-400 transition-colors font-medium text-lg py-2">
+                        <i data-lucide="map-pin" class="w-5 h-5 mr-3"></i>Event Venues
+                    </a>
+                    <a href="#services" @click="sidebarOpen = false" class="flex items-center text-white hover:text-amber-400 transition-colors font-medium text-lg py-2">
+                        <i data-lucide="sparkles" class="w-5 h-5 mr-3"></i>Services
+                    </a>
+                    <a href="#gallery" @click="sidebarOpen = false" class="flex items-center text-white hover:text-amber-400 transition-colors font-medium text-lg py-2">
+                        <i data-lucide="image" class="w-5 h-5 mr-3"></i>Gallery
+                    </a>
+                </nav>
+                
+                <div class="border-t border-slate-700 pt-6 space-y-4">
+                    <a href="tel:+234" class="flex items-center text-white hover:text-amber-400 transition-colors">
+                        <i data-lucide="phone" class="w-5 h-5 mr-3"></i>Call Now
+                    </a>
+                </div>
+                
+                <button class="w-full mt-6 gradient-gold text-white px-6 py-3 rounded-full font-semibold shadow-lg">Book Your Stay</button>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center parallax" style="background-image: linear-gradient(rgba(0,31,63,0.7), rgba(0,31,63,0.8)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920');">
+        <div class="relative z-10 text-center text-white px-4 sm:px-6">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 animate-fade-in-down flex justify-center items-center gap-4 flex-wrap">
+                <i data-lucide="landmark" class="w-12 h-12 text-amber-400"></i>
+                <span>Ekiti's Premier Hospitality</span>
             </h1>
-            <p class="text-lg sm:text-xl md:text-2xl mb-8 animate-fade-in-up delay-200 max-w-3xl mx-auto">Discover the story behind Atlas Resort – where history meets unparalleled luxury in the heart of Ado.</p>
-            <a href="#story" class="bg-[var(--secondary)] text-[var(--text-light)] px-6 py-3 rounded-full hover:bg-[var(--primary)] transition transform hover:scale-105 inline-block">Explore Our Journey</a>
+            <p class="text-lg sm:text-xl md:text-2xl mb-8 animate-fade-in-up delay-200 max-w-3xl mx-auto">Discover Atlas Motel & Resort – A foremost destination combining affordable luxury, excellent dining, and genuine Nigerian warmth since 1979</p>
+            <a href="#story" class="gradient-gold text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition-all inline-block shadow-lg">Explore Our Story</a>
         </div>
     </section>
-    <section id="story" class="py-16 sm:py-20 bg-[var(--text-light)]">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[var(--primary)] mb-8 animate-fade-in flex justify-center items-center gap-3">
-                <i data-lucide="book-open-text" class="w-10 h-10 text-[var(--accent)]"></i>
+
+    <!-- Our Story Section -->
+    <section id="story" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-center mb-8 animate-fade-in flex justify-center items-center gap-3" style="color: var(--slate-dark);">
+                <i data-lucide="book-open-text" class="w-10 h-10 text-amber-400"></i>
                 Our Story
             </h2>
+            <div class="w-24 h-1 mx-auto mb-12 bg-amber-400"></div>
             <div class="max-w-4xl mx-auto text-center space-y-6">
-                <p class="text-lg sm:text-xl leading-relaxed animate-fade-in-up delay-200">Founded in 19XX, Atlas Resort began as a humble retreat nestled in the vibrant landscapes of Ado. Over the decades, we've evolved into a premier destination, preserving our rich heritage while embracing modern elegance.</p>
-                <p class="text-lg sm:text-xl leading-relaxed animate-fade-in-up delay-400">Our commitment to exceptional hospitality has welcomed generations of guests, creating lasting memories amid nature's splendor. From our historic architecture to our sustainable practices, every aspect tells a story of passion and dedication.</p>
+                <p class="text-lg sm:text-xl leading-relaxed animate-fade-in-up delay-200 text-gray-700">Founded in 1979 by the visionary late Otunba Olayiwola Igadan, Atlas Motel & Resort began as a modest retreat on Ikere Road in Ado-Ekiti. Over the decades, we've evolved into one of Ekiti State's most prestigious hospitality destinations, preserving our rich heritage while embracing modern excellence.</p>
+                <p class="text-lg sm:text-xl leading-relaxed animate-fade-in-up delay-400 text-gray-700">Today, under the continued stewardship of the Igadan family, Atlas Motel & Resort primes itself as a big player in the hospitality business in Ekiti State. We offer a serene atmosphere of privacy, security, and luxury for travelers who desire the best, featuring a large premium bar, affordable accommodation, and an excellent restaurant with a wide variety of delicacies.</p>
             </div>
-            <div class="timeline mt-12">
+            
+            <!-- Timeline -->
+            <div class="timeline mt-16">
                 <div class="timeline-item left">
                     <div class="timeline-content animate-fade-in-left">
-                        <h3 class="text-xl font-bold text-[var(--primary)]">19XX - Founding</h3>
-                        <p>Atlas Resort is established as a small retreat in Ado, offering basic accommodations amid natural beauty.</p>
+                        <h3 class="text-xl font-bold mb-2 flex items-center gap-2" style="color: var(--slate-dark);">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-amber-400"></i>
+                            1979 - The Foundation
+                        </h3>
+                        <p class="text-gray-700">Otunba Olayiwola Igadan establishes Atlas Motel & Resort on Ikere Road, introducing quality hospitality to Ado-Ekiti with a vision of excellence and genuine Nigerian warmth.</p>
                     </div>
                 </div>
                 <div class="timeline-item right">
                     <div class="timeline-content animate-fade-in-right delay-200">
-                        <h3 class="text-xl font-bold text-[var(--primary)]">19XX+10 - Expansion</h3>
-                        <p>First major expansion adds luxury rooms and basic amenities, attracting more visitors.</p>
+                        <h3 class="text-xl font-bold mb-2 flex items-center gap-2" style="color: var(--slate-dark);">
+                            <i data-lucide="utensils" class="w-5 h-5 text-amber-400"></i>
+                            1990s - Culinary Excellence
+                        </h3>
+                        <p class="text-gray-700">Launch of our signature restaurant and premium bar, establishing Atlas as Ekiti's destination for fine dining with diverse local and continental cuisine.</p>
                     </div>
                 </div>
                 <div class="timeline-item left">
                     <div class="timeline-content animate-fade-in-left delay-400">
-                        <h3 class="text-xl font-bold text-[var(--primary)]">19XX+20 - Recognition</h3>
-                        <p>Receives first awards for hospitality excellence and begins hosting events.</p>
+                        <h3 class="text-xl font-bold mb-2 flex items-center gap-2" style="color: var(--slate-dark);">
+                            <i data-lucide="building" class="w-5 h-5 text-amber-400"></i>
+                            2000s - Expansion Era
+                        </h3>
+                        <p class="text-gray-700">Introduction of Legacy Gardens event venue and expanded accommodation facilities, making Atlas the premier choice for celebrations and gatherings across Ekiti State.</p>
                     </div>
                 </div>
                 <div class="timeline-item right">
                     <div class="timeline-content animate-fade-in-right delay-600">
-                        <h3 class="text-xl font-bold text-[var(--primary)]">19XX+30 - Modernization</h3>
-                        <p>Introduces sustainable practices and modern facilities while preserving heritage.</p>
+                        <h3 class="text-xl font-bold mb-2 flex items-center gap-2" style="color: var(--slate-dark);">
+                            <i data-lucide="zap" class="w-5 h-5 text-amber-400"></i>
+                            2010s - Modernization
+                        </h3>
+                        <p class="text-gray-700">Comprehensive upgrades including 24-hour electricity, enhanced security systems, business centre, and modern room amenities to meet international hospitality standards.</p>
                     </div>
                 </div>
                 <div class="timeline-item left">
                     <div class="timeline-content animate-fade-in-left delay-800">
-                        <h3 class="text-xl font-bold text-[var(--primary)]">Present Day</h3>
-                        <p>A premier resort blending history with luxury, committed to guest satisfaction and environmental care.</p>
+                        <h3 class="text-xl font-bold mb-2 flex items-center gap-2" style="color: var(--slate-dark);">
+                            <i data-lucide="award" class="w-5 h-5 text-amber-400"></i>
+                            Today - Ekiti's Pride
+                        </h3>
+                        <p class="text-gray-700">Recognized as one of Ekiti State's most prestigious hotels, serving thousands of satisfied guests annually while maintaining our commitment to excellence, affordability, and authentic Nigerian hospitality.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-16 sm:py-20 bg-gradient-to-r from-[var(--secondary)]/10 to-[var(--primary)]/10 parallax" style="background-image: url('https://via.placeholder.com/1920x1080?text=Elegant+Background');">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[var(--primary)] mb-8 animate-fade-in flex justify-center items-center gap-3">
-                <i data-lucide="target" class="w-10 h-10 text-[var(--accent)]"></i>
+
+    <!-- Guiding Principles -->
+    <section class="py-20 bg-gradient-to-br from-slate-50 to-teal-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-center mb-8 animate-fade-in flex justify-center items-center gap-3" style="color: var(--slate-dark);">
+                <i data-lucide="target" class="w-10 h-10 text-amber-400"></i>
                 Our Guiding Principles
             </h2>
+            <div class="w-24 h-1 mx-auto mb-12 bg-amber-400"></div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-[var(--text-light)]/95 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 flex flex-col items-center text-center animate-fade-in-up">
-                    <i data-lucide="flag" class="w-16 h-16 text-[var(--accent)] mb-4"></i>
-                    <h3 class="text-2xl font-bold text-[var(--primary)] mb-3">Our Mission</h3>
-                    <p class="text-base leading-relaxed">To provide an oasis of tranquility and luxury, where every guest experiences personalized service, sustainable practices, and unforgettable moments that inspire return visits.</p>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all flex flex-col items-center text-center animate-fade-in-up">
+                    <i data-lucide="flag" class="w-16 h-16 text-amber-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--slate-dark);">Our Mission</h3>
+                    <p class="text-base leading-relaxed text-gray-700">To provide exceptional hospitality experiences through personalized service, comfortable accommodations, and authentic Nigerian warmth, creating a serene atmosphere of privacy, security, and luxury for every guest.</p>
                 </div>
-                <div class="bg-[var(--text-light)]/95 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 flex flex-col items-center text-center animate-fade-in-up delay-200">
-                    <i data-lucide="eye" class="w-16 h-16 text-[var(--accent)] mb-4"></i>
-                    <h3 class="text-2xl font-bold text-[var(--primary)] mb-3">Our Vision</h3>
-                    <p class="text-base leading-relaxed">To be the leading heritage resort in Ado, setting global standards for eco-friendly luxury and cultural immersion, fostering a community of lifelong advocates.</p>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all flex flex-col items-center text-center animate-fade-in-up delay-200">
+                    <i data-lucide="eye" class="w-16 h-16 text-amber-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--slate-dark);">Our Vision</h3>
+                    <p class="text-base leading-relaxed text-gray-700">To be the leading hospitality destination in Ekiti State, setting standards for excellence in service delivery, affordability, and guest satisfaction while preserving the legacy of Otunba Olayiwola Igadan.</p>
                 </div>
-                <div class="bg-[var(--text-light)]/95 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 flex flex-col items-center text-center animate-fade-in-up delay-400">
-                    <i data-lucide="heart" class="w-16 h-16 text-[var(--accent)] mb-4"></i>
-                    <h3 class="text-2xl font-bold text-[var(--primary)] mb-3">Our Values</h3>
-                    <p class="text-base leading-relaxed">Integrity, Sustainability, Excellence, and Community – these core values drive every decision, ensuring we honor our past while innovating for the future.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="py-16 sm:py-20 bg-[var(--bg-light)]">
-        <div class="container mx-auto px-4 sm:px-6 text-center">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--primary)] mb-8 animate-fade-in flex justify-center items-center gap-3">
-                <i data-lucide="leaf" class="w-10 h-10 text-[var(--accent)]"></i>
-                Commitment to Sustainability
-            </h2>
-            <p class="text-base sm:text-lg max-w-4xl mx-auto mb-8 leading-relaxed animate-fade-in-up delay-200">At Atlas Resort, we are dedicated to preserving Ado's natural beauty. Our eco-friendly initiatives include solar energy, water conservation, organic farming, and community partnerships to ensure a greener tomorrow.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
-                <div class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition animate-fade-in-up delay-400">
-                    <i data-lucide="sun" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
-                    <p class="text-lg font-semibold">Solar Powered Facilities</p>
-                </div>
-                <div class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition animate-fade-in-up delay-600">
-                    <i data-lucide="droplet" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
-                    <p class="text-lg font-semibold">Water Conservation Programs</p>
-                </div>
-                <div class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition animate-fade-in-up delay-800">
-                    <i data-lucide="recycle" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
-                    <p class="text-lg font-semibold">Zero Waste Initiatives</p>
-                </div>
-                <div class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition animate-fade-in-up delay-1000">
-                    <i data-lucide="users" class="w-12 h-12 text-[var(--accent)] mb-4"></i>
-                    <p class="text-lg font-semibold">Community Support Projects</p>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all flex flex-col items-center text-center animate-fade-in-up delay-400">
+                    <i data-lucide="heart" class="w-16 h-16 text-amber-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--slate-dark);">Our Values</h3>
+                    <ul class="text-base leading-relaxed text-gray-700 space-y-2 text-left">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0"></i>
+                            <span><strong>Excellence:</strong> In every service we deliver</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0"></i>
+                            <span><strong>Integrity:</strong> Honest and ethical practices</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0"></i>
+                            <span><strong>Affordability:</strong> Quality without compromise</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0"></i>
+                            <span><strong>Community:</strong> Supporting Ekiti's growth</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-    <section id="gallery" class="py-16 sm:py-20 bg-gradient-to-r from-[var(--primary)]/5 to-[var(--secondary)]/5">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[var(--primary)] mb-8 animate-fade-in flex justify-center items-center gap-3">
-                <i data-lucide="image" class="w-10 h-10 text-[var(--accent)]"></i>
-                Explore Our Gallery
-            </h2>
-            <p class="text-base sm:text-lg text-center max-w-4xl mx-auto mb-8 animate-fade-in-up delay-200">Browse through our categorized collections showcasing the beauty and amenities of Atlas Resort. Swipe or click to view more images in each carousel.</p>
-            <div class="mb-12">
-                <h3 class="text-2xl sm:text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-3 animate-fade-in">
-                    <i data-lucide="flower" class="w-8 h-8 text-[var(--accent)]"></i>
-                    Lush Gardens
-                </h3>
-                <div class="carousel" id="gardens-carousel" aria-roledescription="carousel">
-                    <div class="carousel-slides">
-                        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1600&auto=format&fit=crop&q=60');">
-                            <div class="carousel-caption">Serene Garden Path</div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1563714193017-5a5fb60bc02b?w=1600&auto=format&fit=crop&q=60');">
-                            <div class="carousel-caption">Tropical Foliage</div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1601654253194-260e0b6984f9?w=1600&auto=format&fit=crop&q=60');">
-                            <div class="carousel-caption">Blooming Paradise</div>
-                        </div>
-                    </div>
-                    <div class="carousel-dots" role="tablist">
-                        <div class="carousel-dot active" data-index="0" role="tab" aria-selected="true" tabindex="0"></div>
-                        <div class="carousel-dot" data-index="1" role="tab" aria-selected="false" tabindex="-1"></div>
-                        <div class="carousel-dot" data-index="2" role="tab" aria-selected="false" tabindex="-1"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-12">
-                <h3 class="text-2xl sm:text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-3 animate-fade-in delay-200">
-                    <i data-lucide="bed" class="w-8 h-8 text-[var(--accent)]"></i>
-                    Luxurious Rooms
-                </h3>
-                <div class="carousel" id="rooms-carousel" aria-roledescription="carousel">
-                    <div class="carousel-slides">
-                        <div class="carousel-slide" style="background-image: url('https://hoteldesigns.net/wp-content/uploads/2025/01/WHO_MLEWH_Beach_Villa_Bedroom_Bedroom_01.jpg');">
-                            <div class="carousel-caption">Elegant Suite</div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('https://www.insidehook.com/wp-content/uploads/2023/01/luxuryhotel_1500x1000_opt2a.jpg?fit=1200%2C800');">
-                            <div class="carousel-caption">Spacious Bedroom</div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('https://cdn.galeriemagazine.com/wp-content/uploads/2025/04/Galerie_20210721_RW_Palace_One_Pool_Wide_v1_WB-1174x718.jpg');">
-                            <div class="carousel-caption">Modern Interior</div>
-                        </div>
-                    </div>
-                    <div class="carousel-dots" role="tablist">
-                        <div class="carousel-dot active" data-index="0" role="tab" aria-selected="true" tabindex="0"></div>
-                        <div class="carousel-dot" data-index="1" role="tab" aria-selected="false" tabindex="-1"></div>
-                        <div class="carousel-dot" data-index="2" role="tab" aria-selected="false" tabindex="-1"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-12">
-                <h3 class="text-2xl sm:text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-3 animate-fade-in delay-400">
-                    <i data-lucide="door-open" class="w-8 h-8 text-[var(--accent)]"></i>
-                    Grand Halls
-                </h3>
-                <div class="carousel" id="halls-carousel">
-                    <div class="carousel-slides">
-                        <div class="carousel-slide" style="background-image: url('https://media.eventective.com/4247187_lg.jpg');">
-                            <div class="carousel-caption">Elegant Ballroom</div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('https://static-new.lhw.com/HotelImages/Final/LW0804/lw0804_166962253_960x540.jpg');">
-                            <div class="carousel-caption">Spacious Venue</div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('https://www.arizonagrandresort.com/wp-content/uploads/2022/03/Grand-Ballroom.png');">
-                            <div class="carousel-caption">Grand Event Space</div>
-                        </div>
-                    </div>
-                    <div class="carousel-dots" role="tablist">
-                        <div class="carousel-dot active" data-index="0" role="tab" aria-selected="true" tabindex="0"></div>
-                        <div class="carousel-dot" data-index="1" role="tab" aria-selected="false" tabindex="-1"></div>
-                        <div class="carousel-dot" data-index="2" role="tab" aria-selected="false" tabindex="-1"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-12">
-                <h3 class="text-2xl sm:text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-3 animate-fade-in delay-600">
-                    <i data-lucide="glass-water" class="w-8 h-8 text-[var(--accent)]"></i>
-                    Elegant Bar
-                </h3>
-                <div class="carousel" id="bar-carousel">
-                    <div class="carousel-slides">
-                        <div class="carousel-slide" style="background-image: url('https://www.la.ginabelle.ch/fileadmin/_processed_/8/5/csm_Bar_01-25_661c2d7830.webp');">
-                            <div class="carousel-caption">Cozy Lounge</div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('https://wwd.com/wp-content/uploads/2022/07/Hotel-Chelsea_Lobby-Bar_-credit-Annie-Schlechter.jpg?w=1000&h=563&crop=1');">
-                            <div class="carousel-caption">Stylish Bar Area</div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('https://all-inclusive.marriott.com/resourcefiles/dining-detail-page-image/bars-and-restaurants-view-of-the-house-by-elegant-hotels-st-james.jpg');">
-                            <div class="carousel-caption">Relaxing Atmosphere</div>
-                        </div>
-                    </div>
-                    <div class="carousel-dots" role="tablist">
-                        <div class="carousel-dot active" data-index="0" role="tab" aria-selected="true" tabindex="0"></div>
-                        <div class="carousel-dot" data-index="1" role="tab" aria-selected="false" tabindex="-1"></div>
-                        <div class="carousel-dot" data-index="2" role="tab" aria-selected="false" tabindex="-1"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-4">
-                <h3 class="text-2xl sm:text-3xl font-bold text-[var(--primary)] mb-4 flex items-center gap-3 animate-fade-in delay-800">
-                    <i data-lucide="utensils" class="w-8 h-8 text-[var(--accent)]"></i>
-                    Gourmet Restaurant
-                </h3>
-                <div class="carousel" id="restaurant-carousel">
-                    <div class="carousel-slides">
-                        <div class="carousel-slide" style="background-image: url('https://www.riversideresort.com/wp-content/uploads/2017/09/the-gourmet-room-riverside-hotel-casino-slogan-image.png');">
-                            <div class="carousel-caption">Fine Dining Experience</div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('https://cdn.kiwicollection.com/media/property/PR241037/xl/241037-22-25%20Arrel%20Restaurant-at%20InterContinental%20Barcelona.jpg');">
-                            <div class="carousel-caption">Exquisite Cuisine</div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('https://all-inclusive.marriott.com/resourcefiles/dining-detail-page-image/blue-marlin.jpg');">
-                            <div class="carousel-caption">Outdoor Seating</div>
-                        </div>
-                    </div>
-                    <div class="carousel-dots" role="tablist">
-                        <div class="carousel-dot active" data-index="0" role="tab" aria-selected="true" tabindex="0"></div>
-                        <div class="carousel-dot" data-index="1" role="tab" aria-selected="false" tabindex="-1"></div>
-                        <div class="carousel-dot" data-index="2" role="tab" aria-selected="false" tabindex="-1"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer id="contact" class="bg-[var(--primary)] text-[var(--text-light)] py-12 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10" style="background-image: url('https://via.placeholder.com/1920x300?text=Wave+Pattern'); background-size: cover;"></div>
-        <div class="container mx-auto px-4 sm:px-6 relative z-10 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3"><i data-lucide="hotel" class="w-8 h-8 text-[var(--accent)]"></i> Atlas Resort</h3>
-                <p class="mb-4 text-lg">Timeless luxury in the heart of Ado. Experience elegance redefined.</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="link" class="w-6 h-6 text-[var(--accent)]"></i> Quick Links</h3>
-                <ul class="space-y-2 text-lg">
-                    <li><a href="index.html#home" class="hover:text-[var(--accent)] transition">Home</a></li>
-                    <li><a href="#story" class="hover:text-[var(--accent)] transition">About</a></li>
-                    <li><a href="index.html#rooms" class="hover:text-[var(--accent)] transition">Rooms</a></li>
-                    <li><a href="index.html#events" class="hover:text-[var(--accent)] transition">Events</a></li>
-                    <li><a href="index.html#blog" class="hover:text-[var(--accent)] transition">Blog</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="mail" class="w-6 h-6 text-[var(--accent)]"></i> Contact Us</h3>
-                <p class="mb-2 text-lg">Email: info@atlasresort.com</p>
-                <p class="mb-2 text-lg">Phone: +123-456-7890</p>
-                <p class="text-lg">Address: 123 Resort Lane, Ado, Nigeria</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2"><i data-lucide="share-2" class="w-6 h-6 text-[var(--accent)]"></i> Follow Us</h3>
-                <div class="flex space-x-6">
-                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="facebook" class="w-8 h-8"></i></a>
-                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="instagram" class="w-8 h-8"></i></a>
-                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="twitter" class="w-8 h-8"></i></a>
-                    <a href="#" class="hover:text-[var(--accent)] transition"><i data-lucide="linkedin" class="w-8 h-8"></i></a>
-                </div>
-            </div>
-        </div>
-       <div
-  class="container mx-auto px-4 sm:px-6 relative z-10 mt-8 text-center border-t border-[var(--secondary)]/30 pt-4"
->
-  <p class="text-sm">
-    &copy; 2025 Atlas Resort. All rights reserved. |
-    <a href="#" class="hover:text-[var(--accent)]">Privacy Policy</a> |
-    <a href="#" class="hover:text-[var(--accent)]">Terms of Service</a>
-  </p>
-  <p class="text-xs mt-2">
-    Designed & Developed by 
-<a href="https://folio-two-blush.vercel.app/" target="_blank" class="hover:text-\[var\(--accent\)\] font-semibold">Alonge Korede</a>
-  </p>
-</div>
 
+    <!-- What Makes Us Special -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-center mb-12" style="color: var(--slate-dark);">
+                What Makes Us Special
+            </h2>
+            <div class="w-24 h-1 mx-auto mb-12 bg-amber-400"></div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full gradient-teal flex items-center justify-center">
+                        <i data-lucide="utensils" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--slate-dark);">Excellent Restaurant</h3>
+                    <p class="text-gray-700 text-sm">Wide variety of delicious local and continental delicacies prepared by expert chefs</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-600 flex items-center justify-center">
+                        <i data-lucide="glass-water" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--slate-dark);">Premium Bar/Lounge</h3>
+                    <p class="text-gray-700 text-sm">Large premium bar stocked with quality beverages in a relaxing atmosphere</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-amber-50 to-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full gradient-gold flex items-center justify-center">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--slate-dark);">Security & Privacy</h3>
+                    <p class="text-gray-700 text-sm">24/7 security ensuring a serene atmosphere of complete privacy and safety</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-emerald-50 to-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-emerald-600 flex items-center justify-center">
+                        <i data-lucide="calendar" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--slate-dark);">Event Venues</h3>
+                    <p class="text-gray-700 text-sm">Legacy Gardens and modern event halls for memorable celebrations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complete Facilities -->
+    <section class="py-20 bg-gradient-to-br from-slate-50 to-teal-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-center mb-12" style="color: var(--slate-dark);">
+                Our Complete Facilities
+            </h2>
+            <div class="w-24 h-1 mx-auto mb-12 bg-amber-400"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="bed" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2" style="color: var(--slate-dark);">Comfortable Rooms</h4>
+                        <p class="text-gray-600 text-sm">Well-appointed rooms with air conditioning, TV, and modern amenities</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="utensils" class="w-6 h-6 text-orange-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2" style="color: var(--slate-dark);">Restaurant & Breakfast</h4>
+                        <p class="text-gray-600 text-sm">Excellent dining with diverse menu and complimentary breakfast options</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="wine" class="w-6 h-6 text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2" style="color: var(--slate-dark);">Bar & Lounge</h4>
+                        <p class="text-gray-600 text-sm">Premium bar with quality beverages and relaxing lounge atmosphere</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="door-open" class="w-6 h-6 text-green-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2" style="color: var(--slate-dark);">Event Hall</h4>
+                        <p class="text-gray-600 text-sm">Spacious event venues for conferences, weddings, and celebrations</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="briefcase" class="w-6 h-6 text-amber-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2" style="color: var(--slate-dark);">Business Centre</h4>
+                        <p class="text-gray-600 text-sm">Fully equipped facilities for meetings and business needs</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="car" class="w-6 h-6 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2" style="color: var(--slate-dark);">Car Hire & Parking</h4>
+                        <p class="text-gray-600 text-sm">Adequate secure parking and car hire services available</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="sparkles" class="w-6 h-6 text-indigo-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2" style="color: var(--slate-dark);">Dry Cleaning</h4>
+                        <p class="text-gray-600 text-sm">Professional laundry and dry cleaning services for guests</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="phone" class="w-6 h-6 text-cyan-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2" style="color: var(--slate-dark);">24h Room Service</h4>
+                        <p class="text-gray-600 text-sm">Round-the-clock room service for your comfort and convenience</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="zap" class="w-6 h-6 text-yellow-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2" style="color: var(--slate-dark);">24h Electricity</h4>
+                        <p class="text-gray-600 text-sm">Uninterrupted power supply with generator backup</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 fade-in">
+
+    <div class="max-w-4xl mx-auto bg-gradient-to-br from-teal-600 to-slate-900 text-white rounded-3xl shadow-2xl p-10 md:p-14 text-center relative overflow-hidden">
+
+      <!-- Ambient highlights -->
+      <div class="absolute -top-24 -left-24 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-6">
+        Experience Ekiti’s Finest Hospitality
+      </h2>
+
+      <p class="text-base sm:text-lg md:text-xl text-teal-100 mb-10 max-w-2xl mx-auto">
+        Join thousands of satisfied guests who have made Atlas Motel & Resort their
+        home away from home since 1979.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="rooms.html"
+          class="bg-white text-slate-900 px-8 py-4 rounded-full text-base md:text-lg font-semibold hover:bg-gray-100 transition shadow-lg"
+        >
+          Book Your Stay
+        </a>
+
+        <a
+          href="contact.html"
+          class="border-2 border-white text-white px-8 py-4 rounded-full text-base md:text-lg font-semibold hover:bg-white hover:text-slate-900 transition"
+        >
+          Contact Us
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="font-serif text-2xl font-bold mb-4">Atlas Motels</h3>
+                    <p class="text-gray-400">Ekiti's premier hospitality destination since 1979. Creating unforgettable memories.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-amber-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-amber-400 transition-colors">About</a></li>
+                        <li><a href="rooms.html" class="hover:text-amber-400 transition-colors">Rooms</a></li>
+                        <li><a href="event.html" class="hover:text-amber-400 transition-colors">Event Venues</a></li>
+                        <li><a href="gallery.html" class="hover:text-amber-400 transition-colors">Gallery</a></li>
+                        <li><a href="blog.html" class="hover:text-amber-400 transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="map-pin" class="w-5 h-5 mt-1 flex-shrink-0"></i>
+                            <span>Ikere Road, Ado-Ekiti, Ekiti State</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                            <span>+234 XXX XXXX XXX</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                            <span>info@atlasmotels.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Follow Us</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 text-center">
+                <p class="text-gray-400">© 2026 Atlas Motels & Resort. All rights reserved.</p>
+                <p class="text-gray-500 text-sm mt-2">Founded by Otunba Olayiwola Igadan | Serving Ekiti Since 1979</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/234XXXXXXXXX" 
+       target="_blank"
+       class="fixed bottom-6 right-6 text-white p-4 rounded-full shadow-2xl hover:scale-110 transform transition-all z-40 flex items-center justify-center"
+       style="background: #25D366;">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+    </a>
+
+    <!-- Scripts -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-   lucide.createIcons();
-            // Hamburger Menu Toggle (defensive)
-            const menuToggle = document.getElementById('menu-toggle');
-            const navMenu = document.getElementById('nav-menu');
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', () => {
-                    const isHidden = navMenu.classList.toggle('hidden');
-                    // aria-expanded reflect current state
-                    menuToggle.setAttribute('aria-expanded', (!isHidden).toString());
-                });
-            }
-            // Carousel Function (defensive)
-            function initCarousel(carouselId, autoMs = 5000) {
-                const carousel = document.getElementById(carouselId);
-                if (!carousel) return;
-                const slidesWrapper = carousel.querySelector('.carousel-slides');
-                const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
-                if (!slidesWrapper || dots.length === 0) return;
-                let index = 0;
-                const total = dots.length;
-                let intervalId = null;
-                function updateDots(newIndex) {
-                    dots.forEach((d, i) => {
-                        d.classList.toggle('active', i === newIndex);
-                        d.setAttribute('aria-selected', (i === newIndex).toString());
-                        d.tabIndex = i === newIndex ? 0 : -1;
-                    });
-                }
-                function showSlide(n) {
-                    index = ((n % total) + total) % total;
-                    slidesWrapper.style.transform = `translateX(-${index * 100}%)`;
-                    updateDots(index);
-                }
-                // click + keyboard for dots
-                dots.forEach((dot, i) => {
-                    dot.addEventListener('click', () => showSlide(i));
-                    dot.addEventListener('keydown', (ev) => {
-                        if (ev.key === 'Enter' || ev.key === ' ') {
-                            ev.preventDefault();
-                            showSlide(i);
-                        }
-                    });
-                });
-                // auto slide with pause on hover/focus
-                function startAuto() {
-                    stopAuto();
-                    intervalId = setInterval(() => showSlide(index + 1), autoMs);
-                }
-                function stopAuto() {
-                    if (intervalId) { clearInterval(intervalId); intervalId = null; }
-                }
-                carousel.addEventListener('mouseenter', stopAuto);
-                carousel.addEventListener('mouseleave', startAuto);
-                carousel.addEventListener('focusin', stopAuto);
-                carousel.addEventListener('focusout', startAuto);
-                // initial show
-                showSlide(0);
-                startAuto();
-            }
-            // Initialize all carousels that exist on page
-            const carouselIds = ['gardens-carousel', 'rooms-carousel', 'halls-carousel', 'bar-carousel', 'restaurant-carousel'];
-            carouselIds.forEach(id => initCarousel(id, 5000));
-        });
+        lucide.createIcons();
     </script>
+
 </body>
 </html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portal • Atlas Motels & Legacy Gardens</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .font-serif { font-family: 'Playfair Display', serif; }
+    .font-sans  { font-family: 'Inter', sans-serif; }
+    
+    .gradient-gold {
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased bg-gray-50 min-h-screen">
+
+  <!-- Top Navigation -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="font-serif text-3xl font-bold text-amber-700">Atlas Motels</a>
+        
+        <div class="flex items-center gap-6">
+          <span class="text-gray-700">Welcome back, Korede</span>
+          <button class="px-6 py-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-full font-medium transition-colors">
+            Log Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col lg:flex-row gap-12">
+      
+      <!-- Sidebar -->
+      <aside class="lg:w-80 flex-shrink-0">
+        <div class="bg-white rounded-2xl shadow-lg p-6 sticky top-8">
+          <div class="text-center mb-10">
+            <div class="w-24 h-24 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="user" class="w-12 h-12 text-amber-600"></i>
+            </div>
+            <h2 class="font-serif text-2xl font-bold text-gray-900">Korede</h2>
+            <p class="text-gray-600">Gold Member</p>
+          </div>
+
+          <nav x-data="{ activeTab: 'dashboard' }" class="space-y-2">
+            <button @click="activeTab = 'dashboard'" 
+                    :class="activeTab === 'dashboard' ? 'bg-amber-50 text-amber-700 font-medium' : 'hover:bg-gray-50'"
+                    class="w-full text-left px-5 py-3 rounded-xl transition-colors flex items-center gap-3">
+              <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+              Dashboard
+            </button>
+            <button @click="activeTab = 'bookings'" 
+                    :class="activeTab === 'bookings' ? 'bg-amber-50 text-amber-700 font-medium' : 'hover:bg-gray-50'"
+                    class="w-full text-left px-5 py-3 rounded-xl transition-colors flex items-center gap-3">
+              <i data-lucide="calendar-check" class="w-5 h-5"></i>
+              My Bookings
+            </button>
+            <button @click="activeTab = 'loyalty'" 
+                    :class="activeTab === 'loyalty' ? 'bg-amber-50 text-amber-700 font-medium' : 'hover:bg-gray-50'"
+                    class="w-full text-left px-5 py-3 rounded-xl transition-colors flex items-center gap-3">
+              <i data-lucide="award" class="w-5 h-5"></i>
+              Loyalty & Rewards
+            </button>
+            <button @click="activeTab = 'preferences'" 
+                    :class="activeTab === 'preferences' ? 'bg-amber-50 text-amber-700 font-medium' : 'hover:bg-gray-50'"
+                    class="w-full text-left px-5 py-3 rounded-xl transition-colors flex items-center gap-3">
+              <i data-lucide="heart" class="w-5 h-5"></i>
+              Saved Preferences
+            </button>
+            <button @click="activeTab = 'reviews'" 
+                    :class="activeTab === 'reviews' ? 'bg-amber-50 text-amber-700 font-medium' : 'hover:bg-gray-50'"
+                    class="w-full text-left px-5 py-3 rounded-xl transition-colors flex items-center gap-3">
+              <i data-lucide="star" class="w-5 h-5"></i>
+              Reviews
+            </button>
+            <button @click="activeTab = 'settings'" 
+                    :class="activeTab === 'settings' ? 'bg-amber-50 text-amber-700 font-medium' : 'hover:bg-gray-50'"
+                    class="w-full text-left px-5 py-3 rounded-xl transition-colors flex items-center gap-3">
+              <i data-lucide="settings" class="w-5 h-5"></i>
+              Settings
+            </button>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="flex-1">
+        <div x-data="{ activeTab: 'dashboard' }" class="space-y-12">
+
+          <!-- Dashboard -->
+          <div x-show="activeTab === 'dashboard'">
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+              Welcome back, Korede!
+            </h1>
+            <p class="text-xl text-gray-600 mb-12">Here's what's happening with your account</p>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+              <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <div class="text-amber-600 text-sm font-medium mb-2">Upcoming Events</div>
+                <div class="text-4xl font-bold text-gray-900">3</div>
+                <div class="text-gray-500 mt-2">Next: Feb 14, 2026</div>
+              </div>
+              
+              <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <div class="text-amber-600 text-sm font-medium mb-2">Loyalty Points</div>
+                <div class="text-4xl font-bold text-gray-900">4,820</div>
+                <div class="text-gray-500 mt-2">Gold Tier • 1,180 to Platinum</div>
+              </div>
+              
+              <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <div class="text-amber-600 text-sm font-medium mb-2">Total Bookings</div>
+                <div class="text-4xl font-bold text-gray-900">12</div>
+                <div class="text-gray-500 mt-2">Since joining in 2024</div>
+              </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+              <h3 class="font-serif text-2xl font-bold mb-6">Quick Actions</h3>
+              <div class="grid md:grid-cols-2 gap-6">
+                <button class="p-6 border-2 border-amber-200 rounded-xl hover:border-amber-400 transition-colors text-left">
+                  <div class="text-xl font-semibold mb-2">Book New Event</div>
+                  <p class="text-gray-600">Plan your next celebration</p>
+                </button>
+                <button class="p-6 border-2 border-amber-200 rounded-xl hover:border-amber-400 transition-colors text-left">
+                  <div class="text-xl font-semibold mb-2">Refer a Friend</div>
+                  <p class="text-gray-600">Earn 500 bonus points</p>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- My Bookings -->
+          <div x-show="activeTab === 'bookings'">
+            <h2 class="font-serif text-4xl font-bold text-gray-900 mb-10">My Bookings</h2>
+            
+            <div class="space-y-8">
+              <!-- Booking Item -->
+              <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                  <div>
+                    <div class="flex items-center gap-4 mb-3">
+                      <span class="px-4 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Confirmed</span>
+                      <span class="text-gray-600">Feb 14, 2026 • Valentine's Movie Night</span>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-2">Open Field – Movie Under the Stars</h3>
+                    <p class="text-gray-600">180 guests • 50% deposit paid</p>
+                  </div>
+                  
+                  <div class="flex gap-4">
+                    <button class="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors">
+                      View Details
+                    </button>
+                    <button class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                      Receipt
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- More booking items can be added here -->
+            </div>
+          </div>
+
+          <!-- Loyalty & Rewards -->
+          <div x-show="activeTab === 'loyalty'">
+            <h2 class="font-serif text-4xl font-bold text-gray-900 mb-10">Loyalty & Rewards</h2>
+            
+            <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-10 mb-12 text-center">
+              <div class="text-5xl font-bold text-amber-700 mb-4">4,820</div>
+              <p class="text-xl text-amber-800 mb-2">Current Points Balance</p>
+              <div class="inline-block px-6 py-2 bg-amber-600 text-white rounded-full font-medium">
+                Gold Tier Member
+              </div>
+              <p class="mt-4 text-gray-700">1,180 more points to reach Platinum</p>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-6">Available Rewards</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="bg-white p-6 rounded-xl border border-gray-100 hover:border-amber-300 transition-colors">
+                <div class="text-3xl mb-4">Free Decoration Upgrade</div>
+                <p class="text-gray-600 mb-4">Worth ₦150,000 • 3,500 points</p>
+                <button class="w-full py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700">
+                  Redeem
+                </button>
+              </div>
+              <!-- Add more rewards -->
+            </div>
+          </div>
+
+          <!-- Saved Preferences -->
+          <div x-show="activeTab === 'preferences'">
+            <h2 class="font-serif text-4xl font-bold text-gray-900 mb-10">Saved Preferences</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <h3 class="font-serif text-2xl font-bold mb-6">Favorite Venues</h3>
+                <ul class="space-y-4">
+                  <li class="flex items-center justify-between">
+                    <span>Legacy Gardens</span>
+                    <button class="text-red-600 hover:text-red-800">
+                      <i data-lucide="trash-2" class="w-5 h-5"></i>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <h3 class="font-serif text-2xl font-bold mb-6">Preferred Payment Method</h3>
+                <p class="text-gray-700">Visa **** 4242 • Expires 12/28</p>
+                <button class="mt-4 text-amber-600 hover:text-amber-800">
+                  Update Payment Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reviews -->
+          <div x-show="activeTab === 'reviews'">
+            <h2 class="font-serif text-4xl font-bold text-gray-900 mb-10">Your Reviews</h2>
+            
+            <button class="mb-12 px-8 py-4 bg-amber-600 text-white rounded-xl hover:bg-amber-700 transition-colors flex items-center gap-2">
+              <i data-lucide="star" class="w-5 h-5"></i>
+              Write a New Review
+            </button>
+
+            <div class="space-y-8">
+              <!-- Review Item -->
+              <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <div class="flex items-center gap-4 mb-6">
+                  <div class="flex">
+                    <i data-lucide="star" class="w-6 h-6 fill-amber-500 text-amber-500"></i>
+                    <i data-lucide="star" class="w-6 h-6 fill-amber-500 text-amber-500"></i>
+                    <i data-lucide="star" class="w-6 h-6 fill-amber-500 text-amber-500"></i>
+                    <i data-lucide="star" class="w-6 h-6 fill-amber-500 text-amber-500"></i>
+                    <i data-lucide="star" class="w-6 h-6 fill-amber-500 text-amber-500"></i>
+                  </div>
+                  <span class="font-medium">5.0 • Dec 20, 2025</span>
+                </div>
+                <h3 class="font-serif text-2xl font-bold mb-4">Perfect Christmas Movie Night</h3>
+                <p class="text-gray-700">Everything was magical! The Open Field looked stunning with lights and the sound system was top-notch. Highly recommend!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Settings -->
+          <div x-show="activeTab === 'settings'">
+            <h2 class="font-serif text-4xl font-bold text-gray-900 mb-10">Account Settings</h2>
+            
+            <div class="bg-white p-10 rounded-2xl shadow-lg border border-gray-100">
+              <form class="space-y-8">
+                <div>
+                  <label class="block text-gray-700 font-medium mb-2">Full Name</label>
+                  <input type="text" value="Korede" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                </div>
+
+                <div>
+                  <label class="block text-gray-700 font-medium mb-2">Email Address</label>
+                  <input type="email" value="korede@example.com" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                </div>
+
+                <div>
+                  <label class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                  <input type="tel" value="+234 80X XXX XXXX" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                </div>
+
+                <div class="pt-6 border-t">
+                  <h3 class="text-xl font-bold mb-6">Change Password</h3>
+                  <div class="space-y-6">
+                    <input type="password" placeholder="Current Password" class="w-full px-5 py-3 border border-gray-300 rounded-lg">
+                    <input type="password" placeholder="New Password" class="w-full px-5 py-3 border border-gray-300 rounded-lg">
+                    <input type="password" placeholder="Confirm New Password" class="w-full px-5 py-3 border border-gray-300 rounded-lg">
+                  </div>
+                </div>
+
+                <div class="pt-6 border-t flex justify-end">
+                  <button type="submit" class="px-10 py-4 bg-amber-600 text-white rounded-xl hover:bg-amber-700 transition-colors">
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10">
+        <div>
+          <h3 class="font-serif text-3xl font-bold text-white mb-6">Atlas Motels</h3>
+          <p class="text-gray-400">Creating timeless memories in Ekiti since 1979.</p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-lg mb-6">Quick Links</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="/" class="hover:text-amber-400 transition-colors">Home</a></li>
+            <li><a href="#venues" class="hover:text-amber-400 transition-colors">Venues</a></li>
+            <li><a href="#events" class="hover:text-amber-400 transition-colors">Events</a></li>
+            <li><a href="/gallery" class="hover:text-amber-400 transition-colors">Gallery</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-lg mb-6">Services</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Wedding Venues</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Corporate Events</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Catering Services</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-lg mb-6">Contact</h4>
+          <p class="text-gray-400">Ikere Road, Ado-Ekiti<br>Ekiti State, Nigeria</p>
+          <p class="mt-4 text-gray-400">info@atlasmotels.com</p>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-gray-500">
+        © 2026 Atlas Motels & Legacy Gardens. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

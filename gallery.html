@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery • Atlas Motels & Legacy Gardens</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .font-serif { font-family: 'Playfair Display', serif; }
+    .font-sans  { font-family: 'Inter', sans-serif; }
+    
+    .gradient-gold { background: linear-gradient(135deg, #F59E0B, #D97706); }
+
+    .masonry {
+      column-count: 3;
+      column-gap: 1.5rem;
+    }
+
+    .masonry > div {
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 1024px) { .masonry { column-count: 2; } }
+    @media (max-width: 640px)  { .masonry { column-count: 1; } }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox img {
+      max-height: 90vh;
+      max-width: 90vw;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased bg-white">
+
+  <!-- Navigation (consistent with site) -->
+  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-slate-900/95 backdrop-blur-md shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="font-serif text-3xl font-bold text-white">Atlas Motels</a>
+        
+        <div class="hidden lg:flex items-center space-x-10">
+          <a href="/" class="text-white hover:text-amber-400 transition-colors">Home</a>
+          <a href="#venues" class="text-white hover:text-amber-400 transition-colors">Venues</a>
+          <a href="#events" class="text-white hover:text-amber-400 transition-colors">Events</a>
+          <a href="/gallery" class="text-amber-400 font-semibold">Gallery</a>
+        </div>
+
+        <div class="hidden lg:flex items-center space-x-6">
+          <button class="gradient-gold text-white px-7 py-3 rounded-full font-semibold hover:scale-105 transition-all shadow-lg">
+            Book Now
+          </button>
+        </div>
+
+        <button class="lg:hidden text-white">
+          <i data-lucide="menu" class="w-7 h-7"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-20 bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6">Moments That Last Forever</h1>
+      <p class="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+        Explore our collection of real events, beautiful setups and unforgettable celebrations at Atlas Motels & Legacy Gardens
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Gallery Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Filters -->
+      <div x-data="{ activeFilter: 'all' }" class="flex flex-wrap justify-center gap-4 mb-16">
+        <button @click="activeFilter = 'all'" 
+                :class="activeFilter === 'all' ? 'bg-amber-600 text-white shadow-md' : 'bg-gray-100 hover:bg-gray-200'"
+                class="px-8 py-3 rounded-full font-medium transition-all">
+          All Moments
+        </button>
+        <button @click="activeFilter = 'wedding'" 
+                :class="activeFilter === 'wedding' ? 'bg-amber-600 text-white shadow-md' : 'bg-gray-100 hover:bg-gray-200'"
+                class="px-8 py-3 rounded-full font-medium transition-all">
+          Weddings
+        </button>
+        <button @click="activeFilter = 'birthday'" 
+                :class="activeFilter === 'birthday' ? 'bg-amber-600 text-white shadow-md' : 'bg-gray-100 hover:bg-gray-200'"
+                class="px-8 py-3 rounded-full font-medium transition-all">
+          Birthdays
+        </button>
+        <button @click="activeFilter = 'corporate'" 
+                :class="activeFilter === 'corporate' ? 'bg-amber-600 text-white shadow-md' : 'bg-gray-100 hover:bg-gray-200'"
+                class="px-8 py-3 rounded-full font-medium transition-all">
+          Corporate
+        </button>
+        <button @click="activeFilter = 'movie'" 
+                :class="activeFilter === 'movie' ? 'bg-amber-600 text-white shadow-md' : 'bg-gray-100 hover:bg-gray-200'"
+                class="px-8 py-3 rounded-full font-medium transition-all">
+          Movie Nights
+        </button>
+      </div>
+
+      <!-- Masonry Gallery Grid -->
+      <div class="masonry" x-data="{ 
+        activeFilter: 'all',
+        selectedImage: null,
+        images: [
+          { category: 'wedding', src: 'https://images.unsplash.com/photo-1519741497674-281450f9b5d2?w=800', title: 'A Yoruba Royal Wedding', event: 'Ade & Yetunde Wedding', date: 'Dec 2025', venue: 'Legacy Gardens', likes: 1243 },
+          { category: 'birthday', src: 'https://images.unsplash.com/photo-1623718649591-311775a30c43?w=800', title: '50th Birthday Celebration', event: 'Chief Mrs. Adeola’s 50th', date: 'Nov 2025', venue: 'Open Field', likes: 892 },
+          { category: 'corporate', src: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800', title: 'End of Year Corporate Dinner', event: 'TechCorp Annual Dinner', date: 'Dec 2025', venue: 'Legacy Gardens', likes: 456 },
+          { category: 'wedding', src: 'https://images.unsplash.com/photo-1562693348-3d7d8d2d7f0e?w=800', title: 'Garden White Wedding', event: 'Tunde & Funmi Wedding', date: 'Oct 2025', venue: 'Legacy Gardens', likes: 2145 },
+          { category: 'movie', src: 'https://images.unsplash.com/photo-1536440136625-cccd1e8a8a2f?w=800', title: 'December Movie Night', event: 'Family Movie Under the Stars', date: 'Dec 2025', venue: 'Open Field', likes: 678 },
+          { category: 'birthday', src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800', title: 'Princess Birthday Party', event: 'Aria’s 5th Birthday', date: 'Sep 2025', venue: 'Legacy Gardens', likes: 1345 },
+          // Add 10–15 more images with different heights/categories for real masonry effect
+        ]
+      }">
+        <template x-for="img in images.filter(i => activeFilter === 'all' || i.category === activeFilter)" :key="img.src">
+          <div class="cursor-pointer group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl" @click="selectedImage = img">
+            <img :src="img.src" :alt="img.title" class="w-full rounded-2xl transition-transform duration-700 group-hover:scale-110">
+            
+            <!-- Hover Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
+              <h3 class="font-serif text-2xl font-bold mb-1" x-text="img.title"></h3>
+              <p class="text-sm opacity-90 mb-3" x-text="img.event + ' • ' + img.date"></p>
+              <div class="flex items-center gap-6 text-sm">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="heart" class="w-5 h-5"></i>
+                  <span x-text="img.likes"></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="share-2" class="w-5 h-5"></i>
+                  <span>Share</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- Lightbox -->
+      <div x-show="selectedImage" @click="selectedImage = null" 
+           class="lightbox transition-opacity duration-300" 
+           :class="{ 'opacity-0 pointer-events-none': !selectedImage }">
+        <div @click.stop class="relative max-w-5xl w-full px-4">
+          <button @click="selectedImage = null" class="absolute -top-16 right-4 text-white text-3xl">
+            <i data-lucide="x"></i>
+          </button>
+
+          <img :src="selectedImage.src" :alt="selectedImage.title" class="max-h-[85vh] mx-auto rounded-xl shadow-2xl">
+
+          <div class="text-white text-center mt-6">
+            <h3 class="font-serif text-3xl font-bold mb-2" x-text="selectedImage.title"></h3>
+            <p class="text-lg opacity-90 mb-4" x-text="selectedImage.event + ' • ' + selectedImage.date + ' • ' + selectedImage.venue"></p>
+            
+            <a href="#" class="inline-block gradient-gold text-white px-10 py-4 rounded-full font-semibold mt-4 hover:scale-105 transition-transform shadow-lg">
+              Book This Venue →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Albums -->
+      <div class="mt-32">
+        <h2 class="font-serif text-5xl font-bold text-center mb-16">Featured Albums</h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="group relative rounded-2xl overflow-hidden shadow-lg">
+            <img src="https://images.unsplash.com/photo-1519741497674-281450f9b5d2?w=800" alt="Christmas 2024" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
+              <div>
+                <h3 class="font-serif text-3xl font-bold text-white">Christmas 2024</h3>
+                <p class="text-white/90">Family moments, lights & joy</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Add 2 more featured albums similarly -->
+        </div>
+      </div>
+
+      <!-- Share Your Moment + Instagram Feed -->
+      <div class="mt-32 text-center">
+        <h2 class="font-serif text-5xl font-bold mb-8">Share Your Moment</h2>
+        <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+          Tag us @AtlasMotelsEkiti with #AtlasMomentsEkiti and your beautiful moments may be featured here!
+        </p>
+        
+        <button class="gradient-gold text-white px-12 py-5 rounded-full text-xl font-semibold hover:scale-105 transition-all shadow-xl">
+          Upload Your Photo
+        </button>
+      </div>
+
+      <!-- Before/After Slider -->
+      <div class="mt-32">
+        <h2 class="font-serif text-5xl font-bold text-center mb-16">Venue Transformations</h2>
+        
+        <div x-data="{ beforeAfter: 50 }" class="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1519167758481-83f29da8fd21?w=1200" alt="After" class="w-full h-auto">
+          <div class="absolute inset-0 overflow-hidden" :style="{ width: beforeAfter + '%' }">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200" alt="Before" class="absolute inset-0 w-full h-full object-cover">
+          </div>
+          
+          <!-- Slider Handle -->
+          <div class="absolute top-0 bottom-0 w-1 bg-white left-[50%]" :style="{ left: beforeAfter + '%' }">
+            <div class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center cursor-ew-resize"
+                 @mousedown="dragging = true"
+                 @touchstart="dragging = true">
+              <i data-lucide="move-horizontal" class="w-6 h-6 text-amber-600"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10">
+        <div>
+          <h3 class="font-serif text-3xl font-bold text-white mb-6">Atlas Motels</h3>
+          <p class="text-gray-400">Creating timeless memories in Ekiti since 1979.</p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-lg mb-6">Quick Links</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="/" class="hover:text-amber-400 transition-colors">Home</a></li>
+            <li><a href="#venues" class="hover:text-amber-400 transition-colors">Venues</a></li>
+            <li><a href="#events" class="hover:text-amber-400 transition-colors">Events</a></li>
+            <li><a href="/gallery" class="hover:text-amber-400 transition-colors">Gallery</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-lg mb-6">Venues</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Legacy Gardens</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Open Field</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-lg mb-6">Contact</h4>
+          <p class="text-gray-400">Ikere Road, Ado-Ekiti<br>Ekiti State, Nigeria</p>
+          <p class="mt-4 text-gray-400">info@atlasmotels.com</p>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-gray-500">
+        © 2026 Atlas Motels & Legacy Gardens. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
